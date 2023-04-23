@@ -39,7 +39,7 @@ namespace DirectoryFingerPrinting.API
 
         bool UsePositiveList { get; }
 
-        List<string> Extensions { get; }
+        HashSet<string> Extensions { get; }
 
         EHashAlgo HashAlgo { get; }
     }

@@ -59,10 +59,10 @@ namespace DirectoryFingerPrinting.Models
         public bool UsePositiveList { get; set; }  = false;
 
         [XmlArray]
-        public List<string> Extensions { get; set; } = new List<string>();
+        public HashSet<string> Extensions { get; set; } = new HashSet<string>();
 
         [XmlElement]
-        public EHashAlgo HashAlgo { get; set; }
+        public EHashAlgo HashAlgo { get; set; } = EHashAlgo.CRC32;
 
         #endregion Properties
 
@@ -72,16 +72,16 @@ namespace DirectoryFingerPrinting.Models
             // todo: check and review Clone() function!
             return new Options
             {
-                UseSize = UseSize,
-                UseCreation = UseCreation,
+                UseSize             = UseSize,
+                UseCreation         = UseCreation,
                 UseLastModification = UseLastModification,
-                UseLastAccess = UseLastAccess,
-                UseVersion = UseVersion,
-                UseHashsum = UseHashsum,
-                EnableRecursive = EnableRecursive,
-                UsePositiveList = UsePositiveList,
-                Extensions = Extensions,
-                HashAlgo = HashAlgo,
+                UseLastAccess       = UseLastAccess,
+                UseVersion          = UseVersion,
+                UseHashsum          = UseHashsum,
+                EnableRecursive     = EnableRecursive,
+                UsePositiveList     = UsePositiveList,
+                Extensions          = Extensions,
+                HashAlgo            = HashAlgo,
             };
         }
 
