@@ -27,7 +27,27 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        args = new string[] { "-p", @"H:\MyTemp\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\1024X1KiB_Files" };
+        if (args.Length == 0)
+        {
+            PrintUsageHeader();
+            Environment.Exit(0);
+            return;
+        }
+
+        if (args[0] == "-v" || args[0] == "--version")
+        {
+            PrintVersion();
+            Environment.Exit(0);
+            return;
+        }
+
+        if (args[0] == "/?" || args[0] == "-h" || args[0] == "--help")
+        {
+            PrintHelp();
+            Environment.Exit(0);
+            return;
+        }
+
         var argumentParser = new ArgumentParser();
         Options options = null;
         if (!argumentParser.TryParse(args, out options))
@@ -39,6 +59,7 @@ internal class Program
         
         var paths = GetPathsToProcess(options);
         var metaDatas = CreateMetaDatas(options, paths);
+        int maxLen = metaDatas.Max(m => m.Path.Length);
         foreach (var md in metaDatas)
             Console.WriteLine(md);
 
@@ -62,9 +83,27 @@ internal class Program
         }
     }
 
-    private void PrintHeader()
+    private static void PrintUsageHeader()
     {
-        Console.WriteLine(@"Directory Finger Printing Copyright (C)2023 by Pedram GANJEH HADIDI
+        Console.WriteLine(@"Usage: dfp [OPTION]...
+Try 'dfp --help' for more information.
+");
+    }
+    private static void PrintVersion()
+    {
+        Console.WriteLine(@"dfp (directory fingerprinting) 1.0.0-alpha
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.
+");
+    }
+
+    public static void PrintHelp()
+    {
+        Console.WriteLine(@"
 ");
     }
 }

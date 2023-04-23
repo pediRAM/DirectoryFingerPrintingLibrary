@@ -64,13 +64,13 @@ namespace ConsoleApp
                         pOptions.UseCreation = false;
                         break;
 
-                        case "--ignore-last-write":
-                        case "-w":
+                        case "--ignore-last-modification":
+                        case "-m":
                         pOptions.UseLastModification = false;
                         break;
 
-                        case "--ignore-last-read":
-                        case "-r":
+                        case "--ignore-last-access":
+                        case "-a":
                         pOptions.UseLastAccess = false;
                         break;
 
