@@ -56,7 +56,7 @@ namespace DirectoryFingerPrinting.Cryptography
             var bufferSize = 0x1000;
             long crc = 0xFFFFFFFF;
 
-            using var fs = new FileStream(pFilePath, FileMode.Open);            
+            using var fs = new FileStream(pFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);            
             long streamLength = fs.Length;
 
             while (streamLength > 0)

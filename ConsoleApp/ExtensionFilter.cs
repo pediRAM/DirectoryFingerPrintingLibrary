@@ -17,69 +17,42 @@
 * If not, see <https://www.gnu.org/licenses/>.                                                                  *
 *****************************************************************************************************************/
 
-namespace DirectoryFingerPrinting.Models
+
+using DirectoryFingerPrinting.API;
+
+namespace ConsoleApp
 {
-    #region Usings
-    using DirectoryFingerPrinting.API;
-    using System;
-    using System.Xml;
-    using System.Xml.Serialization;
-    #endregion Usings
-
-    [XmlRoot]
-    [System.Diagnostics.DebuggerDisplay("Path:{Path}, Extension:{Extension}, FSType:{FSType}, Size:{Size}, CreatedAt:{CreatedAt}, ModifiedAt:{ModifiedAt}, AccessedAt:{AccessedAt}, Version:{Version}, Hashsum:{Hashsum}")]
-    public class MetaData : IMetaData, ICloneable
+    internal class ExtensionFilter
     {
-        #region Properties
-        [XmlElement]
-        public string Path { get; set; }
+        public ExtensionFilter(IOptions pOptions)
+            => Options = pOptions;
 
-        [XmlElement]
-        public string Extension { get; set; }
+        private IOptions Options { get; init; }
 
-        [XmlElement]
-        public EFSType FSType { get; set; }
-
-        [XmlElement]
-        public long Size { get; set; }
-
-        [XmlElement]
-        public DateTime CreatedAt { get; set; }
-
-        [XmlElement]
-        public DateTime ModifiedAt { get; set; }
-
-        [XmlElement]
-        public DateTime AccessedAt { get; set; }
-
-        [XmlElement]
-        public string Version { get; set; }
-
-        [XmlElement]
-        public string Hashsum { get; set; }
-
-        #endregion Properties
-
-
-        #region Methods
-        public object Clone()
+        public List<string> GetPathsToProcess(IEnumerable<string> pPaths)
         {
-            return new MetaData
+            if (Options.Extensions.Count == 0)
+                return pPaths.ToList();
+
+            var l = new List<string>();
+            if (Options.UsePositiveList)
             {
-                Path = Path,
-                Extension = Extension,
-                FSType = FSType,
-                Size = Size,
-                CreatedAt = CreatedAt,
-                ModifiedAt = ModifiedAt,
-                AccessedAt = AccessedAt,
-                Version = Version,
-                Hashsum = Hashsum,
-            };
+                foreach (var path in pPaths)
+                {
+                    if (Options.Extensions.Contains(Path.GetExtension(path), StringComparer.OrdinalIgnoreCase))
+                        l.Add(path);
+                }
+            }
+            else
+            {
+                foreach (var path in pPaths)
+                {
+                    if (!Options.Extensions.Contains(Path.GetExtension(path), StringComparer.OrdinalIgnoreCase))
+                        l.Add(path);
+                }
+            }
+
+            return l;
         }
-
-        public override string ToString() => $"Path:{Path}, Extension:{Extension}, FSType:{FSType}, Size:{Size}, CreatedAt:{CreatedAt}, ModifiedAt:{ModifiedAt}, AccessedAt:{AccessedAt}, Version:{Version}, Hashsum:{Hashsum}";
-        #endregion Methods
-
     }
 }

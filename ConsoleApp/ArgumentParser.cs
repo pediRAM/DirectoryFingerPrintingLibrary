@@ -26,104 +26,132 @@ namespace ConsoleApp
     {
         public bool TryParse(string[] args,  out Options pOptions)
         {
-            int index = 0;
-            pOptions = new Options { BaseDirPath = Environment.CurrentDirectory, Extensions = };
-            
-            foreach(string a in args)
+            pOptions = new Options { BaseDirPath = Environment.CurrentDirectory };
+
+            try
             {
-                switch(a.ToLower())
+                for (int index = 0; index < args.Length; index++)
                 {
-                    case "--path":
-                    case "-p":
-                        {
-                            if (args.Length <= index + 1)
+                    var a = args[index];
+                    switch (a.ToLower())
+                    {
+                        case "--only-assemblies":
+                        case "-oa":
+                        pOptions.Extensions.Add(".dll");
+                        pOptions.Extensions.Add(".exe");
+                        pOptions.UsePositiveList = true;
+                        break;
+
+                        case "--path":
+                        case "-p":
                             {
-                                Console.WriteLine($"Error: Missing path to directory!");
-                                return false;
+                                if (args.Length <= index + 1)
+                                {
+                                    Console.WriteLine($"Error: Missing path to directory!");
+                                    return false;
+                                }
+
+                                pOptions.BaseDirPath = args[++index];
                             }
+                            break;
 
-                            pOptions.BaseDirPath = args[++index];
-                        }
-                    break;
+                        case "--ignore-size":
+                        case "-is":
+                        pOptions.UseSize = false;
+                        break;
 
-                    case "--ignore-size":
-                    case "-is":
-                    pOptions.UseSize = false;
-                    break;
+                        case "--ignore-creation-date":
+                        case "-icd":
+                        pOptions.UseCreation = false;
+                        break;
 
-                    case "--ignore-creation-date":
-                    case "-icd":
-                    pOptions.UseCreation = false;
-                    break;
+                        case "--ignore-last-modification":
+                        case "-ilm":
+                        pOptions.UseLastModification = false;
+                        break;
 
-                    case "--ignore-last-modification":
-                    case "-ilm":
-                    pOptions.UseLastModification = false;
-                    break;
+                        case "--ignore-last-access":
+                        case "-ila":
+                        pOptions.UseLastAccess = false;
+                        break;
 
-                    case "--ignore-last-access":
-                    case "-ila":
-                    pOptions.UseLastAccess = false;
-                    break;
+                        case "--ignore-version":
+                        case "-iv":
+                        pOptions.UseVersion = false;
+                        break;
 
-                    case "--ignore-version":
-                    case "-iv":
-                    pOptions.UseVersion = false;
-                    break;
+                        case "--ignore-hashsum":
+                        case "-ih":
+                        pOptions.UseHashsum = false;
+                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.None;
+                        break;
 
-                    case "--ignore-checksum":
-                    case "-ic":
-                    pOptions.UseHashsum = false;
-                    break;
+                        case "--recursive":
+                        case "-r":
+                        pOptions.EnableRecursive = true;
+                        break;
 
-                    case "--recursive":
-                    case "-r":
-                    pOptions.EnableRecursive = true;
-                    break;
+                        case "--positive-list":
+                        case "-pl":
+                        pOptions.UsePositiveList = true;
+                        break;
 
-                    case "--positive-list":
-                    case "-pl":
-                    pOptions.UsePositiveList = true;
-                    break;
+                        case "--negative-list":
+                        case "-nl":
+                        pOptions.UsePositiveList = false;
+                        break;
 
-                    case "--negative-list":
-                    case "-nl":
-                    pOptions.UsePositiveList = false;
-                    break;
-
-                    case "--extensions":
-                    case "-x":
-                        {
-                            if (args.Length <= index + 1)
+                        case "--extensions":
+                        case "-x":
                             {
-                                Console.WriteLine($"Error: Missing list of extensions!");
-                                return false;
-                            }
+                                if (args.Length <= index + 1)
+                                {
+                                    Console.WriteLine($"Error: Missing list of extensions!");
+                                    return false;
+                                }
 
-                            if (TryParseExtensions(args[++index], out HashSet<string> pExtensions))
-                            {
-                                pOptions.Extensions = pExtensions;
+                                if (TryParseExtensions(args[++index], out HashSet<string> pExtensions))
+                                {
+                                    pOptions.Extensions = pExtensions;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Error: bad/empty extensions list!");
+                                    return false;
+                                }
                             }
-                            else
-                            {
-                                Console.WriteLine($"Error: bad/empty extensions list!");
-                                return false;
-                            }
-                        }
-                    break;
+                            break;
 
-                    case "--algo-crc32":
-                    pOptions.HashAlgo =  DirectoryFingerPrinting.API.EHashAlgo.CRC32;
-                    break;
+                        case "--use-crc32":
+                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.CRC32;
+                        break;
 
-                    default:
-                    Console.WriteLine($"Error: Unknown parameter \"{a}\"!\r\n" +
-                        $"Use parameter --help or -h or /? to show help text!");
-                    return false;
+                        case "--use-md5":
+                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.MD5;
+                        break;
+
+                        case "--use-sha1":
+                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA1;
+                        break;
+
+                        case "--use-sha256":
+                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA256;
+                        break;
+
+                        default:
+                        Console.WriteLine($"Error: Unknown parameter \"{a}\"!\r\n" +
+                            $"Use parameter --help or -h or /? to show help text!");
+                        return false;
+                    }
+                    index++;
                 }
-                index++;
+                return true;
             }
-            return true;
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
         }
 
         private bool TryParseExtensions(string args, out HashSet<string> pExtensions)
