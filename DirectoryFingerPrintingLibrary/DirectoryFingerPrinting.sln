@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{827143B7-31BA-47C7-84A2-6497CB715920}"
 	ProjectSection(SolutionItems) = preProject
 		ChangeLog.txt = ChangeLog.txt
+		Todo.txt = Todo.txt
 	EndProjectSection
 EndProject
 Global

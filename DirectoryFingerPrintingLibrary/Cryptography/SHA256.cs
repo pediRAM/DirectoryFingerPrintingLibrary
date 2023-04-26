@@ -30,7 +30,7 @@ namespace DirectoryFingerPrinting.Cryptography
             var algo = HashAlgorithm.Create("SHA256");
             using var filestream = new FileStream(pFilePath, FileMode.Open);
             var hashValue = algo.ComputeHash(filestream);
-            var hash = BitConverter.ToString(hashValue);
+            var hash = BitConverter.ToString(hashValue).Replace("-", "");
             return hash;
         }
 

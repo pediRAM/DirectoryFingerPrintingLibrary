@@ -65,21 +65,39 @@ internal class Program
             return;
         }
 
-        int maxLenPath       = Math.Max(4, metaDatas.Max(m => m.RelativePath.Length));
-        int maxLenVersion    = Math.Max(7, metaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
-        int maxLenSize       = (int)Math.Ceiling(Math.Log10(metaDatas.Max(m => m.Size)));
-        maxLenSize = maxLenSize >= 5 ? maxLenSize : 5;
-        var columnsCaption = $" {"Name".PadRight(maxLenPath)} | Created at          | Modified at         | Last Access at      | {"Size".PadRight(maxLenSize)} | {"Version".PadRight(maxLenVersion)} | Hashsum ";
-        var line = new String('-', columnsCaption.Length);
+        int maxLenPath    = Math.Max(4, metaDatas.Max(m => m.RelativePath.Length));
+        int maxLenVersion = Math.Max(7, metaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
+        int maxLenSize    = Math.Max(5, (int)Math.Ceiling(Math.Log10(metaDatas.Max(m => m.Size))));
+        int maxLenHash    = Math.Max(15, metaDatas.FirstOrDefault().Hashsum.Length);
+
+        var columnsCaption = $" {"Name".PadRight(maxLenPath)} ";
+        if (options.UseCreation)         columnsCaption +=  "| Created at          ";
+        if (options.UseLastModification) columnsCaption +=  "| Modified at         ";
+        if (options.UseLastAccess)       columnsCaption +=  "| Last Access at      ";
+        if (options.UseSize)             columnsCaption += $"| {"Size".PadRight(maxLenSize)} ";
+        if (options.UseVersion)          columnsCaption += $"| {"Version".PadRight(maxLenVersion)} ";
+        if (options.UseHashsum)          columnsCaption += $"| Hashsum ({options.HashAlgo})";
+        int lineNettoLen = columnsCaption.Length - options.HashAlgo.ToString().Length - 10;
+        var line = new string('-', Math.Max(columnsCaption.Length, lineNettoLen + maxLenHash));
         Console.WriteLine(line);
         Console.WriteLine(columnsCaption);
         Console.WriteLine(line);
         foreach (var md in metaDatas)
         {
-            if (md.FSType == EFSType.Dll || md.FSType == EFSType.Exe)
-                Console.WriteLine($" {md.RelativePath.PadRight(maxLenPath)} | {md.CreatedAt:yyyy-MM-dd HH:mm.ss} | {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} | {md.AccessedAt:yyyy-MM-dd HH:mm.ss} | {md.Size.ToString().PadRight(maxLenSize)} | {md.Version.PadRight(maxLenVersion)} | {md.Hashsum.PadRight(10)}");
-            else
-                Console.WriteLine($" {md.RelativePath.PadRight(maxLenPath)} | {md.CreatedAt:yyyy-MM-dd HH:mm.ss} | {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} | {md.AccessedAt:yyyy-MM-dd HH:mm.ss} | {md.Size.ToString().PadRight(maxLenSize)} | {"".PadRight(maxLenVersion)} | {md.Hashsum.PadRight(10)}");
+                                             Console.Write($" {md.RelativePath.PadRight(maxLenPath)} ");
+            if (options.UseCreation)         Console.Write($"| {md.CreatedAt:yyyy-MM-dd HH:mm.ss} ");
+            if (options.UseLastModification) Console.Write($"| {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} ");
+            if (options.UseLastAccess)       Console.Write($"| {md.AccessedAt:yyyy-MM-dd HH:mm.ss} ");
+            if (options.UseSize)             Console.Write($"| {md.Size.ToString().PadRight(maxLenSize)} ");
+
+            if (options.UseVersion)
+            {
+                if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
+                    Console.Write($"| {md.Version.PadRight(maxLenVersion)} ");
+                else
+                    Console.Write($"| {"".PadRight(maxLenVersion)} ");
+            }
+            if (options.UseHashsum) Console.WriteLine($"| {md.Hashsum}");
         }
 
         Environment.Exit(0);        
