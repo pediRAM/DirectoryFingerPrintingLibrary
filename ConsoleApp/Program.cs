@@ -55,13 +55,32 @@ internal class Program
             Environment.Exit(1);
             return;
         }
-
         
         var paths = GetPathsToProcess(options);
         var metaDatas = CreateMetaDatas(options, paths);
-        int maxLen = metaDatas.Max(m => m.Path.Length);
+        if (metaDatas.Count() == 0)
+        {
+            Console.WriteLine("No file could pass the filter(s).");
+            Environment.Exit(0);
+            return;
+        }
+
+        int maxLenPath       = Math.Max(4, metaDatas.Max(m => m.RelativePath.Length));
+        int maxLenVersion    = Math.Max(7, metaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
+        int maxLenSize       = (int)Math.Ceiling(Math.Log10(metaDatas.Max(m => m.Size)));
+        maxLenSize = maxLenSize >= 5 ? maxLenSize : 5;
+        var columnsCaption = $" {"Name".PadRight(maxLenPath)} | Created at          | Modified at         | Last Access at      | {"Size".PadRight(maxLenSize)} | {"Version".PadRight(maxLenVersion)} | Hashsum ";
+        var line = new String('-', columnsCaption.Length);
+        Console.WriteLine(line);
+        Console.WriteLine(columnsCaption);
+        Console.WriteLine(line);
         foreach (var md in metaDatas)
-            Console.WriteLine(md);
+        {
+            if (md.FSType == EFSType.Dll || md.FSType == EFSType.Exe)
+                Console.WriteLine($" {md.RelativePath.PadRight(maxLenPath)} | {md.CreatedAt:yyyy-MM-dd HH:mm.ss} | {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} | {md.AccessedAt:yyyy-MM-dd HH:mm.ss} | {md.Size.ToString().PadRight(maxLenSize)} | {md.Version.PadRight(maxLenVersion)} | {md.Hashsum.PadRight(10)}");
+            else
+                Console.WriteLine($" {md.RelativePath.PadRight(maxLenPath)} | {md.CreatedAt:yyyy-MM-dd HH:mm.ss} | {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} | {md.AccessedAt:yyyy-MM-dd HH:mm.ss} | {md.Size.ToString().PadRight(maxLenSize)} | {"".PadRight(maxLenVersion)} | {md.Hashsum.PadRight(10)}");
+        }
 
         Environment.Exit(0);        
     }
@@ -73,9 +92,10 @@ internal class Program
         return extFilter.GetPathsToProcess(allPaths);
     }
 
+    private static MetaDataFactory factory;
     private static IEnumerable<IMetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
     {
-        var factory = new MetaDataFactory(pOptions);
+        factory = factory?? new MetaDataFactory(pOptions);
         foreach (var path in pPaths)
         {
             var fileInfo = new FileInfo(path);

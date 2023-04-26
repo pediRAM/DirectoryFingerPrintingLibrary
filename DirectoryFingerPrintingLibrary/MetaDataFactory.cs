@@ -55,12 +55,13 @@ namespace DirectoryFingerPrinting
         {
             var metaData = new MetaData
             {
-                Path = Path.GetRelativePath(Options.BaseDirPath, pFileInfo.FullName),
-                Extension = Path.GetExtension(pFileInfo.FullName).ToLower(),
-                Size = pFileInfo.Length,
-                CreatedAt = pFileInfo.CreationTimeUtc,
-                ModifiedAt = pFileInfo.LastWriteTimeUtc,
-                AccessedAt = pFileInfo.LastAccessTimeUtc,
+                FullPath     = pFileInfo.FullName,
+                RelativePath = Path.GetRelativePath(Options.BaseDirPath, pFileInfo.FullName),
+                Extension    = Path.GetExtension(pFileInfo.FullName).ToLower(),
+                Size         = pFileInfo.Length,
+                CreatedAt    = pFileInfo.CreationTimeUtc,
+                ModifiedAt   = pFileInfo.LastWriteTimeUtc,
+                AccessedAt   = pFileInfo.LastAccessTimeUtc,
             };
 
             metaData.FSType = GetFSType(metaData.Extension);
@@ -69,7 +70,7 @@ namespace DirectoryFingerPrinting
             {
                 if (Options.UseVersion)
                 {
-                    if (VersionReader.TryRead(metaData.Path, out FileVersionInfo pFileVersionInfo))
+                    if (VersionReader.TryRead(metaData.FullPath, out FileVersionInfo pFileVersionInfo))
                         metaData.Version = pFileVersionInfo.FileVersion;
                 }
             }

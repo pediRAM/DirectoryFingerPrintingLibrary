@@ -35,14 +35,15 @@ namespace ConsoleApp
                     var a = args[index];
                     switch (a.ToLower())
                     {
-                        case "--only-assemblies":
+                        case "--assemblies-only":
+                        case "-ao":
                         pOptions.Extensions.Add(".dll");
                         pOptions.Extensions.Add(".exe");
                         pOptions.UsePositiveList = true;
                         break;
 
-                        case "--dir":
-                        case "-d":
+                        case "--directory":
+                        case "-dir":
                             {
                                 if (args.Length <= index + 1)
                                 {
@@ -54,33 +55,40 @@ namespace ConsoleApp
                             }
                             break;
 
+                        case "--ignore-timestamps":
+                        case "-its":
+                        pOptions.UseCreation = false;
+                        pOptions.UseLastAccess = false;
+                        pOptions.UseLastModification = false;
+                        break;
+
                         case "--ignore-size":
-                        case "-s":
+                        case "-is":
                         pOptions.UseSize = false;
                         break;
 
                         case "--ignore-creation-date":
-                        case "-c":
+                        case "-icd":
                         pOptions.UseCreation = false;
                         break;
 
                         case "--ignore-last-modification":
-                        case "-m":
+                        case "-ilm":
                         pOptions.UseLastModification = false;
                         break;
 
                         case "--ignore-last-access":
-                        case "-a":
+                        case "-ila":
                         pOptions.UseLastAccess = false;
                         break;
 
                         case "--ignore-version":
-                        case "-v":
+                        case "-iv":
                         pOptions.UseVersion = false;
                         break;
 
                         case "--ignore-hashsum":
-                        case "-#":
+                        case "-ihs":
                         pOptions.UseHashsum = false;
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.None;
                         break;
@@ -91,17 +99,17 @@ namespace ConsoleApp
                         break;
 
                         case "--positive-list":
-                        case "-p":
+                        case "-pl":
                         pOptions.UsePositiveList = true;
                         break;
 
                         case "--negative-list":
-                        case "-n":
+                        case "-nl":
                         pOptions.UsePositiveList = false;
                         break;
 
                         case "--extensions":
-                        case "-x":
+                        case "-ext":
                             {
                                 if (args.Length <= index + 1)
                                 {
@@ -142,7 +150,6 @@ namespace ConsoleApp
                             $"Use parameter --help or -h or /? to show help text!");
                         return false;
                     }
-                    index++;
                 }
                 return true;
             }

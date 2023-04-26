@@ -24,7 +24,7 @@ namespace DirectoryFingerPrinting.API
     /// </summary>
     public interface IMetaData
     {
-        string Path { get; }
+        string RelativePath { get; }
 
         string Extension { get; }
 

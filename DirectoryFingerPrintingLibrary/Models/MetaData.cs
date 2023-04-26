@@ -22,6 +22,7 @@ namespace DirectoryFingerPrinting.Models
     #region Usings
     using DirectoryFingerPrinting.API;
     using System;
+    using System.Text.Json.Serialization;
     using System.Xml;
     using System.Xml.Serialization;
     #endregion Usings
@@ -32,7 +33,11 @@ namespace DirectoryFingerPrinting.Models
     {
         #region Properties
         [XmlElement]
-        public string Path { get; set; }
+        public string RelativePath { get; set; }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        public string FullPath { get; set; }
 
         [XmlElement]
         public string Extension { get; set; }
@@ -53,10 +58,10 @@ namespace DirectoryFingerPrinting.Models
         public DateTime AccessedAt { get; set; }
 
         [XmlElement]
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
 
         [XmlElement]
-        public string Hashsum { get; set; }
+        public string Hashsum { get; set; } = string.Empty;
 
         #endregion Properties
 
@@ -66,7 +71,8 @@ namespace DirectoryFingerPrinting.Models
         {
             return new MetaData
             {
-                Path = Path,
+                RelativePath = RelativePath,
+                FullPath = FullPath,
                 Extension = Extension,
                 FSType = FSType,
                 Size = Size,
@@ -78,7 +84,7 @@ namespace DirectoryFingerPrinting.Models
             };
         }
 
-        public override string ToString() => $"Path:{Path}, Extension:{Extension}, FSType:{FSType}, Size:{Size}, CreatedAt:{CreatedAt}, ModifiedAt:{ModifiedAt}, AccessedAt:{AccessedAt}, Version:{Version}, Hashsum:{Hashsum}";
+        public override string ToString() => $"Path:{RelativePath}, Extension:{Extension}, FSType:{FSType}, Size:{Size}, CreatedAt:{CreatedAt}, ModifiedAt:{ModifiedAt}, AccessedAt:{AccessedAt}, Version:{Version}, Hashsum:{Hashsum}";
         #endregion Methods
 
     }
