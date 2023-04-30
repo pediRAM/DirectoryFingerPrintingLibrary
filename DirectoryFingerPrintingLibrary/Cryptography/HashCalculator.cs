@@ -23,15 +23,24 @@ using System.Security.Cryptography;
 
 namespace DirectoryFingerPrinting.Cryptography
 {
-    internal class SHA1 : IHashCalculator
+    internal class HashCalculator : IHashCalculator
     {
+        private HashAlgorithm m_HashAlgorithm = null;
+        private bool m_ToUpperCase = false;
+        public HashCalculator(string pName, bool pToUpperCase = false)
+        {
+            m_HashAlgorithm = HashAlgorithm.Create(pName);
+            m_ToUpperCase   = pToUpperCase;
+        }
         public string GetHash(string pFilePath)
         {
-            var algo = HashAlgorithm.Create("SHA1");
             using var filestream = new FileStream(pFilePath, FileMode.Open);
-            var hashValue = algo.ComputeHash(filestream);
+            var hashValue = m_HashAlgorithm.ComputeHash(filestream);
             var hash = BitConverter.ToString(hashValue).Replace("-", "");
-            return hash;
+            if (m_ToUpperCase)
+                return hash;
+            else
+                return hash.ToLower();
         }
 
         public string GetHash(FileInfo pFileInfo)

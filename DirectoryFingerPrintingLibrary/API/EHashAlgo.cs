@@ -32,21 +32,31 @@ namespace DirectoryFingerPrinting.API
         /// <summary>
         /// CRC32.
         /// </summary>
-        CRC32 = 1,
+        CRC32,
+
+        ///// <summary>
+        ///// CRC64.
+        ///// </summary>
+        //CRC64,
 
         /// <summary>
         /// MD5.
         /// </summary>
-        MD5 = 2,
+        MD5,
 
         /// <summary>
         /// SHA1.
         /// </summary>
-        SHA1 = 3,
+        SHA1,
 
         /// <summary>
         /// SHA256.
         /// </summary>
-        SHA256 = 4,
+        SHA256,
+
+        /// <summary>
+        /// SHA512.
+        /// </summary>
+        SHA512,
     }
 }

@@ -21,7 +21,7 @@ using DirectoryFingerPrinting.API;
 
 namespace DirectoryFingerPrinting.Cryptography
 {
-    internal class Crc32 : IHashCalculator
+    internal class CRC32 : IHashCalculator
     {
         private const long POLYNOM = 0xEDB88320;
 

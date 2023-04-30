@@ -27,10 +27,12 @@ namespace DirectoryFingerPrinting.Cryptography
         {
             switch (algorithm)
             {
-                case EHashAlgo.CRC32: return new Crc32();
-                case EHashAlgo.MD5: return new MD5();
-                case EHashAlgo.SHA1: return new SHA1();
-                case EHashAlgo.SHA256: return new SHA256();
+                case EHashAlgo.CRC32:  return new CRC32();
+                //case EHashAlgo.CRC64:  return new CRC64();
+                case EHashAlgo.MD5:    return new HashCalculator("MD5");
+                case EHashAlgo.SHA1:   return new HashCalculator("SHA1");
+                case EHashAlgo.SHA256: return new HashCalculator("SHA256");
+                case EHashAlgo.SHA512: return new HashCalculator("SHA512");
             }
 
             throw new NotImplementedException();

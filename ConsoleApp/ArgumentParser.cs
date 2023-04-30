@@ -35,15 +35,15 @@ namespace ConsoleApp
                     var a = args[index];
                     switch (a.ToLower())
                     {
-                        case "--assemblies-only":
-                        case "-ao":
+                        case Const.Arguments.ASSEMBLIES_ONLY:
+                        case Const.Arguments.ASSEMBLIES_ONLY_SHORT:
                         pOptions.Extensions.Add(".dll");
                         pOptions.Extensions.Add(".exe");
                         pOptions.UsePositiveList = true;
                         break;
 
-                        case "--directory":
-                        case "-dir":
+                        case Const.Arguments.DIRECTORY:
+                        case Const.Arguments.DIRECTORY_SHORT:
                             {
                                 if (args.Length <= index + 1)
                                 {
@@ -55,61 +55,61 @@ namespace ConsoleApp
                             }
                             break;
 
-                        case "--ignore-timestamps":
-                        case "-its":
+                        case Const.Arguments.IGNORE_TIMESTAMPS:
+                        case Const.Arguments.IGNORE_TIMESTAMPS_SHORT:
                         pOptions.UseCreation = false;
                         pOptions.UseLastAccess = false;
                         pOptions.UseLastModification = false;
                         break;
 
-                        case "--ignore-size":
-                        case "-is":
+                        case Const.Arguments.IGNORE_SIZE:
+                        case Const.Arguments.IGNORE_SIZE_SHORT:
                         pOptions.UseSize = false;
                         break;
 
-                        case "--ignore-creation-date":
-                        case "-icd":
+                        case Const.Arguments.IGNORE_CREATION_DATE:
+                        case Const.Arguments.IGNORE_CREATION_DATE_SHORT:
                         pOptions.UseCreation = false;
                         break;
 
-                        case "--ignore-last-modification":
-                        case "-ilm":
+                        case Const.Arguments.IGNORE_LAST_MODIFICATION:
+                        case Const.Arguments.IGNORE_LAST_MODIFICATION_SHORT:
                         pOptions.UseLastModification = false;
                         break;
 
-                        case "--ignore-last-access":
-                        case "-ila":
+                        case Const.Arguments.IGNORE_LAST_ACCESS:
+                        case Const.Arguments.IGNORE_LAST_ACCESS_SHORT:
                         pOptions.UseLastAccess = false;
                         break;
 
-                        case "--ignore-version":
-                        case "-iv":
+                        case Const.Arguments.IGNORE_VERSION:
+                        case Const.Arguments.IGNORE_VERSION_SHORT:
                         pOptions.UseVersion = false;
                         break;
 
-                        case "--ignore-hashsum":
-                        case "-ihs":
+                        case Const.Arguments.IGNORE_HASHSUM:
+                        case Const.Arguments.IGNORE_HASHSUM_SHORT:
                         pOptions.UseHashsum = false;
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.None;
                         break;
 
-                        case "--recursive":
-                        case "-r":
+                        case Const.Arguments.RECURSIVE:
+                        case Const.Arguments.RECURSIVE_SHORT:
                         pOptions.EnableRecursive = true;
                         break;
 
-                        case "--positive-list":
-                        case "-pl":
+                        case Const.Arguments.POSITIVE_LIST:
+                        case Const.Arguments.POSITIVE_LIST_SHORT:
                         pOptions.UsePositiveList = true;
                         break;
 
-                        case "--negative-list":
-                        case "-nl":
+                        case Const.Arguments.NEGATIVE_LIST:
+                        case Const.Arguments.NEGATIVE_LIST_SHORT:
                         pOptions.UsePositiveList = false;
                         break;
 
-                        case "--extensions":
-                        case "-ext":
+                        case Const.Arguments.EXTENSIONS:
+                        case Const.Arguments.EXTENSIONS_SHORT:
                             {
                                 if (args.Length <= index + 1)
                                 {
@@ -129,20 +129,28 @@ namespace ConsoleApp
                             }
                             break;
 
-                        case "--use-crc32":
+                        case Const.Arguments.USE_CRC32:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.CRC32;
                         break;
 
-                        case "--use-md5":
+                        //case Const.Arguments.USE_CRC64:
+                        //pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.CRC64;
+                        //break;
+
+                        case Const.Arguments.USE_MD5:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.MD5;
                         break;
 
-                        case "--use-sha1":
+                        case Const.Arguments.USE_SHA1:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA1;
                         break;
 
-                        case "--use-sha256":
+                        case Const.Arguments.USE_SHA256:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA256;
+                        break;
+
+                        case Const.Arguments.USE_SHA512:
+                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA512;
                         break;
 
                         default:
