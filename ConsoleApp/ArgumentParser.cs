@@ -18,15 +18,36 @@
 *****************************************************************************************************************/
 
 
-using DirectoryFingerPrinting.Models;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp
 {
     internal class ArgumentParser
     {
-        public bool TryParse(string[] args,  out Options pOptions)
+        public bool TryParse(string[] args,  out ExtOptions pOptions, out EErrorCode pErrorCode, out string pErrorMsg)
         {
-            pOptions = new Options { BaseDirPath = Environment.CurrentDirectory };
+            pOptions = new ExtOptions { BaseDirPath = Environment.CurrentDirectory };
+            pErrorCode = EErrorCode.None;
+            pErrorMsg = null;
+
+            if (args.Length == 0)
+            {
+                pErrorMsg = Const.Errors.MISSING_PARAMS;
+                pErrorCode = EErrorCode.NoParameters;
+                return false;
+            }
+
+            if (args[0] == Const.Arguments.VERSION_SHORT || args[0] == Const.Arguments.VERSION)
+            {
+                pOptions.DoPrintVersion = true;
+                return true;
+            }
+
+            if (args[0] == Const.Arguments.HELP1 || args[0] == Const.Arguments.HELP2 || args[0] == Const.Arguments.HELP3)
+            {
+                pOptions.DoPrintHelp = true;
+                return true;
+            }
 
             try
             {
@@ -47,7 +68,8 @@ namespace ConsoleApp
                             {
                                 if (args.Length <= index + 1)
                                 {
-                                    Console.WriteLine($"Error: Missing path to directory!");
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH;
+                                    pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
 
@@ -113,7 +135,8 @@ namespace ConsoleApp
                             {
                                 if (args.Length <= index + 1)
                                 {
-                                    Console.WriteLine($"Error: Missing list of extensions!");
+                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST;
+                                    pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
 
@@ -123,7 +146,8 @@ namespace ConsoleApp
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Error: bad/empty extensions list!");
+                                    pErrorMsg = Const.Errors.BAD_OR_EMPTY_EXTENSION_LIST;
+                                    pErrorCode = EErrorCode.IllegalValue;
                                     return false;
                                 }
                             }
@@ -153,9 +177,96 @@ namespace ConsoleApp
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA512;
                         break;
 
+                        case Const.Arguments.NO_HEADER:
+                        case Const.Arguments.NO_HEADER_SHORT:
+                        pOptions.DoPrintHeader = false;
+                        break;
+
+                        case Const.Arguments.NO_DSP_FORMAT:
+                        case Const.Arguments.NO_DSP_FORMAT_SHORT:
+                        pOptions.DoPrintFormatted = false;
+                        break;
+
+                        case Const.Arguments.OUPUT_FORMAT_XML:
+                        pOptions.OutputFormat = EOutputFormat.Xml;
+                        break;
+
+                        case Const.Arguments.OUPUT_FORMAT_JSON:
+                        pOptions.OutputFormat = EOutputFormat.Json;
+                        break;
+
+                        case Const.Arguments.OUPUT_FORMAT_CSV:
+                        pOptions.OutputFormat = EOutputFormat.CSV;
+                        break;
+
+                        //case Const.Arguments.OUPUT_FORMAT_BIN:
+                        //pOptions.OutputFormat = EOutputFormat.Binary;
+                        //break;
+
+                        case Const.Arguments.DO_SAVE:
+                        case Const.Arguments.DO_SAVE_SHORT:
+                            {
+                                pOptions.DoSave = true;
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE;
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE;
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+                                    else if (System.IO.File.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.FILE_EXISTS;
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    pOptions.OutputPath = args[++index];
+                                }
+                                catch(Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+                            }
+                            break;
+
+                        case Const.Arguments.VERSION:
+                        case Const.Arguments.VERSION_SHORT:
+                        pErrorMsg = Const.Errors.ILLEGAL_PARAM_USE_VERSION;
+                            pErrorCode = EErrorCode.SingleParameter;
+                            return false;
+
+
+                        case Const.Arguments.HELP1:
+                        case Const.Arguments.HELP2:
+                        case Const.Arguments.HELP3:
+                        pErrorMsg = Const.Errors.ILLEGAL_PARAM_USE_HELP;
+                            pErrorCode = EErrorCode.SingleParameter;
+                            return false;
+
+                        case Const.Arguments.IGNORE_HIDDEN_FILES:
+                        case Const.Arguments.IGNORE_HIDDEN_FILES_SHORT:
+                        pOptions.IgnoreHiddenFiles = true;
+                        break;
+
+                        case Const.Arguments.IGNORE_ACCESS_ERRORS:
+                        case Const.Arguments.IGNORE_ACCESS_ERRORS_SHORT:
+                        pOptions.IgnoreAccessErrors = true;
+                        break;
+
                         default:
-                        Console.WriteLine($"Error: Unknown parameter \"{a}\"!\r\n" +
-                            $"Use parameter --help or -h or /? to show help text!");
+                        pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a);
+                        pErrorCode = EErrorCode.UnknownParameter;
                         return false;
                     }
                 }
@@ -163,9 +274,16 @@ namespace ConsoleApp
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                pErrorMsg = ex.ToString();
+                pErrorCode = EErrorCode.InternalError;
                 return false;
             }
+        }
+
+        private static bool IsValidPath(string pPath)
+        {
+            Regex containsABadCharacter = new Regex($"[{ Regex.Escape(new string(Path.GetInvalidPathChars()))}]");
+            return !containsABadCharacter.IsMatch(pPath);
         }
 
         private bool TryParseExtensions(string args, out HashSet<string> pExtensions)

@@ -1,7 +1,7 @@
 ﻿/****************************************************************************************************************
 * DirectoryFingerPrintingLibrary is a free and open source API for creating metadata with checksums/hashsums    *
 * of directory content, used to compare, diff-building, security monitoring and more.                           *
-* Copyright (C) 2023 Pedram Ganjeh Hadidi                                                                       *
+* Copyright (C) 2023 Free Software Foundation, Inc.                                                             *
 *                                                                                                               *
 * This file is part of DirectoryFingerPrintingLibrary.                                                          *
 *                                                                                                               *
@@ -41,6 +41,11 @@ namespace ConsoleApp
             public const string IGNORE_VERSION_SHORT           = "-iv";
             public const string IGNORE_HASHSUM                 = "--ignore-hashsum";
             public const string IGNORE_HASHSUM_SHORT           = "-ihs";
+            public const string IGNORE_HIDDEN_FILES            = "--ignore-hidden-files";
+            public const string IGNORE_HIDDEN_FILES_SHORT      = "-ihf";
+            public const string IGNORE_ACCESS_ERRORS           = "--ignore-access-errors";
+            public const string IGNORE_ACCESS_ERRORS_SHORT     = "-iae";
+
             public const string RECURSIVE                      = "--recursive";
             public const string RECURSIVE_SHORT                = "-r";
             public const string POSITIVE_LIST                  = "--positive-list";
@@ -62,6 +67,57 @@ namespace ConsoleApp
             public const string USE_SHA1                       = "--use-sha1";
             public const string USE_SHA256                     = "--use-sha256";
             public const string USE_SHA512                     = "--use-sha512";
+
+            public const string NO_HEADER       = "--no-header";
+            public const string NO_HEADER_SHORT = "-nh";
+
+            public const string NO_DSP_FORMAT = "--no-format";
+            public const string NO_DSP_FORMAT_SHORT = "-nf";
+
+            public const string HELP1 = "/?";
+            public const string HELP2 = "--help";
+            public const string HELP3 = "-h";
+
+            public const string VERSION       = "--version";
+            public const string VERSION_SHORT = "-v";
+
+            public const string DO_SAVE       = "--save";
+            public const string DO_SAVE_SHORT = "-s";
+            
+            
+            public const string OUPUT_FORMAT_XML   = "--xml";
+            public const string OUPUT_FORMAT_JSON  = "--json";
+            public const string OUPUT_FORMAT_CSV   = "--csv";
+            //public const string OUPUT_FORMAT_BIN = "--bin";
+
+
+        }
+
+        public static class Errors
+        {
+            public const string BAD_OR_EMPTY_EXTENSION_LIST = "Bad/empty extensions list!";
+            public const string FILE_EXISTS                 = "File already exists!";
+            public const string ILLEGAL_PARAM_USE_HELP      = "Parameter --help (short: -h or /?) can only be used as single parameter!";
+            public const string ILLEGAL_PARAM_USE_VERSION   = "Parameter --version (short: -v) can only be used as single parameter!";
+            public const string ILLEGAL_PATH_DFP_FILE       = "Illegal path for saving fingerprint file!";
+            public const string MISSING_DIR_PATH            = "Missing directory path!";
+            public const string MISSING_EXTENSION_LIST      = "Missing list of extensions!";
+            public const string MISSING_PARAMS              = "Missing parameters!";
+            public const string MISSING_PATH_DFP_FILE       = "Missing path for saving fingerprint file!";
+            public const string UNKOWN_PARAM                = "Unknown parameter \"{0}\" !";
+
+            public const string WRITING_DFP_FILE_FAILED = "Writing fingerprint file failed!";
+            //public const string XXX =
+        }
+
+        public static class Messages
+        {
+            public const string NO_FILE_PASSED = "No file passed the filters.";
+        }
+
+        public static class Formats
+        {
+            public const string DATETIME = "yyyy-MM-dd HH:mm:ss";
         }
     }
 }

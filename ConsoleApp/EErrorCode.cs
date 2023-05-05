@@ -17,16 +17,18 @@
 * If not, see <https://www.gnu.org/licenses/>.                                                                  *
 *****************************************************************************************************************/
 
-using DirectoryFingerPrinting.Models;
-
-namespace DirectoryFingerPrinting.API
+namespace ConsoleApp
 {
-    public interface IMetaDataFactory
+    public enum EErrorCode
     {
-        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
-        IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
-
-        MetaData CreateMetaData(FileInfo pFileInfo);
-        MetaData CreateMetaData(string pFilePath);
+        None = 0,
+        NoParameters = 1,
+        MissingParameter = 2,
+        UnknownParameter = 3,
+        InternalError = 4,
+        IllegalValue = 5,
+        SingleParameter = 6,
+        FileExists = 7,
+        WriteDpfFileFailed = 8,
     }
 }

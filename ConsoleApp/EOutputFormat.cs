@@ -17,16 +17,20 @@
 * If not, see <https://www.gnu.org/licenses/>.                                                                  *
 *****************************************************************************************************************/
 
-using DirectoryFingerPrinting.Models;
 
-namespace DirectoryFingerPrinting.API
+using System.Xml.Serialization;
+
+namespace ConsoleApp
 {
-    public interface IMetaDataFactory
+    internal enum EOutputFormat
     {
-        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
-        IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
+        [XmlEnum]
+        Xml = 0,
 
-        MetaData CreateMetaData(FileInfo pFileInfo);
-        MetaData CreateMetaData(string pFilePath);
+        [XmlEnum]
+        Json = 1,
+
+        [XmlEnum]
+        CSV = 2,
     }
 }

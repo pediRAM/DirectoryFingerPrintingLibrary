@@ -62,12 +62,12 @@ namespace DirectoryFingerPrinting.Models
         public HashSet<string> Extensions { get; set; } = new HashSet<string>();
 
         [XmlElement]
-        public EHashAlgo HashAlgo { get; set; } = EHashAlgo.CRC32;
+        public EHashAlgo HashAlgo { get; set; } = EHashAlgo.SHA1;
 
         #endregion Properties
 
         #region Methods
-        public object Clone()
+        public virtual object Clone()
         {
             // todo: check and review Clone() function!
             return new Options

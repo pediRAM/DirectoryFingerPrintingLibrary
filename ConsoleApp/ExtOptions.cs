@@ -17,16 +17,35 @@
 * If not, see <https://www.gnu.org/licenses/>.                                                                  *
 *****************************************************************************************************************/
 
-using DirectoryFingerPrinting.Models;
 
-namespace DirectoryFingerPrinting.API
+using System.Xml.Serialization;
+
+namespace ConsoleApp
 {
-    public interface IMetaDataFactory
+    [XmlRoot]
+    internal class ExtOptions : DirectoryFingerPrinting.Models.Options
     {
-        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
-        IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
+        [XmlIgnore]
+        public bool DoPrintHeader { get; set; } = true;
 
-        MetaData CreateMetaData(FileInfo pFileInfo);
-        MetaData CreateMetaData(string pFilePath);
+        [XmlIgnore]
+        public bool DoPrintFormatted { get; set; } = true;
+
+        [XmlIgnore]
+        public bool DoPrintHelp { get; set; } = false;
+        [XmlIgnore]
+        public bool DoPrintVersion { get; set; } = false;
+        [XmlIgnore]
+        public bool DoSave { get; set; } = false;
+        [XmlIgnore]
+        public bool IgnoreHiddenFiles { get; set; } = false;
+        [XmlIgnore]
+        public bool IgnoreAccessErrors { get; set; } = false;
+
+        [XmlIgnore]
+        public string OutputPath { get; set; }
+
+        [XmlIgnore]
+        public EOutputFormat OutputFormat { get; set; } = EOutputFormat.Xml;
     }
 }

@@ -19,88 +19,167 @@
 
 
 using ConsoleApp;
+using ConsoleApp.File;
 using DirectoryFingerPrinting;
 using DirectoryFingerPrinting.API;
 using DirectoryFingerPrinting.Models;
 
 internal class Program
 {
+    private static MetaDataFactory m_Factory;
+
     private static void Main(string[] args)
     {
         if (args.Length == 0)
         {
             PrintUsageHeader();
-            Environment.Exit(0);
+            Environment.Exit((int)EErrorCode.NoParameters);
             return;
         }
 
         if (args[0] == "-v" || args[0] == "--version")
         {
             PrintVersion();
-            Environment.Exit(0);
+            Environment.Exit((int)EErrorCode.None);
             return;
         }
 
         if (args[0] == "/?" || args[0] == "-h" || args[0] == "--help")
         {
             PrintHelp();
-            Environment.Exit(0);
+            Environment.Exit((int)EErrorCode.None);
             return;
         }
 
         var argumentParser = new ArgumentParser();
-        Options options = null;
-        if (!argumentParser.TryParse(args, out options))
+        ExtOptions options = null;
+        if (!argumentParser.TryParse(args, out options, out EErrorCode pErrorcode, out string pErrorMsg))
         {
-            Environment.Exit(1);
+            PrintErrorMsg(pErrorMsg);
+            Environment.Exit((int)pErrorcode);
             return;
         }
-        
+
         var paths = GetPathsToProcess(options);
         var metaDatas = CreateMetaDatas(options, paths);
+
         if (metaDatas.Count() == 0)
         {
-            Console.WriteLine("No file could pass the filter(s).");
+            Console.WriteLine(Const.Messages.NO_FILE_PASSED);
             Environment.Exit(0);
             return;
         }
 
-        int maxLenPath    = Math.Max(4, metaDatas.Max(m => m.RelativePath.Length));
-        int maxLenVersion = Math.Max(7, metaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
-        int maxLenSize    = Math.Max(5, (int)Math.Ceiling(Math.Log10(metaDatas.Max(m => m.Size))));
-        int maxLenHash    = Math.Max(15, metaDatas.FirstOrDefault().Hashsum.Length);
+        if (options.DoPrintFormatted)
+            PrintResult(options, metaDatas);
+        else
+            PrintUnformattedResult(options, metaDatas);
+
+        if (options.DoSave)
+        {
+            if (!TrySaveResult(options, metaDatas))
+            {
+                PrintErrorMsg(Const.Errors.WRITING_DFP_FILE_FAILED);
+                Environment.Exit((int)EErrorCode.WriteDpfFileFailed);
+                return;
+            }
+        }
+        Environment.Exit(0);
+    }
+
+    private static bool TrySaveResult(ExtOptions pOptions, IEnumerable<MetaData> pMetaDatas)
+    {
+        var dfp = new DirectoryFingerprint
+        {
+            Version = AsmConst.DIRECTORY_FINGERPRINT_MODEL_VERSION,
+            CreatedAt = DateTime.UtcNow,
+            Hostname = Environment.MachineName,
+            HashAlgo = pOptions.HashAlgo,
+            MetaDatas = pMetaDatas.ToArray()
+        };
+
+        IFileSerializer fs = new FileSerializerFactory().CreateSerializer(pOptions.OutputFormat);
+        try
+        {
+            fs.Save(pOptions.OutputPath, dfp);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+
+    private static void PrintUnformattedResult(Options pOptions, IEnumerable<IMetaData> pMetaDatas)
+    {
+        var columnsCaption = "Name;";
+        if (pOptions.UseCreation)         columnsCaption += "Created at;";
+        if (pOptions.UseLastModification) columnsCaption += "Modified at;";
+        if (pOptions.UseLastAccess)       columnsCaption += "Last Access at;";
+        if (pOptions.UseSize)             columnsCaption += "Size;";
+        if (pOptions.UseVersion)          columnsCaption += "Version;";
+        if (pOptions.UseHashsum)          columnsCaption += $"Hashsum ({pOptions.HashAlgo});";
+
+        Console.WriteLine(columnsCaption);
+
+        foreach (var md in pMetaDatas)
+        {
+            Console.Write($"{md.RelativePath};");
+            if (pOptions.UseCreation)            Console.Write($"{md.CreatedAt:yyyy-MM-dd HH:mm.ss};");
+            if (pOptions.UseLastModification)    Console.Write($"{md.ModifiedAt:yyyy-MM-dd HH:mm.ss};");
+            if (pOptions.UseLastAccess)          Console.Write($"{md.AccessedAt:yyyy-MM-dd HH:mm.ss};");
+            if (pOptions.UseSize)                Console.Write($"{md.Size};");
+
+            if (pOptions.UseVersion)
+            {
+                if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
+                    Console.Write($"{md.Version};");
+                else
+                    Console.Write(";");
+            }
+            if (pOptions.UseHashsum) Console.WriteLine($"{md.Hashsum};");
+        }
+    }
+    private static void PrintResult(Options pOptions, IEnumerable<IMetaData> pMetaDatas)
+    {
+        int maxLenPath      = Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
+        int maxLenVersion   = Math.Max(7, pMetaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
+        int maxLenSize      = Math.Max(5, (int)Math.Ceiling(Math.Log10(pMetaDatas.Max(m => m.Size))));
+        int maxLenHash      = Math.Max(15, pMetaDatas.FirstOrDefault().Hashsum.Length);
 
         var columnsCaption = $" {"Name".PadRight(maxLenPath)} ";
-        if (options.UseCreation)         columnsCaption +=  "| Created at          ";
-        if (options.UseLastModification) columnsCaption +=  "| Modified at         ";
-        if (options.UseLastAccess)       columnsCaption +=  "| Last Access at      ";
-        if (options.UseSize)             columnsCaption += $"| {"Size".PadRight(maxLenSize)} ";
-        if (options.UseVersion)          columnsCaption += $"| {"Version".PadRight(maxLenVersion)} ";
-        if (options.UseHashsum)          columnsCaption += $"| Hashsum ({options.HashAlgo})";
-        int lineNettoLen = columnsCaption.Length - options.HashAlgo.ToString().Length - 10;
+        if (pOptions.UseCreation)         columnsCaption +=  "| Created at          ";
+        if (pOptions.UseLastModification) columnsCaption +=  "| Modified at         ";
+        if (pOptions.UseLastAccess)       columnsCaption +=  "| Last Access at      ";
+        if (pOptions.UseSize)             columnsCaption += $"| {"Size".PadRight(maxLenSize)} ";
+        if (pOptions.UseVersion)          columnsCaption += $"| {"Version".PadRight(maxLenVersion)} ";
+        if (pOptions.UseHashsum)          columnsCaption += $"| Hashsum ({pOptions.HashAlgo})";
+
+        int lineNettoLen = columnsCaption.Length - pOptions.HashAlgo.ToString().Length - 10;
         var line = new string('-', Math.Max(columnsCaption.Length, lineNettoLen + maxLenHash));
+
         Console.WriteLine(line);
         Console.WriteLine(columnsCaption);
         Console.WriteLine(line);
-        foreach (var md in metaDatas)
-        {
-                                             Console.Write($" {md.RelativePath.PadRight(maxLenPath)} ");
-            if (options.UseCreation)         Console.Write($"| {md.CreatedAt:yyyy-MM-dd HH:mm.ss} ");
-            if (options.UseLastModification) Console.Write($"| {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} ");
-            if (options.UseLastAccess)       Console.Write($"| {md.AccessedAt:yyyy-MM-dd HH:mm.ss} ");
-            if (options.UseSize)             Console.Write($"| {md.Size.ToString().PadRight(maxLenSize)} ");
 
-            if (options.UseVersion)
+        foreach (var md in pMetaDatas)
+        {
+            Console.Write($" {md.RelativePath.PadRight(maxLenPath)} ");
+            if (pOptions.UseCreation)         Console.Write($"| {md.CreatedAt:yyyy-MM-dd HH:mm.ss} ");
+            if (pOptions.UseLastModification) Console.Write($"| {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} ");
+            if (pOptions.UseLastAccess)       Console.Write($"| {md.AccessedAt:yyyy-MM-dd HH:mm.ss} ");
+            if (pOptions.UseSize)             Console.Write($"| {md.Size.ToString().PadRight(maxLenSize)} ");
+
+            if (pOptions.UseVersion)
             {
                 if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
                     Console.Write($"| {md.Version.PadRight(maxLenVersion)} ");
                 else
                     Console.Write($"| {"".PadRight(maxLenVersion)} ");
             }
-            if (options.UseHashsum) Console.WriteLine($"| {md.Hashsum}");
+            if (pOptions.UseHashsum) Console.WriteLine($"| {md.Hashsum}");
         }
-
-        Environment.Exit(0);        
     }
 
     private static List<string> GetPathsToProcess(IOptions pOptions)
@@ -110,14 +189,13 @@ internal class Program
         return extFilter.GetPathsToProcess(allPaths);
     }
 
-    private static MetaDataFactory factory;
-    private static IEnumerable<IMetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
+    private static IEnumerable<MetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
     {
-        factory = factory?? new MetaDataFactory(pOptions);
+        m_Factory = m_Factory?? new MetaDataFactory(pOptions);
         foreach (var path in pPaths)
         {
             var fileInfo = new FileInfo(path);
-            yield return factory.CreateMetaData(fileInfo);
+            yield return m_Factory.CreateMetaData(fileInfo);
         }
     }
 
@@ -139,9 +217,14 @@ Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFinger
 ");
     }
 
+
+    private static void PrintErrorMsg(string pErrorMsg) => Console.WriteLine($"Error: {pErrorMsg}");
+
+
     public static void PrintHelp()
     {
         Console.WriteLine(@"
 ");
     }
 }
+
