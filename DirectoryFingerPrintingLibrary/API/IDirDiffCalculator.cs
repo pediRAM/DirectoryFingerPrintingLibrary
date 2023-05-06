@@ -24,5 +24,6 @@ namespace DirectoryFingerPrinting.API
     public interface IDirDiffCalculator
     {
         IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA,  IDirectoryFingerprint dfpB);
+        IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> dfpA,  IEnumerable<IMetaData> dfpB);
     }
 }

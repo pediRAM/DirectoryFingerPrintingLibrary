@@ -32,7 +32,7 @@ namespace ConsoleApp
         WriteDpfFileFailed = 8,
         FileNotFound = 9,
         DirectoryNotFound = 10,
-        CannotSaveAndCompare 11,
+        CannotSaveAndCompare = 11,
 
     }
 }

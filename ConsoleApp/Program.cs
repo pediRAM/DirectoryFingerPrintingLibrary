@@ -62,31 +62,54 @@ internal class Program
             return;
         }
 
-        var paths = GetPathsToProcess(options);
-        var metaDatas = CreateMetaDatas(options, paths);
-
-        if (!metaDatas.Any())
-        {
-            Console.WriteLine(Const.Messages.NO_FILE_PASSED);
-            Environment.Exit(0);
-            return;
-        }
-
-        if (options.DoPrintFormatted)
-            PrintResult(options, metaDatas);
-        else
-            PrintUnformattedResult(options, metaDatas);
-
         if (options.DoSave)
         {
+            var paths = GetPathsToProcess(options);
+            if (!paths.Any())
+            {
+                Console.WriteLine(Const.Messages.NO_FILE_PASSED);
+                Environment.Exit(0);
+                return;
+            }
+
+            var metaDatas = CreateMetaDatas(options, paths);
+
+            if (!metaDatas.Any())
+            {
+                Console.WriteLine(Const.Messages.NO_FILE_PASSED);
+                Environment.Exit(0);
+                return;
+            }
+
+            if (options.DoPrintFormatted)
+                PrintResult(options, metaDatas);
+            else
+                PrintUnformattedResult(options, metaDatas);
+
+
             if (!TrySaveResult(options, metaDatas))
             {
                 PrintErrorMsg(Const.Errors.WRITING_DFP_FILE_FAILED);
                 Environment.Exit((int)EErrorCode.WriteDpfFileFailed);
                 return;
             }
+            Environment.Exit(0);
         }
-        Environment.Exit(0);
+        else if (options.DoCompareDirectories)
+        {
+            var pathsOfParadigm = GetPathsToProcess(options.ComparePathParadigm, options);
+            var pathsOfTestee = GetPathsToProcess(options.ComparePathTestee, options);
+
+            var metaDatasOfParadigm = CreateMetaDatas(options, pathsOfParadigm);
+            var metaDatasOfTestee = CreateMetaDatas(options, pathsOfTestee);
+
+            var diffCalculator = new DirDiffCalculator(options);
+            var diffs = diffCalculator.GetFileDifferencies(metaDatasOfParadigm, metaDatasOfTestee);
+        }
+        else if (options.DoCompareFingerprints)
+        {
+
+        }
     }
 
     private static bool TrySaveResult(ExtOptions pOptions, IEnumerable<MetaData> pMetaDatas)
@@ -187,6 +210,13 @@ internal class Program
     private static List<string> GetPathsToProcess(IOptions pOptions)
     {
         var allPaths = Directory.GetFiles(pOptions.BaseDirPath, "*", pOptions.EnableRecursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+        var extFilter = new ExtensionFilter(pOptions);
+        return extFilter.GetPathsToProcess(allPaths);
+    }
+
+    private static List<string> GetPathsToProcess(string pPath, IOptions pOptions)
+    {
+        var allPaths = Directory.GetFiles(pPath, "*", pOptions.EnableRecursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         var extFilter = new ExtensionFilter(pOptions);
         return extFilter.GetPathsToProcess(allPaths);
     }

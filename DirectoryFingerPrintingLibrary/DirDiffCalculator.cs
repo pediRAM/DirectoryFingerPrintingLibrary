@@ -26,7 +26,7 @@ using DirectoryFingerPrinting.Models;
 
 namespace DirectoryFingerPrinting
 {
-    internal class DirDiffCalculator : IDirDiffCalculator
+    public class DirDiffCalculator : IDirDiffCalculator
     {
         public DirDiffCalculator(IOptions pOptions) => Options = pOptions;
 
@@ -34,15 +34,9 @@ namespace DirectoryFingerPrinting
         public IOptions Options { get; init; }
 
 
-        public IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA, IDirectoryFingerprint dfpB)
+        public IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> metaDatasA, IEnumerable<IMetaData> metaDatasB)
         {
-            if (Options.UseHashsum && dfpA.HashAlgorithm != dfpA.HashAlgorithm)
-                throw new HashAlgorithmException(dfpA.HashAlgorithm, dfpB.HashAlgorithm);
-
-            var metaDatasA = dfpA.GetMetaDatas();
-            var metaDatasB = dfpB.GetMetaDatas();
             var fileDiffs = new List<FileDiff>();
-
             CheckAddedFiles(metaDatasA, metaDatasB, fileDiffs);
 
             foreach (var a in metaDatasA)
@@ -87,6 +81,16 @@ namespace DirectoryFingerPrinting
             }
             return fileDiffs;
         }
+
+
+        public IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA, IDirectoryFingerprint dfpB)
+        {
+            if (Options.UseHashsum && dfpA.HashAlgorithm != dfpA.HashAlgorithm)
+                throw new HashAlgorithmException(dfpA.HashAlgorithm, dfpB.HashAlgorithm);
+
+            return GetFileDifferencies(dfpA.GetMetaDatas(), dfpB.GetMetaDatas());
+        }
+            
 
         private static void CheckString(FileDiff fd, string a, string b, EDiffType diffType, string name)
         {
