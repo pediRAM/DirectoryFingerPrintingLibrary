@@ -24,7 +24,7 @@ namespace ConsoleApp
 {
     internal class ArgumentParser
     {
-        public bool TryParse(string[] args,  out ExtOptions pOptions, out EErrorCode pErrorCode, out string pErrorMsg)
+        public static bool TryParse(string[] args,  out ExtOptions pOptions, out EErrorCode pErrorCode, out string pErrorMsg)
         {
             pOptions = new ExtOptions { BaseDirPath = Environment.CurrentDirectory };
             pErrorCode = EErrorCode.None;
@@ -512,7 +512,7 @@ namespace ConsoleApp
             }
         }
 
-        private string GetParamValue(string[] pArgs, int pIndex, int pValue)
+        private static string GetParamValue(string[] pArgs, int pIndex, int pValue)
             => $" (Parameter {pIndex + 1 + pValue}, value: '{pArgs[pIndex + pValue]}')";
 
         private static bool IsValidPath(string pPath)
@@ -521,7 +521,7 @@ namespace ConsoleApp
             return !containsABadCharacter.IsMatch(pPath);
         }
 
-        private bool TryParseExtensions(string args, out HashSet<string> pExtensions)
+        private static bool TryParseExtensions(string args, out HashSet<string> pExtensions)
         {
             pExtensions = new HashSet<string>();
             try

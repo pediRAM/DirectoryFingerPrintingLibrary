@@ -23,7 +23,7 @@ namespace DirectoryFingerPrinting.Cryptography
 {
     internal class CRC32 : IHashCalculator
     {
-        private const long POLYNOM = 0xEDB88320;
+        //private const long POLYNOM = 0xEDB88320;
 
         private static readonly long[] s_PrimeTable = new long[256]
         {
@@ -73,7 +73,7 @@ namespace DirectoryFingerPrinting.Cryptography
                 {
                     crc = ((crc & 0xFFFFFF00) / 0x100) & 0xFFFFFF ^ s_PrimeTable[buffer[i] ^ crc & 0xFF];
                 }
-                streamLength = streamLength - bufferSize;
+                streamLength -= bufferSize;
             }
             
             crc = (-(crc)) - 1; // !(CRC)

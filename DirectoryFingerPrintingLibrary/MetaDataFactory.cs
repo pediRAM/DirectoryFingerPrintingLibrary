@@ -83,29 +83,16 @@ namespace DirectoryFingerPrinting
             return metaData;
         }
 
-        private EFSType GetFSType(string extension)
+        private static EFSType GetFSType(string extension)
         {
-            switch(extension)
+            return extension switch
             {
-                case ".dll": return EFSType.Dll;
-                case ".exe": return EFSType.Exe;
-
-                case ".cfg":
-                case ".conf":
-                case ".config":
-                case ".csv":
-                case ".gitconfig":
-                case ".gitignore":
-                case ".ini":
-                case ".json":
-                case ".xml":
-                case ".yaml":
-                return EFSType.FormattedText;
-
-                case ".txt": return EFSType.Text;
-
-                default: return EFSType.Misc;
-            }
+                ".dll" => EFSType.Dll,
+                ".exe" => EFSType.Exe,
+                ".cfg" or ".conf" or ".config" or ".csv" or ".gitconfig" or ".gitignore" or ".ini" or ".json" or ".xml" or ".yaml" => EFSType.FormattedText,
+                ".txt" => EFSType.Text,
+                _ => EFSType.Misc,
+            };
         }
 
         private IEnumerable<FileInfo> GetFileInfos(DirectoryInfo directoryInfo)

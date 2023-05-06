@@ -25,8 +25,8 @@ namespace DirectoryFingerPrinting.Cryptography
 {
     internal class HashCalculator : IHashCalculator
     {
-        private HashAlgorithm m_HashAlgorithm = null;
-        private bool m_ToUpperCase = false;
+        private readonly HashAlgorithm m_HashAlgorithm = null;
+        private readonly bool m_ToUpperCase = false;
         public HashCalculator(string pName, bool pToUpperCase = false)
         {
             m_HashAlgorithm = HashAlgorithm.Create(pName);

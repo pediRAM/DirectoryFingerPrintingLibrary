@@ -40,7 +40,7 @@ namespace ConsoleApp.File
             return dfp;
         }
 
-        private DirectoryFingerprint CreateDFP(string[] pFirstLineTokens)
+        private static DirectoryFingerprint CreateDFP(string[] pFirstLineTokens)
         {
             return new DirectoryFingerprint
             {
@@ -51,7 +51,7 @@ namespace ConsoleApp.File
             };
         }
 
-        private MetaData[] ParseMetaDatas(string[] pLines)
+        private static MetaData[] ParseMetaDatas(string[] pLines)
         {
             var arr = new MetaData[pLines.Length - 1];
 
@@ -62,7 +62,7 @@ namespace ConsoleApp.File
         }
 
 
-        private MetaData ParseMetaData(string pLine)
+        private static MetaData ParseMetaData(string pLine)
         {
             string[] t = pLine.Split(';', StringSplitOptions.None);
             return new MetaData

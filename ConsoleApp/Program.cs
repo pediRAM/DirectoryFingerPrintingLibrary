@@ -54,9 +54,8 @@ internal class Program
             return;
         }
 
-        var argumentParser = new ArgumentParser();
-        ExtOptions options = null;
-        if (!argumentParser.TryParse(args, out options, out EErrorCode pErrorcode, out string pErrorMsg))
+        ExtOptions options;
+        if (!ArgumentParser.TryParse(args, out options, out EErrorCode pErrorcode, out string pErrorMsg))
         {
             PrintErrorMsg(pErrorMsg);
             Environment.Exit((int)pErrorcode);
@@ -66,7 +65,7 @@ internal class Program
         var paths = GetPathsToProcess(options);
         var metaDatas = CreateMetaDatas(options, paths);
 
-        if (metaDatas.Count() == 0)
+        if (!metaDatas.Any())
         {
             Console.WriteLine(Const.Messages.NO_FILE_PASSED);
             Environment.Exit(0);
@@ -101,7 +100,7 @@ internal class Program
             MetaDatas = pMetaDatas.ToArray()
         };
 
-        IFileSerializer fs = new FileSerializerFactory().CreateSerializer(pOptions.OutputFormat);
+        IFileSerializer fs = FileSerializerFactory.CreateSerializer(pOptions.OutputFormat);
         try
         {
             fs.Save(pOptions.OutputPath, dfp);
@@ -194,7 +193,7 @@ internal class Program
 
     private static IEnumerable<MetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
     {
-        m_Factory = m_Factory?? new MetaDataFactory(pOptions);
+        m_Factory ??= new MetaDataFactory(pOptions);
         foreach (var path in pPaths)
         {
             var fileInfo = new FileInfo(path);
