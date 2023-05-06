@@ -68,7 +68,7 @@ namespace ConsoleApp
                             {
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -135,7 +135,7 @@ namespace ConsoleApp
                             {
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -146,7 +146,7 @@ namespace ConsoleApp
                                 }
                                 else
                                 {
-                                    pErrorMsg = Const.Errors.BAD_OR_EMPTY_EXTENSION_LIST + $" (Parameter {index + 1}, value: '{args[index]}')";
+                                    pErrorMsg = Const.Errors.BAD_OR_EMPTY_EXTENSION_LIST + GetParamValue(args, index, 0);
                                     pErrorCode = EErrorCode.IllegalValue;
                                     return false;
                                 }
@@ -227,13 +227,13 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
                                     else if (System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_EXISTS + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.FILE_EXISTS + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
@@ -280,7 +280,7 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -289,14 +289,14 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
                                         return false;
                                     }
@@ -312,7 +312,7 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -321,14 +321,14 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.Directory.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
                                         return false;
                                     }
@@ -351,7 +351,7 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -360,14 +360,14 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.Directory.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
                                         return false;
                                     }
@@ -383,7 +383,7 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -392,14 +392,14 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.Directory.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
                                         return false;
                                     }
@@ -422,7 +422,7 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -431,14 +431,14 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
                                         return false;
                                     }
@@ -454,7 +454,7 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -463,14 +463,14 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
                                         return false;
                                     }
@@ -487,7 +487,7 @@ namespace ConsoleApp
                             break;
 
                         default:
-                        pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + $" (Parameter {index + 1}, value: '{args[index]}')";
+                        pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + GetParamValue(args, index, 0);
                         pErrorCode = EErrorCode.UnknownParameter;
                         return false;
                     }
@@ -511,6 +511,9 @@ namespace ConsoleApp
                 return false;
             }
         }
+
+        private string GetParamValue(string[] pArgs, int pIndex, int pValue)
+            => $" (Parameter {pIndex + 1 + pValue}, value: '{pArgs[pIndex + pValue]}')";
 
         private static bool IsValidPath(string pPath)
         {
