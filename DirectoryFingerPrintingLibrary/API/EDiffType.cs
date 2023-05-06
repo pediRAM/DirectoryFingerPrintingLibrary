@@ -68,5 +68,15 @@ namespace DirectoryFingerPrinting.API
         /// Version of test is higher than paradigm.
         /// </summary>
         HigherVersion = 8,
+
+        /// <summary>
+        /// Versions are different.
+        /// </summary>
+        Version = 9,
+
+        /// <summary>
+        /// Hashsum is different.
+        /// </summary>
+        Hash = 10
     }
 }

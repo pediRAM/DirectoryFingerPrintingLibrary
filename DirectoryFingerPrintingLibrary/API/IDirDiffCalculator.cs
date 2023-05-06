@@ -1,7 +1,7 @@
 ﻿/****************************************************************************************************************
 * DirectoryFingerPrintingLibrary is a free and open source API for creating metadata with checksums/hashsums    *
 * of directory content, used to compare, diff-building, security monitoring and more.                           *
-* Copyright (C) 2023 Pedram Ganjeh Hadidi                                                                       *
+* Copyright (C) 2023 Free Software Foundation, Inc.                                                             *
 *                                                                                                               *
 * This file is part of DirectoryFingerPrintingLibrary.                                                          *
 *                                                                                                               *
@@ -10,42 +10,19 @@
 * or any later version.                                                                                         *
 *                                                                                                               *
 * DirectoryFingerPrintingLibrary is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;   *
-* without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR                              *
-* PURPOSE. See the GNU General Public License for more details.                                                 *
+* without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                     *
+* See the GNU General Public License for more details.                                                          *
 *                                                                                                               *
 * You should have received a copy of the GNU General Public License along with DirectoryFingerPrintingLibrary.  *
 * If not, see <https://www.gnu.org/licenses/>.                                                                  *
+*                                                                                                               *
+* Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.             *
 *****************************************************************************************************************/
 
-namespace DirectoryFingerPrinting.Models
+namespace DirectoryFingerPrinting.API
 {
-    #region Usings
-    using DirectoryFingerPrinting.API;
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
-    using System.Xml.Serialization;
-    #endregion Usings
-
-    [XmlRoot]
-    [System.Diagnostics.DebuggerDisplay("Path:{Path}, Differences:{Differences}")]
-    public class FileDiff : IFileDiff
+    public interface IDirDiffCalculator
     {
-        #region Properties
-        [XmlElement]
-        public string Path { get; set; }
-
-        [XmlArray]
-        [XmlArrayItem(Type = typeof(Difference))]
-        public List<Difference> Differences { get; set; } = new List<Difference>();
-
-        public IEnumerable<IDifference> GetDifferences() => Differences;
-
-        #endregion Properties
-
-        #region Methods
-        public override string ToString() => $"Path:{Path}, Differences:{Differences}";
-        #endregion Methods
-
+        IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA,  IDirectoryFingerprint dfpB);
     }
 }

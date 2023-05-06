@@ -26,7 +26,7 @@ using System.Xml.Serialization;
 namespace DirectoryFingerPrinting.Models
 {
     [XmlRoot]
-    public class DirectoryFingerprint
+    public class DirectoryFingerprint : IDirectoryFingerprint
     {
         [XmlElement]
         public string Version { get; set; }
@@ -42,5 +42,7 @@ namespace DirectoryFingerPrinting.Models
 
         [XmlElement]
         public MetaData[] MetaDatas { get; set; }
+
+        public IEnumerable<IMetaData> GetMetaDatas() => MetaDatas;
     }
 }

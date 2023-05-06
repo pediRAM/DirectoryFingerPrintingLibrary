@@ -22,6 +22,6 @@ namespace DirectoryFingerPrinting.API
     public interface IFileDiff
     {
         string Path { get; }
-        IEnumerable<IDifference> Differences { get; }
+        IEnumerable<IDifference> GetDifferences();
     }
 }
