@@ -123,6 +123,7 @@ namespace ConsoleApp
             public const string MISSING_PARAMS              = "Missing parameters!";
             public const string MISSING_PATH_DFP_FILE       = "Missing path of fingerprint file!";
             public const string UNKOWN_PARAM                = "Unknown parameter \"{0}\" !";
+            public const string EITHER_SAVE_OR_COMPARE      = "Cannot save and compare at once!";
 
             public const string WRITING_DFP_FILE_FAILED = "Writing fingerprint file failed!";
             //public const string XXX =

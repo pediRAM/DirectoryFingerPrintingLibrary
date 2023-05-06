@@ -18,6 +18,7 @@
 *****************************************************************************************************************/
 
 
+using System;
 using System.Text.RegularExpressions;
 
 namespace ConsoleApp
@@ -501,6 +502,14 @@ namespace ConsoleApp
                     // Path = Directory.
                     else if (Directory.Exists(pOptions.OutputPath))
                         pOptions.OutputPath += $"\\{DateTime.Now:yyyy-MM-dd_HH.mm.ss}.{pOptions.OutputFormat.ToString().ToLower()}";
+                }
+
+                // Plausibility test: either compare or save! Never both at the same time!
+                if (pOptions.DoSave && (pOptions.DoCompareDirectories || pOptions.DoCompareFingerprintAgainstDirectory || pOptions.DoCompareFingerprints))
+                {
+                    pErrorMsg = Const.Errors.EITHER_SAVE_OR_COMPARE;
+                    pErrorCode = EErrorCode.CannotSaveAndCompare;
+                    return false;
                 }
                 return true;
             }
