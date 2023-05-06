@@ -24,13 +24,19 @@ namespace ConsoleApp
 {
     internal enum EOutputFormat
     {
+        /// <summary>
+        /// Default.
+        /// </summary>
         [XmlEnum]
-        Xml = 0,
+        Dfp = 0,
 
         [XmlEnum]
-        Json = 1,
+        Xml = 1,
 
         [XmlEnum]
-        CSV = 2,
+        Json = 2,
+
+        [XmlEnum]
+        CSV = 3,
     }
 }

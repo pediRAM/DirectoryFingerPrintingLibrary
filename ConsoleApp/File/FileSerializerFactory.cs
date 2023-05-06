@@ -27,9 +27,12 @@ namespace ConsoleApp.File
         {
             switch(format)
             {
+                case EOutputFormat.Dfp: // is default (= xml).
+                case EOutputFormat.Xml: return new XmlFileSerializer();
+
                 case EOutputFormat.CSV:  return new CsvFileSerializer();
+
                 case EOutputFormat.Json: return new JsonFileSerializer();
-                case EOutputFormat.Xml:  return new XmlFileSerializer();
 
                 default: throw new NotImplementedException($"Format: {format} is not implemented!");
             }

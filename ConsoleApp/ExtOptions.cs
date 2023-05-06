@@ -46,6 +46,6 @@ namespace ConsoleApp
         public string OutputPath { get; set; }
 
         [XmlIgnore]
-        public EOutputFormat OutputFormat { get; set; } = EOutputFormat.Xml;
+        public EOutputFormat OutputFormat { get; set; } = EOutputFormat.Dfp;
     }
 }

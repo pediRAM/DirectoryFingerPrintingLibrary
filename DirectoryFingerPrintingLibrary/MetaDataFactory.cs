@@ -93,13 +93,14 @@ namespace DirectoryFingerPrinting
                 case ".cfg":
                 case ".conf":
                 case ".config":
+                case ".csv":
                 case ".gitconfig":
                 case ".gitignore":
                 case ".ini":
                 case ".json":
                 case ".xml":
                 case ".yaml":
-                return EFSType.SText;
+                return EFSType.FormattedText;
 
                 case ".txt": return EFSType.Text;
 

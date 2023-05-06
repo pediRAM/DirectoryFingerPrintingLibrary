@@ -47,7 +47,7 @@ namespace DirectoryFingerPrinting.API
         /// <summary>
         /// SText: Structured Text, like: *.ini, *.json, *.xml, *.yaml,...
         /// </summary>
-        SText = 4,
+        FormattedText = 4,
 
         /// <summary>
         /// Text (*.txt).

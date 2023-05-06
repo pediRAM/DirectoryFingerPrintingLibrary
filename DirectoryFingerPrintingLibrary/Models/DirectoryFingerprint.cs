@@ -38,7 +38,7 @@ namespace DirectoryFingerPrinting.Models
         public string Hostname { get; set; }
 
         [XmlElement]
-        public EHashAlgo HashAlgo { get; set; }
+        public EHashAlgo HashAlgorithm { get; set; }
 
         [XmlElement]
         public MetaData[] MetaDatas { get; set; }

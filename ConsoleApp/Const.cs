@@ -85,9 +85,17 @@ namespace ConsoleApp
             public const string DO_SAVE_SHORT = "-s";
             
             
-            public const string OUPUT_FORMAT_XML   = "--xml";
-            public const string OUPUT_FORMAT_JSON  = "--json";
-            public const string OUPUT_FORMAT_CSV   = "--csv";
+            public const string OUPUT_FORMAT_DFP       = "--format-directory-fingerprint";
+            public const string OUPUT_FORMAT_DFP_SHORT = "-dfp";
+
+            public const string OUPUT_FORMAT_XML       = "--format-xml";
+            public const string OUPUT_FORMAT_XML_SHORT = "-xml";
+
+            public const string OUPUT_FORMAT_JSON       = "--format-json";
+            public const string OUPUT_FORMAT_JSON_SHORT = "-json";
+
+            public const string OUPUT_FORMAT_CSV       = "--format-csv";
+            public const string OUPUT_FORMAT_CSV_SHORT = "-csv";
             //public const string OUPUT_FORMAT_BIN = "--bin";
 
 

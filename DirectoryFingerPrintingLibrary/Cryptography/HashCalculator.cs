@@ -34,7 +34,7 @@ namespace DirectoryFingerPrinting.Cryptography
         }
         public string GetHash(string pFilePath)
         {
-            using var filestream = new FileStream(pFilePath, FileMode.Open);
+            using var filestream = new FileStream(pFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var hashValue = m_HashAlgorithm.ComputeHash(filestream);
             var hash = BitConverter.ToString(hashValue).Replace("-", "");
             if (m_ToUpperCase)

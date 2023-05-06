@@ -187,15 +187,23 @@ namespace ConsoleApp
                         pOptions.DoPrintFormatted = false;
                         break;
 
+                        case Const.Arguments.OUPUT_FORMAT_DFP:
+                        case Const.Arguments.OUPUT_FORMAT_DFP_SHORT:
+                        pOptions.OutputFormat = EOutputFormat.Dfp;
+                        break;
+
                         case Const.Arguments.OUPUT_FORMAT_XML:
+                        case Const.Arguments.OUPUT_FORMAT_XML_SHORT:
                         pOptions.OutputFormat = EOutputFormat.Xml;
                         break;
 
                         case Const.Arguments.OUPUT_FORMAT_JSON:
+                        case Const.Arguments.OUPUT_FORMAT_JSON_SHORT:
                         pOptions.OutputFormat = EOutputFormat.Json;
                         break;
 
                         case Const.Arguments.OUPUT_FORMAT_CSV:
+                        case Const.Arguments.OUPUT_FORMAT_CSV_SHORT:
                         pOptions.OutputFormat = EOutputFormat.CSV;
                         break;
 
@@ -210,9 +218,10 @@ namespace ConsoleApp
 
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE;
-                                    pErrorCode = EErrorCode.MissingParameter;
-                                    return false;
+                                    //pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE;
+                                    //pErrorCode = EErrorCode.MissingParameter;
+                                    //return false;
+                                    break;
                                 }
                                 try
                                 {
@@ -269,6 +278,16 @@ namespace ConsoleApp
                         pErrorCode = EErrorCode.UnknownParameter;
                         return false;
                     }
+                }
+
+                if (pOptions.DoSave)
+                {
+                    // Path = null / empty / "   ".
+                    if (string.IsNullOrWhiteSpace(pOptions.OutputPath))
+                        pOptions.OutputPath = $"{DateTime.Now:yyyy-MM-dd_HH.mm.ss}.{pOptions.OutputFormat.ToString().ToLower()}";
+                    // Path = Directory.
+                    else if (Directory.Exists(pOptions.OutputPath))
+                        pOptions.OutputPath += $"\\{DateTime.Now:yyyy-MM-dd_HH.mm.ss}.{pOptions.OutputFormat.ToString().ToLower()}";
                 }
                 return true;
             }

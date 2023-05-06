@@ -47,7 +47,7 @@ namespace ConsoleApp.File
                 Version = pFirstLineTokens[0],
                 CreatedAt = DateTime.Parse(pFirstLineTokens[1]),
                 Hostname = pFirstLineTokens[2],
-                HashAlgo = Enum.Parse<EHashAlgo>(pFirstLineTokens[3])
+                HashAlgorithm = Enum.Parse<EHashAlgo>(pFirstLineTokens[3])
             };
         }
 
@@ -82,7 +82,7 @@ namespace ConsoleApp.File
         public void Save(string pPath, DirectoryFingerprint pDirectoryFingerprint)
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"{AsmConst.DIRECTORY_FINGERPRINT_MODEL_VERSION};{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss};{Environment.MachineName};{pDirectoryFingerprint.HashAlgo}");
+            sb.AppendLine($"{AsmConst.DIRECTORY_FINGERPRINT_MODEL_VERSION};{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss};{Environment.MachineName};{pDirectoryFingerprint.HashAlgorithm}");
             foreach (var m in pDirectoryFingerprint.MetaDatas)
                 sb.AppendLine($"{m.RelativePath};{m.Extension};{m.FSType};{m.CreatedAt:yyyy-MM-dd HH:mm:ss};{m.ModifiedAt:yyyy-MM-dd HH:mm:ss};{m.AccessedAt:yyyy-MM-dd HH:mm:ss};{m.Size};{m.Version};{m.Hashsum};");
 

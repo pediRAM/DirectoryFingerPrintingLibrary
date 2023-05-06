@@ -30,6 +30,9 @@ internal class Program
 
     private static void Main(string[] args)
     {
+        //args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", /*"--csv",*/ "-s", /*@"T:\MyTemp\Directory-Fingerprints\dfp.csv"*/ };
+        args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", "-json", "-s", @"temp" };
+
         if (args.Length == 0)
         {
             PrintUsageHeader();
@@ -94,7 +97,7 @@ internal class Program
             Version = AsmConst.DIRECTORY_FINGERPRINT_MODEL_VERSION,
             CreatedAt = DateTime.UtcNow,
             Hostname = Environment.MachineName,
-            HashAlgo = pOptions.HashAlgo,
+            HashAlgorithm = pOptions.HashAlgo,
             MetaDatas = pMetaDatas.ToArray()
         };
 
