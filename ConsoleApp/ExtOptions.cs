@@ -33,12 +33,16 @@ namespace ConsoleApp
 
         [XmlIgnore]
         public bool DoPrintHelp { get; set; } = false;
+
         [XmlIgnore]
         public bool DoPrintVersion { get; set; } = false;
+
         [XmlIgnore]
         public bool DoSave { get; set; } = false;
+
         [XmlIgnore]
         public bool IgnoreHiddenFiles { get; set; } = false;
+
         [XmlIgnore]
         public bool IgnoreAccessErrors { get; set; } = false;
 
@@ -47,5 +51,22 @@ namespace ConsoleApp
 
         [XmlIgnore]
         public EOutputFormat OutputFormat { get; set; } = EOutputFormat.Dfp;
+
+        [XmlIgnore]
+        public bool DoCompareDirectories { get; set; } = false;
+
+        [XmlIgnore]
+        public bool DoCompareFingerprints { get; set; } = false;
+
+        [XmlIgnore]
+        public bool DoCompareFingerprintAgainstDirectory { get; set; } = false;
+
+        [XmlIgnore]
+        public string ComparePathParadigm { get; set; }
+
+        [XmlIgnore]
+        public string ComparePathTestee { get; set; }
+
+
     }
 }

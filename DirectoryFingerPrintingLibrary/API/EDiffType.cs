@@ -60,23 +60,13 @@ namespace DirectoryFingerPrinting.API
         Access = 6,
 
         /// <summary>
-        /// Version of test is lower than paradigm.
-        /// </summary>
-        LowerVersion = 7,
-
-        /// <summary>
-        /// Version of test is higher than paradigm.
-        /// </summary>
-        HigherVersion = 8,
-
-        /// <summary>
         /// Versions are different.
         /// </summary>
-        Version = 9,
+        Version = 7,
 
         /// <summary>
         /// Hashsum is different.
         /// </summary>
-        Hash = 10
+        Hash = 8
     }
 }

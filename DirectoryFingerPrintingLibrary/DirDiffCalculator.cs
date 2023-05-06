@@ -28,11 +28,15 @@ namespace DirectoryFingerPrinting
 {
     internal class DirDiffCalculator : IDirDiffCalculator
     {
-        public DirDiffCalculator(IOptions pOptions) => o = pOptions;
-        public IOptions o { get; init; }
+        public DirDiffCalculator(IOptions pOptions) => Options = pOptions;
+
+
+        public IOptions Options { get; init; }
+
+
         public IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA, IDirectoryFingerprint dfpB)
         {
-            if (o.UseHashsum && dfpA.HashAlgorithm != dfpA.HashAlgorithm)
+            if (Options.UseHashsum && dfpA.HashAlgorithm != dfpA.HashAlgorithm)
                 throw new HashAlgorithmException(dfpA.HashAlgorithm, dfpB.HashAlgorithm);
 
             var metaDatasA = dfpA.GetMetaDatas();
@@ -59,26 +63,29 @@ namespace DirectoryFingerPrinting
                 }
                 //<--- b != null !
 
-                if (o.UseSize)
+                if (Options.UseSize)
                     CheckSize(fd, a.Size, b.Size);
 
-                if (o.UseCreation)
+                if (Options.UseCreation)
                     CheckDateTime(fd, a.CreatedAt, b.CreatedAt, EDiffType.Creation, "CreatedAt");
 
-                if (o.UseLastModification)
+                if (Options.UseLastModification)
                     CheckDateTime(fd, a.ModifiedAt, b.ModifiedAt, EDiffType.Modification, "ModifiedAt");
 
-                if (o.UseLastAccess)
+                if (Options.UseLastAccess)
                     CheckDateTime(fd, a.AccessedAt, b.AccessedAt, EDiffType.Access, "AccessedAt");
 
-                if (o.UseVersion)
+                if (Options.UseVersion)
                     if (a.FSType == EFSType.Dll || a.FSType == EFSType.Exe)
                         CheckString(fd, a.Version, b.Version, EDiffType.Version, "Versions");
 
-                if (o.UseHashsum)
+                if (Options.UseHashsum)
                     CheckString(fd, a.Version, b.Version, EDiffType.Hash, "Hashsums");
-            }
 
+                if (fd.Differences.Any())
+                    fileDiffs.Add(fd);
+            }
+            return fileDiffs;
         }
 
         private static void CheckString(FileDiff fd, string a, string b, EDiffType diffType, string name)
@@ -105,7 +112,7 @@ namespace DirectoryFingerPrinting
                 });
         }
 
-        private static void CheckSize( FileDiff fd, long a, long b)
+        private static void CheckSize(FileDiff fd, long a, long b)
         {
             if (a != b)
             {
@@ -142,7 +149,8 @@ namespace DirectoryFingerPrinting
                     fd.Differences.Add(new Difference
                     {
                         DiffType = EDiffType.Added,
-                        TestValue = b.RelativePath
+                        TestValue = b.RelativePath,
+                        Matter = "File added"
                     });
                     fileDiffs.Add(fd);
                 }

@@ -30,5 +30,8 @@ namespace ConsoleApp
         SingleParameter = 6,
         FileExists = 7,
         WriteDpfFileFailed = 8,
+        FileNotFound = 9,
+        DirectoryNotFound = 10,
+
     }
 }

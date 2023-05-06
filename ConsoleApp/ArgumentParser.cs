@@ -68,7 +68,7 @@ namespace ConsoleApp
                             {
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH;
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -135,7 +135,7 @@ namespace ConsoleApp
                             {
                                 if (args.Length <= index + 1)
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST;
+                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -146,7 +146,7 @@ namespace ConsoleApp
                                 }
                                 else
                                 {
-                                    pErrorMsg = Const.Errors.BAD_OR_EMPTY_EXTENSION_LIST;
+                                    pErrorMsg = Const.Errors.BAD_OR_EMPTY_EXTENSION_LIST + $" (Parameter {index + 1}, value: '{args[index]}')";
                                     pErrorCode = EErrorCode.IllegalValue;
                                     return false;
                                 }
@@ -227,13 +227,13 @@ namespace ConsoleApp
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE;
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
                                     else if (System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_EXISTS;
+                                        pErrorMsg = Const.Errors.FILE_EXISTS + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
@@ -273,8 +273,221 @@ namespace ConsoleApp
                         pOptions.IgnoreAccessErrors = true;
                         break;
 
+                        case Const.Arguments.COMPARE:
+                        case Const.Arguments.COMPARE_SHORT:
+                            {
+                                pOptions.DoCompareFingerprintAgainstDirectory = true;
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    if (!System.IO.File.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.FileNotFound;
+                                        return false;
+                                    }
+
+                                    pOptions.ComparePathParadigm = args[++index];
+                                }
+                                catch (Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    if (!System.IO.Directory.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.DirectoryNotFound;
+                                        return false;
+                                    }
+
+                                    pOptions.ComparePathTestee = args[++index];
+                                }
+                                catch (Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+                            }
+                        break;
+
+                        case Const.Arguments.COMPARE_DIRS:
+                        case Const.Arguments.COMPARE_DIRS_SHORT:
+                            {
+                                pOptions.DoCompareDirectories = true;
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    if (!System.IO.Directory.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.DirectoryNotFound;
+                                        return false;
+                                    }
+
+                                    pOptions.ComparePathParadigm = args[++index];
+                                }
+                                catch (Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    if (!System.IO.Directory.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.DirectoryNotFound;
+                                        return false;
+                                    }
+
+                                    pOptions.ComparePathTestee = args[++index];
+                                }
+                                catch (Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+                            }
+                            break;
+
+                        case Const.Arguments.COMPARE_FINGERPRINTS:
+                        case Const.Arguments.COMPARE_FINGERPRINTS_SHORT:
+                            {
+                                pOptions.DoCompareFingerprints = true;
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    if (!System.IO.File.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.FileNotFound;
+                                        return false;
+                                    }
+
+                                    pOptions.ComparePathParadigm = args[++index];
+                                }
+                                catch (Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+
+                                if (args.Length <= index + 1)
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                try
+                                {
+                                    if (!IsValidPath(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.IllegalValue;
+                                        return false;
+                                    }
+
+                                    if (!System.IO.File.Exists(args[index + 1]))
+                                    {
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + $" (Parameter {index + 2}, value: '{args[index + 1]}')";
+                                        pErrorCode = EErrorCode.FileNotFound;
+                                        return false;
+                                    }
+
+                                    pOptions.ComparePathTestee = args[++index];
+                                }
+                                catch (Exception ex)
+                                {
+                                    pErrorMsg = ex.ToString();
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+                            }
+                            break;
+
                         default:
-                        pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a);
+                        pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + $" (Parameter {index + 1}, value: '{args[index]}')";
                         pErrorCode = EErrorCode.UnknownParameter;
                         return false;
                     }

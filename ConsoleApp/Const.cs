@@ -98,20 +98,30 @@ namespace ConsoleApp
             public const string OUPUT_FORMAT_CSV_SHORT = "-csv";
             //public const string OUPUT_FORMAT_BIN = "--bin";
 
+            public const string COMPARE_DIRS       = "--compare-directories";
+            public const string COMPARE_DIRS_SHORT = "-cd";
 
+            public const string COMPARE_FINGERPRINTS       = "--compare-fingerprints";
+            public const string COMPARE_FINGERPRINTS_SHORT = "-cf";
+
+            public const string COMPARE       = "--compare";
+            public const string COMPARE_SHORT = "-c";
         }
 
         public static class Errors
         {
             public const string BAD_OR_EMPTY_EXTENSION_LIST = "Bad/empty extensions list!";
             public const string FILE_EXISTS                 = "File already exists!";
+            public const string FILE_NOT_FOUND              = "File not found!";
+            public const string DIRECTORY_NOT_FOUND         = "Directory not found!";
             public const string ILLEGAL_PARAM_USE_HELP      = "Parameter --help (short: -h or /?) can only be used as single parameter!";
             public const string ILLEGAL_PARAM_USE_VERSION   = "Parameter --version (short: -v) can only be used as single parameter!";
-            public const string ILLEGAL_PATH_DFP_FILE       = "Illegal path for saving fingerprint file!";
+            public const string ILLEGAL_PATH_DFP_FILE       = "Illegal character(s) in path of fingerprint file!";
+            public const string ILLEGAL_PATH_DIRECTORY      = "Illegal character(s) in path of directory!";
             public const string MISSING_DIR_PATH            = "Missing directory path!";
             public const string MISSING_EXTENSION_LIST      = "Missing list of extensions!";
             public const string MISSING_PARAMS              = "Missing parameters!";
-            public const string MISSING_PATH_DFP_FILE       = "Missing path for saving fingerprint file!";
+            public const string MISSING_PATH_DFP_FILE       = "Missing path of fingerprint file!";
             public const string UNKOWN_PARAM                = "Unknown parameter \"{0}\" !";
 
             public const string WRITING_DFP_FILE_FAILED = "Writing fingerprint file failed!";
