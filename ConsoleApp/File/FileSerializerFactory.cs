@@ -23,15 +23,27 @@ namespace ConsoleApp.File
 {
     internal class FileSerializerFactory
     {
-        public static IFileSerializer CreateSerializer(EOutputFormat format)
+        public static IFileSerializer CreateSerializer(EOutputFormat pFormat)
         {
-            return format switch
+            return pFormat switch
             {
                 // is default (= xml).
                 EOutputFormat.Dfp or EOutputFormat.Xml => new XmlFileSerializer(),
                 EOutputFormat.CSV => new CsvFileSerializer(),
                 EOutputFormat.Json => new JsonFileSerializer(),
-                _ => throw new NotImplementedException($"Format: {format} is not implemented!"),
+                _ => throw new NotImplementedException($"Format: {pFormat} is not implemented!"),
+            };
+        }
+
+        public static IFileSerializer CreateSerializer(string pExtension)
+        {
+            return pExtension.ToLower() switch
+            {
+                // is default (= xml).
+                ".dfp" or ".xml" => new XmlFileSerializer(),
+                ".csv" => new CsvFileSerializer(),
+                ".json" => new JsonFileSerializer(),
+                _ => throw new ArgumentException($"Illegal/Unknown file extension: {pExtension}!", nameof(pExtension)),
             };
         }
     }

@@ -1,7 +1,7 @@
 ﻿/****************************************************************************************************************
 * DirectoryFingerPrintingLibrary is a free and open source API for creating metadata with checksums/hashsums    *
 * of directory content, used to compare, diff-building, security monitoring and more.                           *
-* Copyright (C) 2023 Pedram Ganjeh Hadidi                                                                       *
+* Copyright (C) 2023 Free Software Foundation, Inc.                                                             *
 *                                                                                                               *
 * This file is part of DirectoryFingerPrintingLibrary.                                                          *
 *                                                                                                               *
@@ -10,11 +10,13 @@
 * or any later version.                                                                                         *
 *                                                                                                               *
 * DirectoryFingerPrintingLibrary is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;   *
-* without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR                              *
-* PURPOSE. See the GNU General Public License for more details.                                                 *
+* without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                     *
+* See the GNU General Public License for more details.                                                          *
 *                                                                                                               *
 * You should have received a copy of the GNU General Public License along with DirectoryFingerPrintingLibrary.  *
 * If not, see <https://www.gnu.org/licenses/>.                                                                  *
+*                                                                                                               *
+* Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.             *
 *****************************************************************************************************************/
 
 
@@ -22,6 +24,7 @@ using ConsoleApp;
 using ConsoleApp.File;
 using DirectoryFingerPrinting;
 using DirectoryFingerPrinting.API;
+using DirectoryFingerPrinting.API.Exceptions;
 using DirectoryFingerPrinting.Models;
 
 internal class Program
@@ -30,72 +33,45 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        //args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", /*"--csv",*/ "-s", /*@"T:\MyTemp\Directory-Fingerprints\dfp.csv"*/ };
-        args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", "-json", "-s", @"temp" };
+        //args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", /*"--csv",*/ "-s", /*@"T:\MyTemp\Directory-Fingerprints\dfp.csv"*/ };        
+        //args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", "-json", "-s", @"temp" };
+
+        /*** Compare ***/
+        // Compare dfp-file-1 against dfp-file-2:
+        args = new[] { "-cf", 
+            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\A.json",
+            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\B.json",
+            "--print-colored"
+        };
 
         if (args.Length == 0)
         {
-            PrintUsageHeader();
-            Environment.Exit((int)EErrorCode.NoParameters);
+            Exit(EErrorCode.NoParameters, ConsoleMessages.GetUsageText());
             return;
         }
 
         if (args[0] == "-v" || args[0] == "--version")
         {
-            PrintVersion();
-            Environment.Exit((int)EErrorCode.None);
+            Exit(EErrorCode.None, ConsoleMessages.GetVersionText());
             return;
         }
 
         if (args[0] == "/?" || args[0] == "-h" || args[0] == "--help")
         {
-            PrintHelp();
-            Environment.Exit((int)EErrorCode.None);
+            Exit(EErrorCode.None, ConsoleMessages.GetHelpText());
             return;
         }
 
         ExtOptions options;
         if (!ArgumentParser.TryParse(args, out options, out EErrorCode pErrorcode, out string pErrorMsg))
         {
-            PrintErrorMsg(pErrorMsg);
-            Environment.Exit((int)pErrorcode);
+            Exit(pErrorcode, pErrorMsg);
             return;
         }
 
-        if (options.DoSave)
-        {
-            var paths = GetPathsToProcess(options);
-            if (!paths.Any())
-            {
-                Console.WriteLine(Const.Messages.NO_FILE_PASSED);
-                Environment.Exit(0);
-                return;
-            }
+        IEnumerable<IFileDiff> diffs = null;
 
-            var metaDatas = CreateMetaDatas(options, paths);
-
-            if (!metaDatas.Any())
-            {
-                Console.WriteLine(Const.Messages.NO_FILE_PASSED);
-                Environment.Exit(0);
-                return;
-            }
-
-            if (options.DoPrintFormatted)
-                PrintResult(options, metaDatas);
-            else
-                PrintUnformattedResult(options, metaDatas);
-
-
-            if (!TrySaveResult(options, metaDatas))
-            {
-                PrintErrorMsg(Const.Errors.WRITING_DFP_FILE_FAILED);
-                Environment.Exit((int)EErrorCode.WriteDpfFileFailed);
-                return;
-            }
-            Environment.Exit(0);
-        }
-        else if (options.DoCompareDirectories)
+        if (options.DoCompareDirectories)
         {
             var pathsOfParadigm = GetPathsToProcess(options.ComparePathParadigm, options);
             var pathsOfTestee = GetPathsToProcess(options.ComparePathTestee, options);
@@ -104,14 +80,165 @@ internal class Program
             var metaDatasOfTestee = CreateMetaDatas(options, pathsOfTestee);
 
             var diffCalculator = new DirDiffCalculator(options);
-            var diffs = diffCalculator.GetFileDifferencies(metaDatasOfParadigm, metaDatasOfTestee);
+            diffs = diffCalculator.GetFileDifferencies(metaDatasOfParadigm, metaDatasOfTestee);
         }
         else if (options.DoCompareFingerprints)
         {
+            if (!ExitIfFileNotExists(options.ComparePathParadigm)) return;
+            if (!ExitIfFileNotExists(options.ComparePathTestee)) return;
+            try
+            {
+                var serializerParadigm = FileSerializerFactory.CreateSerializer(Path.GetExtension(options.ComparePathParadigm));
+                var serializerTestee = FileSerializerFactory.CreateSerializer(Path.GetExtension(options.ComparePathTestee));
 
+                var dfpParadigm = serializerParadigm.Load(options.ComparePathParadigm);
+                var dfpTestee = serializerTestee.Load(options.ComparePathTestee);
+
+                var diffCalculator = new DirDiffCalculator(options);
+                diffs = diffCalculator.GetFileDifferencies(dfpParadigm, dfpTestee);
+            }
+            catch (ArgumentException argEx)
+            {
+                Exit(EErrorCode.IllegalFingerprintFileExtension, argEx.Message);
+                return;
+            }
+            catch (HashAlgorithmException hashEx)
+            {
+                Exit(EErrorCode.UnequalHashAlgorithms, hashEx.Message);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Exit(EErrorCode.InternalError, ex.ToString());
+                return;
+            }
+        }
+        else if (options.DoCompareFingerprintAgainstDirectory)
+        {
+            if (!ExitIfFileNotExists(options.ComparePathParadigm)) return;
+            try
+            {
+                var serializerParadigm = FileSerializerFactory.CreateSerializer(Path.GetExtension(options.ComparePathParadigm));
+                var dfpParadigm = serializerParadigm.Load(options.ComparePathParadigm);
+                
+                var pathsOfTestee = GetPathsToProcess(options.ComparePathTestee, options);
+                var metaDatasOfTestee = CreateMetaDatas(options, pathsOfTestee);
+                var dfpTestee = new DirectoryFingerprint
+                {
+                    CreatedAt = DateTime.Now,
+                    Hostname = Environment.MachineName,
+                    HashAlgorithm = dfpParadigm.HashAlgorithm,
+                    MetaDatas = CreateMetaDatas(options, pathsOfTestee).ToArray(),
+                    Version = AsmConst.DIRECTORY_FINGERPRINT_MODEL_VERSION
+                };
+
+                var diffCalculator = new DirDiffCalculator(options);
+                diffs = diffCalculator.GetFileDifferencies(dfpParadigm, dfpTestee);
+            }
+            catch (ArgumentException argEx)
+            {
+                Exit(EErrorCode.IllegalFingerprintFileExtension, argEx.Message);
+                return;
+            }
+            catch (HashAlgorithmException hashEx)
+            {
+                Exit(EErrorCode.UnequalHashAlgorithms, hashEx.Message);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Exit(EErrorCode.InternalError, ex.ToString());
+                return;
+            }
+        }
+        
+        if (diffs != null)
+        {
+            PrintDiffs(diffs, options);
+            Exit(EErrorCode.None);
+        }
+        else
+        {
+            var paths = GetPathsToProcess(options);
+            if (!paths.Any())
+            {
+                Exit(EErrorCode.None, Const.Messages.NO_FILE_PASSED);
+                return;
+            }
+
+            var metaDatas = CreateMetaDatas(options, paths);
+
+            if (!metaDatas.Any())
+            {
+                Exit(EErrorCode.None, Const.Messages.NO_FILE_PASSED);
+                return;
+            }
+
+            if (options.DoPrintFormatted)
+                PrintResult(options, metaDatas);
+            else
+                PrintUnformattedResult(options, metaDatas);
+
+            if (options.DoSave)
+            {
+                if (!TrySaveResult(options, metaDatas))
+                {
+                    Exit(EErrorCode.WriteDpfFileFailed, Const.Errors.WRITING_DFP_FILE_FAILED);
+                    return;
+                }
+            }
+            Environment.Exit(0);
         }
     }
 
+    private static void PrintDiffs(IEnumerable<IFileDiff> diffs, ExtOptions pOptions)
+    {
+        foreach(var d in diffs)
+        {
+            var m = d.GetMostImportantDifference();
+            if (m.DiffType >= EDiffType.Enlarged)
+            {
+                if (pOptions.UseColor)
+                {
+                    Console.ForegroundColor = GetFGColor(m.DiffType);
+                }
+                Console.WriteLine($"{ToChar(m.DiffType)} {d.Path} ({m})");
+            }
+        }
+
+        if (pOptions.UseColor)
+            Console.ResetColor();
+    }
+
+    private static ConsoleColor GetFGColor(EDiffType diffType)
+    {
+        return diffType switch
+        {
+            EDiffType.Added => ConsoleColor.Blue,
+            EDiffType.Removed => ConsoleColor.Red,
+            _ => ConsoleColor.Yellow
+        };
+    }
+
+    private static char ToChar(EDiffType pDiffType)
+    {
+        return pDiffType switch
+        {
+            EDiffType.Added => '+',
+            EDiffType.Removed => '-',
+            _ => '~'
+        };
+    }
+
+    private static bool ExitIfFileNotExists(string path)
+    {
+        if (!File.Exists(path))
+        {
+            Exit(EErrorCode.FileNotFound, Const.Errors.FILE_NOT_FOUND + $" (file: '{path}')"); 
+            return false;
+        }
+        return true;
+    }
     private static bool TrySaveResult(ExtOptions pOptions, IEnumerable<MetaData> pMetaDatas)
     {
         var dfp = new DirectoryFingerprint
@@ -207,6 +334,7 @@ internal class Program
         }
     }
 
+
     private static List<string> GetPathsToProcess(IOptions pOptions)
     {
         var allPaths = Directory.GetFiles(pOptions.BaseDirPath, "*", pOptions.EnableRecursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
@@ -214,12 +342,14 @@ internal class Program
         return extFilter.GetPathsToProcess(allPaths);
     }
 
+
     private static List<string> GetPathsToProcess(string pPath, IOptions pOptions)
     {
         var allPaths = Directory.GetFiles(pPath, "*", pOptions.EnableRecursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         var extFilter = new ExtensionFilter(pOptions);
         return extFilter.GetPathsToProcess(allPaths);
     }
+
 
     private static IEnumerable<MetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
     {
@@ -231,32 +361,23 @@ internal class Program
         }
     }
 
-    private static void PrintUsageHeader()
-    {
-        Console.WriteLine(@"Usage: dfp [OPTION]...
-Try 'dfp --help' for more information.
-");
-    }
-    private static void PrintVersion()
-    {
-        Console.WriteLine(@"dfp (directory fingerprinting) 1.0.0-alpha
-Copyright (C) 2023 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
 
-Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.
-");
+    private static void Exit(EErrorCode pErrorCode, string pMessage)
+    {
+        if (pErrorCode != EErrorCode.None)
+            PrintErrorMsg(pMessage);
+        else
+            Console.WriteLine(pMessage);
+
+        Exit(pErrorCode);
     }
 
+    private static void Exit(EErrorCode pErrorCode)
+        => Environment.Exit((int)pErrorCode);
 
-    private static void PrintErrorMsg(string pErrorMsg) => Console.WriteLine($"Error: {pErrorMsg}");
 
-
-    public static void PrintHelp()
-    {
-        Console.WriteLine(@"
-");
-    }
+    private static void PrintErrorMsg(string pErrorMsg) 
+        => Console.WriteLine($"Error: {pErrorMsg}");
+    
 }
 

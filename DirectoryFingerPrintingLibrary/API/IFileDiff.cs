@@ -23,5 +23,6 @@ namespace DirectoryFingerPrinting.API
     {
         string Path { get; }
         IEnumerable<IDifference> GetDifferences();
+        IDifference GetMostImportantDifference();
     }
 }

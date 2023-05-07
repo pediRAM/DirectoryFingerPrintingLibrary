@@ -33,6 +33,7 @@ namespace ConsoleApp
         FileNotFound = 9,
         DirectoryNotFound = 10,
         CannotSaveAndCompare = 11,
-
+        IllegalFingerprintFileExtension = 12,
+        UnequalHashAlgorithms = 13,
     }
 }

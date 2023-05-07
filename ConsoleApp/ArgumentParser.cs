@@ -487,6 +487,11 @@ namespace ConsoleApp
                             }
                             break;
 
+                        case Const.Arguments.USE_COLOR:
+                        case Const.Arguments.USE_COLOR_SHORT:
+                        pOptions.UseColor = true;
+                        break;
+
                         default:
                         pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + GetParamValue(args, index, 0);
                         pErrorCode = EErrorCode.UnknownParameter;

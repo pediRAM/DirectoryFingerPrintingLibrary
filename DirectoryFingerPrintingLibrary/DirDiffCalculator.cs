@@ -42,6 +42,7 @@ namespace DirectoryFingerPrinting
             foreach (var a in metaDatasA)
             {
                 var fd = new FileDiff();
+                fd.Path = a.RelativePath;
 
                 var b = metaDatasB.SingleOrDefault(x => x.RelativePath.Equals(a.RelativePath, StringComparison.InvariantCultureIgnoreCase));
                 if (b == null)
@@ -149,7 +150,7 @@ namespace DirectoryFingerPrinting
             {
                 if (metaDatasA.SingleOrDefault(x => x.RelativePath.Equals(b.RelativePath, StringComparison.InvariantCultureIgnoreCase)) == null)
                 {
-                    var fd = new FileDiff();
+                    var fd = new FileDiff { Path = b.RelativePath };
                     fd.Differences.Add(new Difference
                     {
                         DiffType = EDiffType.Added,

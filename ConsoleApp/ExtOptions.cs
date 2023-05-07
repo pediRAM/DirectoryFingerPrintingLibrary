@@ -67,6 +67,9 @@ namespace ConsoleApp
         [XmlIgnore]
         public string ComparePathTestee { get; set; }
 
+        [XmlIgnore]
+        public bool UseColor { get; set; } = false;
+
 
     }
 }

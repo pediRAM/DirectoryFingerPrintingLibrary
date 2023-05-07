@@ -24,49 +24,63 @@ namespace DirectoryFingerPrinting.API
     /// </summary>
     public enum EDiffType
     {
-        /// <summary>
-        /// Added: file/dir has been added to the file structure.
-        /// </summary>
-        Added = 0,
-
-        /// <summary>
-        /// Removed: file/dir has been removed from the file structure.
-        /// </summary>
-        Removed = 1,
-
-        /// <summary>
-        /// Enlarged: size of file in [bytes] has been increased.
-        /// </summary>
-        Enlarged = 2,
-
-        /// <summary>
-        /// Reduced: size of file in [bytes] has been decreased.
-        /// </summary>
-        Reduced = 3,
-
-        /// <summary>
-        /// Creation date/time is different.
-        /// </summary>
-        Creation = 4,
-
-        /// <summary>
-        /// Modification date/time is different.
-        /// </summary>
-        Modification = 5,
+        None = 0,
 
         /// <summary>
         /// Last Access date/time is different.
         /// </summary>
-        Access = 6,
+        Access = 1,
+
+        /// <summary>
+        /// Modification date/time is different.
+        /// </summary>
+        Modification = 2,
+
+        /// <summary>
+        /// Creation date/time is different.
+        /// </summary>
+        Creation = 3,
+
+        /// <summary>
+        /// Enlarged: size of file in [bytes] has been increased.
+        /// </summary>
+        Enlarged = 4,
+
+        /// <summary>
+        /// Reduced: size of file in [bytes] has been decreased.
+        /// </summary>
+        Reduced = 5,
 
         /// <summary>
         /// Versions are different.
         /// </summary>
-        Version = 7,
+        Version = 6,
 
         /// <summary>
         /// Hashsum is different.
         /// </summary>
-        Hash = 8
+        Hash = 7,
+
+        /// <summary>
+        /// Added: file/dir has been added to the file structure.
+        /// </summary>
+        Added = 8,
+
+        /// <summary>
+        /// Removed: file/dir has been removed from the file structure.
+        /// </summary>
+        Removed = 9,
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

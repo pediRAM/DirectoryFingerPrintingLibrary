@@ -106,6 +106,9 @@ namespace ConsoleApp
 
             public const string COMPARE       = "--compare";
             public const string COMPARE_SHORT = "-c";
+
+            public const string USE_COLOR = "--print-colored";
+            public const string USE_COLOR_SHORT = "-pc";
         }
 
         public static class Errors
