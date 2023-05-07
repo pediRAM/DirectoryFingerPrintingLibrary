@@ -70,6 +70,7 @@ namespace ConsoleApp
         [XmlIgnore]
         public bool UseColor { get; set; } = false;
 
-
+        [XmlIgnore]
+        public EReportLevel DiffOutputLevel { get; set; } = EReportLevel.Essential;
     }
 }

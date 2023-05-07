@@ -23,37 +23,37 @@ namespace ConsoleApp
     {
         public static class Arguments
         {
-            public const string ASSEMBLIES_ONLY                = "--assemblies-only";
-            public const string ASSEMBLIES_ONLY_SHORT          = "-ao";
-            public const string DIRECTORY                      = "--directory";
-            public const string DIRECTORY_SHORT                = "-dir";
-            public const string IGNORE_TIMESTAMPS              = "--ignore-timestamps";
-            public const string IGNORE_TIMESTAMPS_SHORT        = "-its";
-            public const string IGNORE_SIZE                    = "--ignore-size";
-            public const string IGNORE_SIZE_SHORT              = "-is";
-            public const string IGNORE_CREATION_DATE           = "--ignore-creation-date";
-            public const string IGNORE_CREATION_DATE_SHORT     = "-icd";
-            public const string IGNORE_LAST_MODIFICATION       = "--ignore-last-modification";
-            public const string IGNORE_LAST_MODIFICATION_SHORT = "-ilm";
-            public const string IGNORE_LAST_ACCESS             = "--ignore-last-access";
-            public const string IGNORE_LAST_ACCESS_SHORT       = "-ila";
-            public const string IGNORE_VERSION                 = "--ignore-version";
-            public const string IGNORE_VERSION_SHORT           = "-iv";
-            public const string IGNORE_HASHSUM                 = "--ignore-hashsum";
-            public const string IGNORE_HASHSUM_SHORT           = "-ihs";
-            public const string IGNORE_HIDDEN_FILES            = "--ignore-hidden-files";
-            public const string IGNORE_HIDDEN_FILES_SHORT      = "-ihf";
-            public const string IGNORE_ACCESS_ERRORS           = "--ignore-access-errors";
-            public const string IGNORE_ACCESS_ERRORS_SHORT     = "-iae";
+            public const string ASSEMBLIES_ONLY                  = "--assemblies-only";
+            public const string ASSEMBLIES_ONLY_SHORT            = "-ao";
+            public const string DIRECTORY                        = "--directory";
+            public const string DIRECTORY_SHORT                  = "-dir";
+            public const string IGNORE_TIMESTAMPS                = "--ignore-timestamps";
+            public const string IGNORE_TIMESTAMPS_SHORT          = "-its";
+            public const string IGNORE_SIZE                      = "--ignore-size";
+            public const string IGNORE_SIZE_SHORT                = "-is";
+            public const string IGNORE_CREATION_DATE             = "--ignore-creation-date";
+            public const string IGNORE_CREATION_DATE_SHORT       = "-icd";
+            public const string IGNORE_LAST_MODIFICATION         = "--ignore-last-modification";
+            public const string IGNORE_LAST_MODIFICATION_SHORT   = "-ilm";
+            public const string IGNORE_LAST_ACCESS               = "--ignore-last-access";
+            public const string IGNORE_LAST_ACCESS_SHORT         = "-ila";
+            public const string IGNORE_VERSION                   = "--ignore-version";
+            public const string IGNORE_VERSION_SHORT             = "-iv";
+            public const string IGNORE_HASHSUM                   = "--ignore-hashsum";
+            public const string IGNORE_HASHSUM_SHORT             = "-ihs";
+            public const string IGNORE_HIDDEN_FILES              = "--ignore-hidden-files";
+            public const string IGNORE_HIDDEN_FILES_SHORT        = "-ihf";
+            public const string IGNORE_ACCESS_ERRORS             = "--ignore-access-errors";
+            public const string IGNORE_ACCESS_ERRORS_SHORT       = "-iae";
 
-            public const string RECURSIVE                      = "--recursive";
-            public const string RECURSIVE_SHORT                = "-r";
-            public const string POSITIVE_LIST                  = "--positive-list";
-            public const string POSITIVE_LIST_SHORT            = "-pl";
-            public const string NEGATIVE_LIST                  = "--negative-list";
-            public const string NEGATIVE_LIST_SHORT            = "-nl";
-            public const string EXTENSIONS                     = "--extensions";
-            public const string EXTENSIONS_SHORT               = "-ext";
+            public const string RECURSIVE                        = "--recursive";
+            public const string RECURSIVE_SHORT                  = "-r";
+            public const string POSITIVE_LIST                    = "--positive-list";
+            public const string POSITIVE_LIST_SHORT              = "-pl";
+            public const string NEGATIVE_LIST                    = "--negative-list";
+            public const string NEGATIVE_LIST_SHORT              = "-nl";
+            public const string EXTENSIONS                       = "--extensions";
+            public const string EXTENSIONS_SHORT                 = "-ext";
             //public const string USE_CRC32_UPPERCASE            = "--use-CRC32";
             //public const string USE_CRC64_UPPERCASE            = "--use-CRC64";
             //public const string USE_MD5_UPPERCASE              = "--use-MD5";
@@ -61,54 +61,64 @@ namespace ConsoleApp
             //public const string USE_SHA256_UPPERCASE           = "--use-SHA256";
             //public const string USE_SHA512_UPPERCASE           = "--use-SHA512";
 
-            public const string USE_CRC32                      = "--use-crc32";
+            public const string USE_CRC32                        = "--use-crc32";
             //public const string USE_CRC64                      = "--use-crc64";
-            public const string USE_MD5                        = "--use-md5";
-            public const string USE_SHA1                       = "--use-sha1";
-            public const string USE_SHA256                     = "--use-sha256";
-            public const string USE_SHA512                     = "--use-sha512";
+            public const string USE_MD5                          = "--use-md5";
+            public const string USE_SHA1                         = "--use-sha1";
+            public const string USE_SHA256                       = "--use-sha256";
+            public const string USE_SHA512                       = "--use-sha512";
 
-            public const string NO_HEADER       = "--no-header";
-            public const string NO_HEADER_SHORT = "-nh";
+            public const string NO_HEADER                        = "--no-header";
+            public const string NO_HEADER_SHORT                  = "-nh";
 
-            public const string NO_DSP_FORMAT = "--no-format";
-            public const string NO_DSP_FORMAT_SHORT = "-nf";
+            public const string NO_DSP_FORMAT                    = "--no-format";
+            public const string NO_DSP_FORMAT_SHORT              = "-nf";
 
-            public const string HELP1 = "/?";
-            public const string HELP2 = "--help";
-            public const string HELP3 = "-h";
+            public const string HELP1                            = "/?";
+            public const string HELP2                            = "--help";
+            public const string HELP3                            = "-h";
 
-            public const string VERSION       = "--version";
-            public const string VERSION_SHORT = "-v";
+            public const string VERSION                          = "--version";
+            public const string VERSION_SHORT                    = "-v";
 
-            public const string DO_SAVE       = "--save";
-            public const string DO_SAVE_SHORT = "-s";
+            public const string DO_SAVE                          = "--save";
+            public const string DO_SAVE_SHORT                    = "-s";
             
             
-            public const string OUPUT_FORMAT_DFP       = "--format-directory-fingerprint";
-            public const string OUPUT_FORMAT_DFP_SHORT = "-dfp";
+            public const string OUPUT_FORMAT_DFP                 = "--format-directory-fingerprint";
+            public const string OUPUT_FORMAT_DFP_SHORT           = "-dfp";
 
-            public const string OUPUT_FORMAT_XML       = "--format-xml";
-            public const string OUPUT_FORMAT_XML_SHORT = "-xml";
+            public const string OUPUT_FORMAT_XML                 = "--format-xml";
+            public const string OUPUT_FORMAT_XML_SHORT           = "-xml";
 
-            public const string OUPUT_FORMAT_JSON       = "--format-json";
-            public const string OUPUT_FORMAT_JSON_SHORT = "-json";
+            public const string OUPUT_FORMAT_JSON                = "--format-json";
+            public const string OUPUT_FORMAT_JSON_SHORT          = "-json";
 
-            public const string OUPUT_FORMAT_CSV       = "--format-csv";
-            public const string OUPUT_FORMAT_CSV_SHORT = "-csv";
-            //public const string OUPUT_FORMAT_BIN = "--bin";
+            public const string OUPUT_FORMAT_CSV                 = "--format-csv";
+            public const string OUPUT_FORMAT_CSV_SHORT           = "-csv";
+            //public const string OUPUT_FORMAT_BIN               = "--bin";
 
-            public const string COMPARE_DIRS       = "--compare-directories";
-            public const string COMPARE_DIRS_SHORT = "-cd";
+            public const string COMPARE_DIRS                     = "--compare-directories";
+            public const string COMPARE_DIRS_SHORT               = "-cd";
 
-            public const string COMPARE_FINGERPRINTS       = "--compare-fingerprints";
-            public const string COMPARE_FINGERPRINTS_SHORT = "-cf";
+            public const string COMPARE_FINGERPRINTS             = "--compare-fingerprints";
+            public const string COMPARE_FINGERPRINTS_SHORT       = "-cf";
 
-            public const string COMPARE       = "--compare";
-            public const string COMPARE_SHORT = "-c";
+            public const string COMPARE                          = "--compare";
+            public const string COMPARE_SHORT                    = "-c";
 
-            public const string USE_COLOR = "--print-colored";
-            public const string USE_COLOR_SHORT = "-pc";
+            public const string USE_COLOR                        = "--print-colored";
+            public const string USE_COLOR_SHORT                  = "-pc";
+
+            public const string REPORTLEVEL_ESSENTIAL            = "--report-essential";
+            public const string REPORTLEVEL_ESSENTIAL_SHORT      = "-re";
+
+            public const string REPORTLEVEL_INFORMATIVE          = "--report-informative";
+            public const string REPORTLEVEL_INFORMATIVE_SHORT    = "-ri";
+
+            public const string REPORTLEVEL_VERBOSE              = "--report-verbose";
+            public const string REPORTLEVEL_VERBOSE_SHORT        = "-rv";
+
         }
 
         public static class Errors

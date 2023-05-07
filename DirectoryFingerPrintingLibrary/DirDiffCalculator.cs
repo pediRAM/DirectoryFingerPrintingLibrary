@@ -37,7 +37,6 @@ namespace DirectoryFingerPrinting
         public IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> metaDatasA, IEnumerable<IMetaData> metaDatasB)
         {
             var fileDiffs = new List<FileDiff>();
-            CheckAddedFiles(metaDatasA, metaDatasB, fileDiffs);
 
             foreach (var a in metaDatasA)
             {
@@ -80,6 +79,8 @@ namespace DirectoryFingerPrinting
                 if (fd.Differences.Any())
                     fileDiffs.Add(fd);
             }
+
+            CheckAddedFiles(metaDatasA, metaDatasB, fileDiffs);
             return fileDiffs;
         }
 

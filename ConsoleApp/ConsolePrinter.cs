@@ -113,7 +113,22 @@ namespace ConsoleApp
                     {
                         Console.ForegroundColor = GetFGColor(m.DiffType);
                     }
-                    Console.WriteLine($"{ToChar(m.DiffType)} {d.Path} ({m})");
+
+                    switch(pOptions.DiffOutputLevel)
+                    {
+                        case EReportLevel.Essential:
+                        Console.WriteLine($"{ToChar(m.DiffType)} {d.Path}");
+                        break;
+
+                        case EReportLevel.Informative:
+                        Console.WriteLine($"{ToChar(m.DiffType)} {d.Path} ({m.Matter})");
+                        break;
+
+                        case EReportLevel.Verbose:
+                        Console.WriteLine($"{ToChar(m.DiffType)} {d.Path} ({m})");
+                        break;
+                    }
+                    
                 }
             }
 

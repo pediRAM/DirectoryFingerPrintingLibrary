@@ -492,6 +492,21 @@ namespace ConsoleApp
                         pOptions.UseColor = true;
                         break;
 
+                        case Const.Arguments.REPORTLEVEL_ESSENTIAL:
+                        case Const.Arguments.REPORTLEVEL_ESSENTIAL_SHORT:
+                        pOptions.DiffOutputLevel = EReportLevel.Essential;
+                        break;
+
+                        case Const.Arguments.REPORTLEVEL_INFORMATIVE:
+                        case Const.Arguments.REPORTLEVEL_INFORMATIVE_SHORT:
+                        pOptions.DiffOutputLevel = EReportLevel.Informative;
+                        break;
+
+                        case Const.Arguments.REPORTLEVEL_VERBOSE:
+                        case Const.Arguments.REPORTLEVEL_VERBOSE_SHORT:
+                        pOptions.DiffOutputLevel = EReportLevel.Verbose;
+                        break;
+
                         default:
                         pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + GetParamValue(args, index, 0);
                         pErrorCode = EErrorCode.UnknownParameter;

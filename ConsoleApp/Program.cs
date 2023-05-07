@@ -33,17 +33,6 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        //args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", /*"--csv",*/ "-s", /*@"T:\MyTemp\Directory-Fingerprints\dfp.csv"*/ };        
-        //args = new[] { "-r", "-dir", "H:\\MyTemp\\PECOPALISS_TEST_WRITE_ITERATIONS_TO_FILE\\10x1KiB-Files", "--use-sha1", "-json", "-s", @"temp" };
-
-        /*** Compare ***/
-        // Compare dfp-file-1 against dfp-file-2:
-        args = new[] { "-cf", 
-            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\A.csv",
-            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\B.csv",
-            "--print-colored"
-        };
-
         if (args.Length == 0)
         {
             Exit(EErrorCode.NoParameters, ConsolePrinter.GetUsageText());
