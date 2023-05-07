@@ -27,7 +27,7 @@ namespace ConsoleApp
             public const string ASSEMBLIES_ONLY_SHORT            = "-ao";
 
             public const string DIRECTORY                        = "--directory";
-            public const string DIRECTORY_SHORT                  = "-dir";
+            public const string DIRECTORY_SHORT                  = "-d";
 
             public const string IGNORE_TIMESTAMPS                = "--ignore-timestamps";
             public const string IGNORE_TIMESTAMPS_SHORT          = "-its";
@@ -61,20 +61,30 @@ namespace ConsoleApp
             public const string RECURSIVE_SHORT                  = "-r";
 
             public const string POSITIVE_LIST                    = "--positive-list";
-            public const string POSITIVE_LIST_SHORT              = "-pl";
+            public const string POSITIVE_LIST_SHORT              = "-p";
 
             public const string NEGATIVE_LIST                    = "--negative-list";
-            public const string NEGATIVE_LIST_SHORT              = "-nl";
+            public const string NEGATIVE_LIST_SHORT              = "-n";
 
             public const string EXTENSIONS                       = "--extensions";
-            public const string EXTENSIONS_SHORT                 = "-ext";
+            public const string EXTENSIONS_SHORT                 = "-x";
 
-            public const string USE_CRC32                        = "--crc32";
+            public const string USE_CRC32                        = "--use-crc32";
+            public const string USE_CRC32_SHORT                  = "-crc32";
+
             //public const string USE_CRC64                      = "--use-crc64";
-            public const string USE_MD5                          = "--md5";
-            public const string USE_SHA1                         = "--sha1";
-            public const string USE_SHA256                       = "--sha256";
-            public const string USE_SHA512                       = "--sha512";
+
+            public const string USE_MD5                          = "--use-md5";
+            public const string USE_MD5_SHORT                    = "-md5";
+
+            public const string USE_SHA1                         = "--use-sha1";
+            public const string USE_SHA1_SHORT                   = "-sha1";
+
+            public const string USE_SHA256                       = "--use-sha256";
+            public const string USE_SHA256_SHORT                 = "-sha256";
+
+            public const string USE_SHA512                       = "--use-sha512";
+            public const string USE_SHA512_SHORT                 = "-sha512";
 
             public const string NO_HEADER                        = "--no-header";
             public const string NO_HEADER_SHORT                  = "-nh";

@@ -155,6 +155,7 @@ namespace ConsoleApp
                             break;
 
                         case Const.Arguments.USE_CRC32:
+                        case Const.Arguments.USE_CRC32_SHORT:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.CRC32;
                         break;
 
@@ -163,18 +164,22 @@ namespace ConsoleApp
                         //break;
 
                         case Const.Arguments.USE_MD5:
+                        case Const.Arguments.USE_MD5_SHORT:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.MD5;
                         break;
 
                         case Const.Arguments.USE_SHA1:
+                        case Const.Arguments.USE_SHA1_SHORT:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA1;
                         break;
 
                         case Const.Arguments.USE_SHA256:
+                        case Const.Arguments.USE_SHA256_SHORT:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA256;
                         break;
 
                         case Const.Arguments.USE_SHA512:
+                        case Const.Arguments.USE_SHA512_SHORT:
                         pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA512;
                         break;
 

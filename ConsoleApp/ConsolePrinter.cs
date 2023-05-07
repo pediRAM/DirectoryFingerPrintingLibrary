@@ -28,7 +28,7 @@ namespace ConsoleApp
 
     internal static class ConsolePrinter
     {
-        internal static void PrintResult(Options pOptions, IEnumerable<IMetaData> pMetaDatas)
+        internal static void PrintResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
         {
             int maxLenPath      = Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
             int maxLenVersion   = Math.Max(7, pMetaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
@@ -46,9 +46,12 @@ namespace ConsoleApp
             int lineNettoLen = columnsCaption.Length - pOptions.HashAlgo.ToString().Length - 10;
             var line = new string('-', Math.Max(columnsCaption.Length, lineNettoLen + maxLenHash));
 
-            Console.WriteLine(line);
-            Console.WriteLine(columnsCaption);
-            Console.WriteLine(line);
+            if (pOptions.DoPrintHeader)
+            {
+                Console.WriteLine(line);
+                Console.WriteLine(columnsCaption);
+                Console.WriteLine(line);
+            }
 
             foreach (var md in pMetaDatas)
             {
@@ -70,17 +73,19 @@ namespace ConsoleApp
         }
 
 
-        internal static void PrintUnformattedResult(Options pOptions, IEnumerable<IMetaData> pMetaDatas)
+        internal static void PrintUnformattedResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
         {
-            var columnsCaption = "Name;";
-            if (pOptions.UseCreation)         columnsCaption += "Created at;";
-            if (pOptions.UseLastModification) columnsCaption += "Modified at;";
-            if (pOptions.UseLastAccess)       columnsCaption += "Last Access at;";
-            if (pOptions.UseSize)             columnsCaption += "Size;";
-            if (pOptions.UseVersion)          columnsCaption += "Version;";
-            if (pOptions.UseHashsum)          columnsCaption += $"Hashsum ({pOptions.HashAlgo});";
-
-            Console.WriteLine(columnsCaption);
+            if (pOptions.DoPrintHeader)
+            { 
+                var columnsCaption = "Name;";
+                if (pOptions.UseCreation)         columnsCaption += "Created at;";
+                if (pOptions.UseLastModification) columnsCaption += "Modified at;";
+                if (pOptions.UseLastAccess)       columnsCaption += "Last Access at;";
+                if (pOptions.UseSize)             columnsCaption += "Size;";
+                if (pOptions.UseVersion)          columnsCaption += "Version;";
+                if (pOptions.UseHashsum)          columnsCaption += $"Hashsum ({pOptions.HashAlgo});";
+                Console.WriteLine(columnsCaption);
+            }
 
             foreach (var md in pMetaDatas)
             {
@@ -181,6 +186,13 @@ B) Compare and show differencies between:
     - two fingerprint files or
     - a fingerprint file against a directory
 
+Abbreviations:
+  DEF = Default
+  DFP = Directory FingerPrint
+  FP  = FingerPrint
+  FPF = FingerPrint File
+  
+
 1 USAGE:
 dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
 
@@ -192,21 +204,21 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
 
 4 CALCULATE:                   SHORT:    DESCRIPTION:
   4.1 FILTER OPTIONS:
-    --directory                | -dir ... Base directory for calculating fingerprints.
+    --directory                | -d ..... Base directory for calculating fingerprints.
     --recursive                | -r ..... Search recursive.
-    --assemblies-only          | -ao .... Processes only *.dll and *.exe files.
+    --assemblies-only          | -ao .... Processes only *.dll and *.exe files (anything else will be ignored).
     --ignore-hidden-files      | -ihf ... Ignore hidden files.
     --ignore-access-errors     | -iae ... Ignore access violation errors.
-    --extensions               | -ext ... List of extensions (read EXTENSION_LIST in section 6!).
-    --positive-list            | -pl .... EXTENSION_LIST is positive list (include).
-    --negative-list            | -nl .... EXTENSION_LIST is negative list (exclude).
+    --extensions               | -x ..... List of extensions (read EXTENSION_LIST in section 6!).
+    --positive-list            | -p ..... EXTENSION_LIST is positive list (include).
+    --negative-list            | -n ..... EXTENSION_LIST is negative list (exclude).
 
-  4.2 HASHSUM OPTIONS:
-    --crc32 ..............CRC32.
-    --md5 ............... MD5.
-    --sha1 .............. SHA1 (default).
-    --sha256 .............SHA256.
-    --sha512 .............SHA512.
+  4.2 HASHSUM OPTIONS:         SHORT:
+    --use-crc32                | -crc32 .. CRC32.
+    --use-md5                  | -md5 .... MD5.
+    --use-sha1                 | -sha1 ... SHA1 (DEF).
+    --use-sha256               | -sha256 . SHA256.
+    --use-sha512               | -sha512 . SHA512.
 
   4.3 REPORT LEVEL:            SHORT:
     --report-essential         | -re ..... Prints only +/-/~ and filename.
@@ -214,32 +226,31 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
     --report-verbose           | -rv ..... Prints everything.
 
   4.4 PRINT OPTIONS:           SHORT:
-      Default: displayed output contains header and is formatted.
-    --print-colored            | -pc ..... USE_COLOR
+    --print-colored            | -pc ..... Prints result in colors (red = removed, blue = added, yellow = changed).
     --no-header                | -nh ..... No header will be printed.
-    --no-format                | -nf ..... Prints unformatted directory-fingerprint.
+    --no-format                | -nf ..... Prints unformatted DFP.
 
   4.5 SAVE OPTIONS:            SHORT:
     --save                     | -s ...... Saves calculated fingerprint to file (see section 7.1!).
-    --format-dfp               | -dfp..... *.dfp (default)
+    --format-dfp               | -dfp..... *.dfp (DEF)
     --format-xml               | -xml .... *.xml
     --format-json              | -json ... *.json
     --format-csv               | -csv .... *.csv (separated with ';').
 
 5 COMPARE:
   5.1 TYPE OF COMPARISON:      SHORT:
-    --compare-directories      | -cd ................ Compares two directories.
-    --compare-fingerprints     | -cf ................Compares two fingerprint files.
-    --compare                  | -c ................ Compares a fingerprint file against a directory.
+    --compare-directories      | -cd ..... Compares two directories.
+    --compare-fingerprints     | -cf ..... Compares two FPFs.
+    --compare                  | -c ...... Compares a FPF against a directory.
 
   5.2 IGNORE OPTIONS:          SHORT:
-    --ignore-timestamps        | -its.......... Ignores all timestamps of files.
-    --ignore-creation-date     | -icd ...... Ignores created-at-timestamp.
-    --ignore-last-modification | -ilm .. Ignores last-modification-at-timestamp.
-    --ignore-last-access       | -ila ........ Ignores last-access-timestamp.
-    --ignore-size              | -is ................ Ignores filesizes (in bytes).
-    --ignore-version           | -iv ............. Ignores versions (only *.dll and *.exe files!).
-    --ignore-hashsum           | -ihs ............ Ignores hashsums.
+    --ignore-timestamps        | -its.... Ignores all timestamps of files.
+    --ignore-creation-date     | -icd ... Ignores created-at-timestamp.
+    --ignore-last-modification | -ilm ... Ignores last-modification-at-timestamp.
+    --ignore-last-access       | -ila ... Ignores last-access-timestamp.
+    --ignore-size              | -is .... Ignores filesizes (in bytes).
+    --ignore-version           | -iv .... Ignores versions (only *.dll and *.exe files!).
+    --ignore-hashsum           | -ihs ... Ignores hashsums.
 
 6 EXTENSION_LIST
   Quoted list of separated file-extensions.
@@ -253,9 +264,71 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
     yyyy-MM-dd_HH.mm.ss.(csv|dfp|json|xml)
   7.2 EXAMPLES:
     2023-08-15_00.00.00.csv
-    2023-08-16_01.30.59.dfp
-    2023-08-17_23.59.59.xml
-";
+    2023-09-11_08.46.11.dfp
+    2023-12-31_23.59.59.xml
+
+8 USAGE EXAMPLES:
+  8.1 CALCULATION:
+    - Show FP of only toplevel files in current directory:
+      dfp --directory .\
+      dfp -d .\
+
+    - Process only assemblies (will ignore anything else than *.dll, *.exe):
+      dfp --directory .\ --assembly-only
+      dfp -d .\ -ao
+
+    - Process only *.json, *.txt, *.xml and *.yaml files:
+      dfp --directory .\ --positive-list --extensions ""json,txt,xml,yaml""
+      dfp -d .\ -p -x ""json,txt,xml,yaml""
+
+    - Ignore *.log and *.ini and hidden files
+      dfp --directory .\ --negative-list -extensions ""log,md"" --ignore-hidded-files
+      dfp -d .\ -n -x ""log,md"" -ihf
+
+    - Show use SHA256 algorithm, don't show header:
+      dfp --directory .\ --use-sha256 --no-header
+      dfp -d .\ -sha256 -nh
+
+    - Show FP for all files (recursive) in C:\MyDir:
+      dfp --directory ""C:\MyDir"" --recursive
+      dfp -d ""C:\MyDir"" -r
+
+    - Save FPF as *.dfp (DEF) into 'C:\MyDFP Files\Test'
+      dfp --directory ""C:\MyDir"" --recursive --save ""C:\MyDFP Files\Test""
+      dfp -d ""C:\MyDir"" -r -s ""C:\MyDFP Files\Test""
+
+    - Save FPF as *.csv into 'C:\MyDFP Files\Test'
+      dfp --directory ""C:\MyDir"" --recursive --save ""C:\MyDFP Files\Test"" --format-csv
+      dfp -d ""C:\MyDir"" -r -s ""C:\MyDFP Files\Test"" -csv
+
+  8.2 COMPARE:
+    - Compare DIRs ""C:\MyDir1"" to ""C:\MyDir2"" and print result in color:
+      dfp --compare-directories ""C:\MyDir1"" ""C:\MyDir2"" --print-colored
+      dfp -cd ""C:\MyDir1"" ""C:\MyDir2"" -pc
+
+    - Compare two FPFs with different formats and print verbose result:
+      dfp --compare-fingerprints ""temp\fingerprint1.dfp"" ""temp\fingerprint2.json"" --report-verbose
+      dfp -cf ""temp\fingerprint1.dfp"" ""temp\fingerprint2.json"" -rv
+
+    - Compare FPF 'temp\fingerprint.dfp' with directory C:\MyDir but ignore file timestamps:
+      dfp --compare ""temp\fingerprint.dfp"" ""C:\MyDir"" --ignore-timestamps
+      dfp -c ""temp\fingerprint.dfp"" ""C:\MyDir"" -its
+
+  8.3 ERROR CODES (%errorlevel%):
+    0   OK (no error).
+    1   No parameters.
+    2   Missing parameter.
+    3   Unknown parameter.
+    4   Internal error.
+    5   Illegal value.
+    6   Single parameter.
+    7   File already exists.
+    8   Writing fingerprint file failed.
+    9   File not found.
+    10  Directory not found.
+    11  Calculate, save and compare at once is not provided.
+    12  Illegal/Unknown fingerprint file extension.
+    13  Unequal hashsum algorithms.";
         }
     }
 }
