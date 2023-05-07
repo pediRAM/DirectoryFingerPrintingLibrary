@@ -25,48 +25,56 @@ namespace ConsoleApp
         {
             public const string ASSEMBLIES_ONLY                  = "--assemblies-only";
             public const string ASSEMBLIES_ONLY_SHORT            = "-ao";
+
             public const string DIRECTORY                        = "--directory";
             public const string DIRECTORY_SHORT                  = "-dir";
+
             public const string IGNORE_TIMESTAMPS                = "--ignore-timestamps";
             public const string IGNORE_TIMESTAMPS_SHORT          = "-its";
+
             public const string IGNORE_SIZE                      = "--ignore-size";
             public const string IGNORE_SIZE_SHORT                = "-is";
+
             public const string IGNORE_CREATION_DATE             = "--ignore-creation-date";
             public const string IGNORE_CREATION_DATE_SHORT       = "-icd";
+
             public const string IGNORE_LAST_MODIFICATION         = "--ignore-last-modification";
             public const string IGNORE_LAST_MODIFICATION_SHORT   = "-ilm";
+
             public const string IGNORE_LAST_ACCESS               = "--ignore-last-access";
             public const string IGNORE_LAST_ACCESS_SHORT         = "-ila";
+
             public const string IGNORE_VERSION                   = "--ignore-version";
             public const string IGNORE_VERSION_SHORT             = "-iv";
+
             public const string IGNORE_HASHSUM                   = "--ignore-hashsum";
             public const string IGNORE_HASHSUM_SHORT             = "-ihs";
+
             public const string IGNORE_HIDDEN_FILES              = "--ignore-hidden-files";
             public const string IGNORE_HIDDEN_FILES_SHORT        = "-ihf";
+
             public const string IGNORE_ACCESS_ERRORS             = "--ignore-access-errors";
             public const string IGNORE_ACCESS_ERRORS_SHORT       = "-iae";
 
+
             public const string RECURSIVE                        = "--recursive";
             public const string RECURSIVE_SHORT                  = "-r";
+
             public const string POSITIVE_LIST                    = "--positive-list";
             public const string POSITIVE_LIST_SHORT              = "-pl";
+
             public const string NEGATIVE_LIST                    = "--negative-list";
             public const string NEGATIVE_LIST_SHORT              = "-nl";
+
             public const string EXTENSIONS                       = "--extensions";
             public const string EXTENSIONS_SHORT                 = "-ext";
-            //public const string USE_CRC32_UPPERCASE            = "--use-CRC32";
-            //public const string USE_CRC64_UPPERCASE            = "--use-CRC64";
-            //public const string USE_MD5_UPPERCASE              = "--use-MD5";
-            //public const string USE_SHA1_UPPERCASE             = "--use-SHA1";
-            //public const string USE_SHA256_UPPERCASE           = "--use-SHA256";
-            //public const string USE_SHA512_UPPERCASE           = "--use-SHA512";
 
-            public const string USE_CRC32                        = "--use-crc32";
+            public const string USE_CRC32                        = "--crc32";
             //public const string USE_CRC64                      = "--use-crc64";
-            public const string USE_MD5                          = "--use-md5";
-            public const string USE_SHA1                         = "--use-sha1";
-            public const string USE_SHA256                       = "--use-sha256";
-            public const string USE_SHA512                       = "--use-sha512";
+            public const string USE_MD5                          = "--md5";
+            public const string USE_SHA1                         = "--sha1";
+            public const string USE_SHA256                       = "--sha256";
+            public const string USE_SHA512                       = "--sha512";
 
             public const string NO_HEADER                        = "--no-header";
             public const string NO_HEADER_SHORT                  = "-nh";
@@ -85,7 +93,7 @@ namespace ConsoleApp
             public const string DO_SAVE_SHORT                    = "-s";
             
             
-            public const string OUPUT_FORMAT_DFP                 = "--format-directory-fingerprint";
+            public const string OUPUT_FORMAT_DFP                 = "--format-dfp";
             public const string OUPUT_FORMAT_DFP_SHORT           = "-dfp";
 
             public const string OUPUT_FORMAT_XML                 = "--format-xml";
