@@ -36,7 +36,7 @@ namespace ConsoleApp.File
             string[] firstLineTokens = lines[0].Split(';', StringSplitOptions.RemoveEmptyEntries);
 
             DirectoryFingerprint dfp = CreateDFP(firstLineTokens);
-            dfp.MetaDatas = ParseMetaDatas(lines);
+            dfp.MetaDatas = ParseMetaDatas(lines).ToArray();
             return dfp;
         }
 
@@ -51,14 +51,15 @@ namespace ConsoleApp.File
             };
         }
 
-        private static MetaData[] ParseMetaDatas(string[] pLines)
+        private static List<MetaData> ParseMetaDatas(string[] pLines)
         {
-            var arr = new MetaData[pLines.Length - 1];
+            var list = new List<MetaData>();
 
             for (int i = 1; i < pLines.Length; i++)
-                arr[i - 1] = ParseMetaData(pLines[i]);
+                if (!string.IsNullOrWhiteSpace(pLines[i]))
+                    list.Add(ParseMetaData(pLines[i]));
 
-            return arr;
+            return list;
         }
 
 

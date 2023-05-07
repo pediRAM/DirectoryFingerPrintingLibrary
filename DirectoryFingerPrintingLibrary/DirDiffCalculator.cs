@@ -75,7 +75,7 @@ namespace DirectoryFingerPrinting
                         CheckString(fd, a.Version, b.Version, EDiffType.Version, "Versions");
 
                 if (Options.UseHashsum)
-                    CheckString(fd, a.Version, b.Version, EDiffType.Hash, "Hashsums");
+                    CheckString(fd, a.Hashsum, b.Hashsum, EDiffType.Hash, "Hashsums");
 
                 if (fd.Differences.Any())
                     fileDiffs.Add(fd);

@@ -39,26 +39,26 @@ internal class Program
         /*** Compare ***/
         // Compare dfp-file-1 against dfp-file-2:
         args = new[] { "-cf", 
-            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\A.json",
-            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\B.json",
+            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\A.csv",
+            @"H:\Github Repositories\DirectoryFingerPrinting\DirectoryFingerPrintingLibrary\ConsoleApp\bin\Debug\net6.0-windows\temp\B.csv",
             "--print-colored"
         };
 
         if (args.Length == 0)
         {
-            Exit(EErrorCode.NoParameters, ConsoleMessages.GetUsageText());
+            Exit(EErrorCode.NoParameters, ConsolePrinter.GetUsageText());
             return;
         }
 
         if (args[0] == "-v" || args[0] == "--version")
         {
-            Exit(EErrorCode.None, ConsoleMessages.GetVersionText());
+            Exit(EErrorCode.None, ConsolePrinter.GetVersionText());
             return;
         }
 
         if (args[0] == "/?" || args[0] == "-h" || args[0] == "--help")
         {
-            Exit(EErrorCode.None, ConsoleMessages.GetHelpText());
+            Exit(EErrorCode.None, ConsolePrinter.GetHelpText());
             return;
         }
 
@@ -154,7 +154,7 @@ internal class Program
         
         if (diffs != null)
         {
-            PrintDiffs(diffs, options);
+            ConsolePrinter.PrintDiffs(diffs, options);
             Exit(EErrorCode.None);
         }
         else
@@ -175,9 +175,9 @@ internal class Program
             }
 
             if (options.DoPrintFormatted)
-                PrintResult(options, metaDatas);
+                ConsolePrinter.PrintResult(options, metaDatas);
             else
-                PrintUnformattedResult(options, metaDatas);
+                ConsolePrinter.PrintUnformattedResult(options, metaDatas);
 
             if (options.DoSave)
             {
@@ -191,44 +191,6 @@ internal class Program
         }
     }
 
-    private static void PrintDiffs(IEnumerable<IFileDiff> diffs, ExtOptions pOptions)
-    {
-        foreach(var d in diffs)
-        {
-            var m = d.GetMostImportantDifference();
-            if (m.DiffType >= EDiffType.Enlarged)
-            {
-                if (pOptions.UseColor)
-                {
-                    Console.ForegroundColor = GetFGColor(m.DiffType);
-                }
-                Console.WriteLine($"{ToChar(m.DiffType)} {d.Path} ({m})");
-            }
-        }
-
-        if (pOptions.UseColor)
-            Console.ResetColor();
-    }
-
-    private static ConsoleColor GetFGColor(EDiffType diffType)
-    {
-        return diffType switch
-        {
-            EDiffType.Added => ConsoleColor.Blue,
-            EDiffType.Removed => ConsoleColor.Red,
-            _ => ConsoleColor.Yellow
-        };
-    }
-
-    private static char ToChar(EDiffType pDiffType)
-    {
-        return pDiffType switch
-        {
-            EDiffType.Added => '+',
-            EDiffType.Removed => '-',
-            _ => '~'
-        };
-    }
 
     private static bool ExitIfFileNotExists(string path)
     {
@@ -239,6 +201,8 @@ internal class Program
         }
         return true;
     }
+
+
     private static bool TrySaveResult(ExtOptions pOptions, IEnumerable<MetaData> pMetaDatas)
     {
         var dfp = new DirectoryFingerprint
@@ -259,78 +223,6 @@ internal class Program
         catch
         {
             return false;
-        }
-    }
-
-
-    private static void PrintUnformattedResult(Options pOptions, IEnumerable<IMetaData> pMetaDatas)
-    {
-        var columnsCaption = "Name;";
-        if (pOptions.UseCreation)         columnsCaption += "Created at;";
-        if (pOptions.UseLastModification) columnsCaption += "Modified at;";
-        if (pOptions.UseLastAccess)       columnsCaption += "Last Access at;";
-        if (pOptions.UseSize)             columnsCaption += "Size;";
-        if (pOptions.UseVersion)          columnsCaption += "Version;";
-        if (pOptions.UseHashsum)          columnsCaption += $"Hashsum ({pOptions.HashAlgo});";
-
-        Console.WriteLine(columnsCaption);
-
-        foreach (var md in pMetaDatas)
-        {
-            Console.Write($"{md.RelativePath};");
-            if (pOptions.UseCreation)            Console.Write($"{md.CreatedAt:yyyy-MM-dd HH:mm.ss};");
-            if (pOptions.UseLastModification)    Console.Write($"{md.ModifiedAt:yyyy-MM-dd HH:mm.ss};");
-            if (pOptions.UseLastAccess)          Console.Write($"{md.AccessedAt:yyyy-MM-dd HH:mm.ss};");
-            if (pOptions.UseSize)                Console.Write($"{md.Size};");
-
-            if (pOptions.UseVersion)
-            {
-                if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
-                    Console.Write($"{md.Version};");
-                else
-                    Console.Write(";");
-            }
-            if (pOptions.UseHashsum) Console.WriteLine($"{md.Hashsum};");
-        }
-    }
-    private static void PrintResult(Options pOptions, IEnumerable<IMetaData> pMetaDatas)
-    {
-        int maxLenPath      = Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
-        int maxLenVersion   = Math.Max(7, pMetaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
-        int maxLenSize      = Math.Max(5, (int)Math.Ceiling(Math.Log10(pMetaDatas.Max(m => m.Size))));
-        int maxLenHash      = Math.Max(15, pMetaDatas.FirstOrDefault().Hashsum.Length);
-
-        var columnsCaption = $" {"Name".PadRight(maxLenPath)} ";
-        if (pOptions.UseCreation)         columnsCaption +=  "| Created at          ";
-        if (pOptions.UseLastModification) columnsCaption +=  "| Modified at         ";
-        if (pOptions.UseLastAccess)       columnsCaption +=  "| Last Access at      ";
-        if (pOptions.UseSize)             columnsCaption += $"| {"Size".PadRight(maxLenSize)} ";
-        if (pOptions.UseVersion)          columnsCaption += $"| {"Version".PadRight(maxLenVersion)} ";
-        if (pOptions.UseHashsum)          columnsCaption += $"| Hashsum ({pOptions.HashAlgo})";
-
-        int lineNettoLen = columnsCaption.Length - pOptions.HashAlgo.ToString().Length - 10;
-        var line = new string('-', Math.Max(columnsCaption.Length, lineNettoLen + maxLenHash));
-
-        Console.WriteLine(line);
-        Console.WriteLine(columnsCaption);
-        Console.WriteLine(line);
-
-        foreach (var md in pMetaDatas)
-        {
-            Console.Write($" {md.RelativePath.PadRight(maxLenPath)} ");
-            if (pOptions.UseCreation)         Console.Write($"| {md.CreatedAt:yyyy-MM-dd HH:mm.ss} ");
-            if (pOptions.UseLastModification) Console.Write($"| {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} ");
-            if (pOptions.UseLastAccess)       Console.Write($"| {md.AccessedAt:yyyy-MM-dd HH:mm.ss} ");
-            if (pOptions.UseSize)             Console.Write($"| {md.Size.ToString().PadRight(maxLenSize)} ");
-
-            if (pOptions.UseVersion)
-            {
-                if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
-                    Console.Write($"| {md.Version.PadRight(maxLenVersion)} ");
-                else
-                    Console.Write($"| {"".PadRight(maxLenVersion)} ");
-            }
-            if (pOptions.UseHashsum) Console.WriteLine($"| {md.Hashsum}");
         }
     }
 
