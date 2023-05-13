@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<!-- saved from url=(0011)about:blank -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    
+    <!--<base href="http://browsing-file-host/">--><base href=".">
+    <style>
+        html, body {margin: 20px; padding-bottom:10px}
+        /* From https://github.com/sindresorhus/github-markdown-css */
+
+.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:#24292f;background-color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none !important}
+.markdown-body a{background-color:transparent;color:#0969da;text-decoration:none}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body abbrMarkdown Preview{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:600}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:600;padding-bottom:.3em;font-size:2em;border-bottom:1px solid hsla(210,18%,87%,1)}.markdown-body mark{background-color:#fff8c5;color:#24292f}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace,monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid hsla(210,18%,87%,1);height:.25em;padding:0;margin:24px 0;background-color:#d0d7de;border:0}
+.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=button]::-moz-focus-inner,.markdown-body [type=reset]::-moz-focus-inner,.markdown-body [type=submit]::-moz-focus-inner{border-style:none;padding:0}.markdown-body [type=button]:-moz-focusring,.markdown-body [type=reset]:-moz-focusring,.markdown-body [type=submit]:-moz-focusring{outline:1px dotted ButtonText}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]{-webkit-appearance:textfield;outline-offset:-2px}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}
+.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body hr:before{display:table;content:""}.markdown-body hr:after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>*:not(summary){display:none !important}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:#24292f;vertical-align:middle;background-color:#f6f8fa;border:solid 1px rgba(175,184,193,.2);border-bottom-color:rgba(175,184,193,.2);border-radius:6px;box-shadow:inset 0 -1px 0 rgba(175,184,193,.2)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}
+.markdown-body h2{font-weight:600;padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid hsla(210,18%,87%,1)}.markdown-body h3{font-weight:600;font-size:1.25em}.markdown-body h4{font-weight:600;font-size:1em}.markdown-body h5{font-weight:600;font-size:.875em}.markdown-body h6{font-weight:600;font-size:.85em;color:#57606a}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body ul {list-style:disc}.markdown-body ul,.markdown-body ol{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ul ul ol,.markdown-body ul ol ol,.markdown-body ol ul ol,.markdown-body ol ol ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body tt,.markdown-body code{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}
+.markdown-body .octicon{display:inline-block;overflow:visible !important;vertical-align:text-bottom;fill:currentColor}.markdown-body ::placeholder{color:#6e7781;opacity:1}.markdown-body input::-webkit-outer-spin-button,.markdown-body input::-webkit-inner-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body .pl-c{color:#6e7781}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:#0550ae}.markdown-body .pl-e,.markdown-body .pl-en{color:#8250df}.markdown-body .pl-smi,.markdown-body .pl-s .pl-s1{color:#24292f}.markdown-body .pl-ent{color:#116329}.markdown-body .pl-k{color:#cf222e}.markdown-body .pl-s,.markdown-body .pl-pds,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sre,.markdown-body .pl-sr .pl-sra{color:#0a3069}.markdown-body .pl-v,.markdown-body .pl-smw{color:#953800}.markdown-body .pl-bu{color:#82071e}.markdown-body .pl-ii{color:#f6f8fa;background-color:#82071e}.markdown-body .pl-c2{color:#f6f8fa;background-color:#cf222e}
+.markdown-body .pl-sr .pl-cce{font-weight:700;color:#116329}.markdown-body .pl-ml{color:#3b2300}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:#0550ae}.markdown-body .pl-mi{font-style:italic;color:#24292f}.markdown-body .pl-mb{font-weight:700;color:#24292f}.markdown-body .pl-md{color:#82071e;background-color:#ffebe9}.markdown-body .pl-mi1{color:#116329;background-color:#dafbe1}.markdown-body .pl-mc{color:#953800;background-color:#ffd8b5}.markdown-body .pl-mi2{color:#eaeef2;background-color:#0550ae}.markdown-body .pl-mdr{font-weight:700;color:#8250df}.markdown-body .pl-ba{color:#57606a}.markdown-body .pl-sg{color:#8c959f}.markdown-body .pl-corl{text-decoration:underline;color:#0a3069}.markdown-body [data-catalyst]{display:block}.markdown-body g-emoji{font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal !important;font-weight:400;line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}
+.markdown-body:before{display:table;content:""}.markdown-body:after{display:table;clear:both;content:""}.markdown-body>*:first-child{margin-top:0 !important}.markdown-body>*:last-child{margin-bottom:0 !important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#cf222e}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre,.markdown-body details{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body sup>a:before{content:"["}.markdown-body sup>a:after{content:"]"}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#24292f;vertical-align:middle;visibility:hidden}
+.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{padding:0 .2em;font-size:inherit}.markdown-body ul.no-list,.markdown-body ol.no-list{padding:0;list-style-type:none}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body ol[type=a]{list-style-type:lower-alpha}
+.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:600}.markdown-body table th,.markdown-body table td{padding:6px 13px;border:1px solid #d0d7de}.markdown-body table tr{background-color:#fff;border-top:1px solid hsla(210,18%,87%,1)}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}
+.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #d0d7de}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#24292f}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}
+.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;background-color:rgba(175,184,193,.2);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}
+.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:600;background:#f6f8fa;border-top:0}.markdown-body .footnotes{font-size:12px;color:#57606a;border-top:1px solid #d0d7de}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target:before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid #0969da;border-radius:6px}.markdown-body .footnotes li:target{color:#24292f}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:400}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.6em;vertical-align:middle}
+.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}/* PrismJS 1.25.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+basic+c+csharp+cpp+clojure+dart+docker+fsharp+go+graphql+java+json+kotlin+markdown+markup-templating+perl+php+powershell+protobuf+python+qsharp+r+cshtml+ruby+rust+scss+sql+typescript+vbnet+visual-basic+yaml */
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+    </style>
+    <title>Markdown Preview</title>
+    <meta http-equiv="cache-control" content="no-cache">
+</head>
+<body>
+
+    
+    <div id="___markdown-content___" class="markdown-body"><h1 id="what-is-directory-fingerprinting-dfp"><a id="pragma-line-0"></a>What is Directory FingerPrinting (DFP)?</h1>
+<p id="pragma-line-1">A fingerprint of a directory is same as hash/checkusm of a file, but for a directory.<br>
+<em><strong>dfp.exe</strong></em> reads versions, timestamps and calculates
+checksums for each file in that directory, like this (simplified):</p>
+<pre><code id="pragma-line-4">---------------------------------------------------------------------------------------------------------------------
+ Name                        | Modified at         | Size   | Version      | Hashsum (SHA1)
+---------------------------------------------------------------------------------------------------------------------
+ dfp.dll                     | 2023-05-13 18:08.55 | 51200  | 1.0.0        | 3864f1fdb50cecc06f9603f68f0523232c21ab97
+ dfp.exe                     | 2023-05-13 18:08.55 | 147968 | 1.0.0        | 610584184e2d64769d2e77dcff53e5b0b8966e8e
+ DirectoryFingerPrinting.dll | 2023-05-13 18:08.54 | 28160  | 1.0.0.0      | 8d8f029d9a43b2993377f8658c296d3cc32e29cf
+ System.IO.Hashing.dll       | 2022-10-18 16:34.48 | 31360  | 7.0.22.51805 | 8edf3a7714ed9971396b87b8f057656f0b2c38f4
+</code></pre>
+<p id="pragma-line-13">First you save the fingerprint of your directory. Later you can run <em><strong>dfp.exe</strong></em> to compare the fingerprint file
+whith the content of your directory now. And so, you can check if something has changed (or not), and if what
+exactly, like this:</p>
+<pre><code id="pragma-line-16">- File2.txt (File removed)
+- Sub_Dir\File4.txt (File removed)
+~ Sub_Dir\File6.txt (Hashsums differs)
++ File3.txt (File added)
++ Sub_Dir\File5.txt (File added)
+</code></pre>
+<h1 id="what-can-you-do-with-dfp.exe-application"><a id="pragma-line-24"></a>What can you do with dfp.exe application?</h1>
+<p id="pragma-line-25">With dfp you can:</p>
+<ol type="A" id="pragma-line-26">
+<li id="pragma-line-26"><em><strong>Calculate</strong></em> and <em><strong>save</strong></em> the fingerprint of a directory or</li>
+<li id="pragma-line-27"><em><strong>Compare</strong></em> and <em><strong>show</strong></em> the <em><strong>differencies</strong></em> between:</li>
+</ol>
+<ul id="pragma-line-28">
+<li id="pragma-line-28">two directories or</li>
+<li id="pragma-line-29">two fingerprint files or</li>
+<li id="pragma-line-30">a fingerprint file against a directory</li>
+</ul>
+<h1 id="how-to-use-dfp.exe"><a id="pragma-line-32"></a>How to use dfp.exe</h1>
+<p id="pragma-line-33">Used abbreviations in this document:</p>
+<ul id="pragma-line-34">
+<li id="pragma-line-34"><em>DFP</em> = Directory FingerPrint</li>
+<li id="pragma-line-35"><em>FP</em> = FingerPrint</li>
+<li id="pragma-line-36"><em>FPF</em> = FingerPrint File</li>
+</ul>
+<h1 id="usage"><a id="pragma-line-39"></a>1. Usage:</h1>
+<p id="pragma-line-40">Call <em><strong>dfp.exe</strong></em> in console as follow:</p>
+<p id="pragma-line-42"><strong>dfp</strong> ( (<strong>HELP</strong> | <strong>VERSION</strong>) | (<strong>CACLULATE</strong> | <strong>COMPARE</strong> ) [<strong>OPTIONS</strong>]+) )</p>
+<h1 id="help"><a id="pragma-line-45"></a>2. Help:</h1>
+<table id="pragma-line-46">
+<thead>
+<tr id="pragma-line-46">
+<th id="pragma-line-46">PARAMETER:</th>
+<th id="pragma-line-46">SHORT:</th>
+<th id="pragma-line-46">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-48">
+<td id="pragma-line-48">--help</td>
+<td id="pragma-line-48">-h or /?</td>
+<td id="pragma-line-48">Shows this help text.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="version"><a id="pragma-line-50"></a>3. Version:</h1>
+<table id="pragma-line-51">
+<thead>
+<tr id="pragma-line-51">
+<th id="pragma-line-51">PARAMETER:</th>
+<th id="pragma-line-51">SHORT:</th>
+<th id="pragma-line-51">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-53">
+<td id="pragma-line-53">--version</td>
+<td id="pragma-line-53">-v</td>
+<td id="pragma-line-53">Shows version and copyright information.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="calculation"><a id="pragma-line-55"></a>4. Calculation:</h1>
+<h2 id="filter-options"><a id="pragma-line-56"></a>4.1 Filter Options:</h2>
+<table id="pragma-line-57">
+<thead>
+<tr id="pragma-line-57">
+<th id="pragma-line-57">PARAMETER:</th>
+<th id="pragma-line-57">SHORT:</th>
+<th id="pragma-line-57">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-59">
+<td id="pragma-line-59">--directory</td>
+<td id="pragma-line-59">-d</td>
+<td id="pragma-line-59">Base directory for calculating fingerprints.</td>
+</tr>
+<tr id="pragma-line-60">
+<td id="pragma-line-60">--recursive</td>
+<td id="pragma-line-60">-r</td>
+<td id="pragma-line-60">Search recursive.</td>
+</tr>
+<tr id="pragma-line-61">
+<td id="pragma-line-61">--assemblies-only</td>
+<td id="pragma-line-61">-ao</td>
+<td id="pragma-line-61">Processes only *.dll and *.exe files (anything else will be ignored).</td>
+</tr>
+<tr id="pragma-line-62">
+<td id="pragma-line-62">--ignore-hidden-files</td>
+<td id="pragma-line-62">-ihf</td>
+<td id="pragma-line-62">Ignore hidden files.</td>
+</tr>
+<tr id="pragma-line-63">
+<td id="pragma-line-63">--ignore-access-errors</td>
+<td id="pragma-line-63">-iae</td>
+<td id="pragma-line-63">Ignore access violation errors.</td>
+</tr>
+<tr id="pragma-line-64">
+<td id="pragma-line-64">--extensions</td>
+<td id="pragma-line-64">-x</td>
+<td id="pragma-line-64">List of extensions (read <em><strong>EXTENSION_LIST</strong></em> in section <em><strong>6</strong></em>!).</td>
+</tr>
+<tr id="pragma-line-65">
+<td id="pragma-line-65">--positive-list</td>
+<td id="pragma-line-65">-p</td>
+<td id="pragma-line-65"><em><strong>EXTENSION_LIST</strong></em> is <em><strong>positive</strong></em> list (files will be <em><strong>included</strong></em>).</td>
+</tr>
+<tr id="pragma-line-66">
+<td id="pragma-line-66">--negative-list</td>
+<td id="pragma-line-66">-n</td>
+<td id="pragma-line-66"><em><strong>EXTENSION_LIST</strong></em> is <em><strong>negative</strong></em> list (files will be <em><strong>excluded</strong></em>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hashchecksum-options"><a id="pragma-line-68"></a>4.2 Hash/Checksum Options:</h2>
+<table id="pragma-line-69">
+<thead>
+<tr id="pragma-line-69">
+<th id="pragma-line-69">PARAMETER:</th>
+<th id="pragma-line-69">SHORT:</th>
+<th id="pragma-line-69">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-71">
+<td id="pragma-line-71">--use-crc32</td>
+<td id="pragma-line-71">-crc32</td>
+<td id="pragma-line-71">CRC32.</td>
+</tr>
+<tr id="pragma-line-72">
+<td id="pragma-line-72">--use-md5</td>
+<td id="pragma-line-72">-md5</td>
+<td id="pragma-line-72">MD5.</td>
+</tr>
+<tr id="pragma-line-73">
+<td id="pragma-line-73">--use-sha1</td>
+<td id="pragma-line-73">-sha1</td>
+<td id="pragma-line-73">SHA1 <em><strong>(DEFAULT)</strong></em>.</td>
+</tr>
+<tr id="pragma-line-74">
+<td id="pragma-line-74">--use-sha256</td>
+<td id="pragma-line-74">-sha256</td>
+<td id="pragma-line-74">SHA256.</td>
+</tr>
+<tr id="pragma-line-75">
+<td id="pragma-line-75">--use-sha512</td>
+<td id="pragma-line-75">-sha512</td>
+<td id="pragma-line-75">SHA512.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="report-level-options"><a id="pragma-line-77"></a>4.3 Report Level Options:</h2>
+<table id="pragma-line-78">
+<thead>
+<tr id="pragma-line-78">
+<th id="pragma-line-78">PARAMETER:</th>
+<th id="pragma-line-78">SHORT:</th>
+<th id="pragma-line-78">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-80">
+<td id="pragma-line-80">--report-essential</td>
+<td id="pragma-line-80">-re</td>
+<td id="pragma-line-80">Prints only +/-/~ and filename.</td>
+</tr>
+<tr id="pragma-line-81">
+<td id="pragma-line-81">--report-informative</td>
+<td id="pragma-line-81">-ri</td>
+<td id="pragma-line-81">Prints essential with matter of change (human friendly).</td>
+</tr>
+<tr id="pragma-line-82">
+<td id="pragma-line-82">--report-verbose</td>
+<td id="pragma-line-82">-rv</td>
+<td id="pragma-line-82">Prints everything.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="display-options"><a id="pragma-line-84"></a>4.4 Display Options:</h2>
+<table id="pragma-line-85">
+<thead>
+<tr id="pragma-line-85">
+<th id="pragma-line-85">PARAMETER:</th>
+<th id="pragma-line-85">SHORT:</th>
+<th id="pragma-line-85">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-87">
+<td id="pragma-line-87">--print-colored</td>
+<td id="pragma-line-87">-pc</td>
+<td id="pragma-line-87">Prints result in colors (red = removed, blue = added, yellow = changed).</td>
+</tr>
+<tr id="pragma-line-88">
+<td id="pragma-line-88">--no-header</td>
+<td id="pragma-line-88">-nh</td>
+<td id="pragma-line-88">No header will be printed.</td>
+</tr>
+<tr id="pragma-line-89">
+<td id="pragma-line-89">--no-format</td>
+<td id="pragma-line-89">-nf</td>
+<td id="pragma-line-89">Prints unformatted DFP.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="save-options"><a id="pragma-line-91"></a>4.5 Save Options:</h2>
+<table id="pragma-line-92">
+<thead>
+<tr id="pragma-line-92">
+<th id="pragma-line-92">PARAMETER:</th>
+<th id="pragma-line-92">SHORT:</th>
+<th id="pragma-line-92">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-94">
+<td id="pragma-line-94">--save</td>
+<td id="pragma-line-94">-s</td>
+<td id="pragma-line-94">Saves calculated fingerprint to file (read section <em><strong>7.1</strong></em>!).</td>
+</tr>
+<tr id="pragma-line-95">
+<td id="pragma-line-95">--format-dfp</td>
+<td id="pragma-line-95">-dfp</td>
+<td id="pragma-line-95">*.dfp <em><strong>(DEFAULT)</strong></em></td>
+</tr>
+<tr id="pragma-line-96">
+<td id="pragma-line-96">--format-xml</td>
+<td id="pragma-line-96">-xml</td>
+<td id="pragma-line-96">*.xml</td>
+</tr>
+<tr id="pragma-line-97">
+<td id="pragma-line-97">--format-json</td>
+<td id="pragma-line-97">-json</td>
+<td id="pragma-line-97">*.json</td>
+</tr>
+<tr id="pragma-line-98">
+<td id="pragma-line-98">--format-csv</td>
+<td id="pragma-line-98">-csv</td>
+<td id="pragma-line-98">*.csv (separated with ';').</td>
+</tr>
+</tbody>
+</table>
+<h1 id="compare"><a id="pragma-line-100"></a>5. Compare:</h1>
+<h2 id="type-of-comparison"><a id="pragma-line-101"></a>5.1 Type of Comparison:</h2>
+<table id="pragma-line-102">
+<thead>
+<tr id="pragma-line-102">
+<th id="pragma-line-102">PARAMETER:</th>
+<th id="pragma-line-102">SHORT:</th>
+<th id="pragma-line-102">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-104">
+<td id="pragma-line-104">--compare-directories</td>
+<td id="pragma-line-104">-cd</td>
+<td id="pragma-line-104">Compares two directories.</td>
+</tr>
+<tr id="pragma-line-105">
+<td id="pragma-line-105">--compare-fingerprints</td>
+<td id="pragma-line-105">-cf</td>
+<td id="pragma-line-105">Compares two FPFs.</td>
+</tr>
+<tr id="pragma-line-106">
+<td id="pragma-line-106">--compare</td>
+<td id="pragma-line-106">-c</td>
+<td id="pragma-line-106">Compares a FPF against a directory.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ignore-options"><a id="pragma-line-108"></a>5.2 Ignore Options:</h2>
+<table id="pragma-line-109">
+<thead>
+<tr id="pragma-line-109">
+<th id="pragma-line-109">PARAMETER:</th>
+<th id="pragma-line-109">SHORT:</th>
+<th id="pragma-line-109">DESCRIPTION:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-111">
+<td id="pragma-line-111">--ignore-case</td>
+<td id="pragma-line-111">-ic</td>
+<td id="pragma-line-111">Compares filenames case insensitive.</td>
+</tr>
+<tr id="pragma-line-112">
+<td id="pragma-line-112">--ignore-timestamps</td>
+<td id="pragma-line-112">-its</td>
+<td id="pragma-line-112">Ignores all timestamps of files.</td>
+</tr>
+<tr id="pragma-line-113">
+<td id="pragma-line-113">--ignore-creation-date</td>
+<td id="pragma-line-113">-icd</td>
+<td id="pragma-line-113">Ignores created-at-timestamp.</td>
+</tr>
+<tr id="pragma-line-114">
+<td id="pragma-line-114">--ignore-last-modification</td>
+<td id="pragma-line-114">-ilm</td>
+<td id="pragma-line-114">Ignores last-modification-at-timestamp.</td>
+</tr>
+<tr id="pragma-line-115">
+<td id="pragma-line-115">--ignore-last-access</td>
+<td id="pragma-line-115">-ila</td>
+<td id="pragma-line-115">Ignores last-access-timestamp.</td>
+</tr>
+<tr id="pragma-line-116">
+<td id="pragma-line-116">--ignore-size</td>
+<td id="pragma-line-116">-is</td>
+<td id="pragma-line-116">Ignores filesizes (in bytes).</td>
+</tr>
+<tr id="pragma-line-117">
+<td id="pragma-line-117">--ignore-version</td>
+<td id="pragma-line-117">-iv</td>
+<td id="pragma-line-117">Ignores versions (only *.dll and *.exe files!).</td>
+</tr>
+<tr id="pragma-line-118">
+<td id="pragma-line-118">--ignore-hashsum</td>
+<td id="pragma-line-118">-ihs</td>
+<td id="pragma-line-118">Ignores hashsums.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="extensions-list"><a id="pragma-line-120"></a>6. Extensions List:</h1>
+<p id="pragma-line-121">Single- or double-quoted list of separated file-extensions, without asterisk ('*') and/or dot ('<strong>.</strong>'), like:\</p>
+<ul id="pragma-line-122">
+<li id="pragma-line-122"><strong>'dll exe xml'</strong> or <strong>'dll,exe,xml'</strong> or <strong>'dll;exe;xml'</strong><br>
+or</li>
+<li id="pragma-line-124"><strong>"dll exe xml"</strong> or <strong>"dll,exe,xml"</strong> or <strong>"dll;exe;xml"</strong></li>
+</ul>
+<h2 id="delimetersseparators"><a id="pragma-line-126"></a>6.1 Delimeters/Separators:</h2>
+<p id="pragma-line-127">You can separate the extensions with following delimeters:</p>
+<ul id="pragma-line-128">
+<li id="pragma-line-128">Semicolorn ('<strong>;</strong>')</li>
+<li id="pragma-line-129">Comma ('<strong>,</strong>')</li>
+<li id="pragma-line-130">Space (' ')</li>
+</ul>
+<h2 id="example"><a id="pragma-line-132"></a>6.2 Example:</h2>
+<p id="pragma-line-133">"config,dll,exe" or "config;dll;exe" or "config dll exe".</p>
+<h1 id="filenames"><a id="pragma-line-135"></a>7. Filenames:</h1>
+<h2 id="filename-formats-of-saved-fingerprint-files"><a id="pragma-line-136"></a>7.1 Filename formats of saved fingerprint files:</h2>
+<p id="pragma-line-137"><em><strong>yyyy-MM-dd_HH.mm.ss.</strong></em> (<em><strong>csv</strong></em> | <em><strong>dfp</strong></em> | <em><strong>json</strong></em> | <em><strong>xml</strong></em>)</p>
+<h2 id="examples"><a id="pragma-line-138"></a>7.2 EXAMPLES:</h2>
+<pre><code id="pragma-line-139">2023-08-15_00.00.00.csv
+2023-09-11_08.46.11.dfp
+2023-12-31_23.59.59.xml
+</code></pre>
+<h1 id="usage-examples"><a id="pragma-line-145"></a>8. Usage Examples</h1>
+<h2 id="calculation-1"><a id="pragma-line-146"></a>8.1 Calculation</h2>
+<h3 id="show-fp-of-only-toplevel-files-in-current-directory"><a id="pragma-line-147"></a>Show FP of only toplevel files in current directory:</h3>
+<pre class=" language-cmd"><code id="pragma-line-148" class=" language-cmd">dfp --directory .\
+dfp -d .\
+</code></pre>
+<h3 id="process-only-assemblies-will-ignore-anything-else-than.dll.exe"><a id="pragma-line-153"></a>Process only assemblies (will ignore anything else than *.dll, *.exe):</h3>
+<pre class=" language-cmd"><code id="pragma-line-154" class=" language-cmd">dfp --directory .\ --assembly-only
+dfp -d .\ -ao
+</code></pre>
+<h3 id="process-only.json.txt.xml-and.yaml-files"><a id="pragma-line-159"></a>Process only *.json, *.txt, *.xml and *.yaml files:</h3>
+<pre class=" language-cmd"><code id="pragma-line-160" class=" language-cmd">dfp --directory .\ --positive-list --extensions "json,txt,xml,yaml"
+dfp -d .\ -p -x "json,txt,xml,yaml"
+</code></pre>
+<h3 id="ignore.log-and.ini-and-hidden-files"><a id="pragma-line-165"></a>Ignore *.log and *.ini and hidden files:</h3>
+<pre class=" language-cmd"><code id="pragma-line-166" class=" language-cmd">dfp --directory .\ --negative-list -extensions "log,md" --ignore-hidded-files
+dfp -d .\ -n -x "log,md" -ihf
+</code></pre>
+<h3 id="show-use-sha256-algorithm-dont-show-header"><a id="pragma-line-171"></a>Show use SHA256 algorithm, don't show header:</h3>
+<pre class=" language-cmd"><code id="pragma-line-172" class=" language-cmd">dfp --directory .\ --use-sha256 --no-header
+dfp -d .\ -sha256 -nh
+</code></pre>
+<h3 id="show-fp-for-all-files-recursive-in-cmydir"><a id="pragma-line-177"></a>Show FP for all files (recursive) in C:\MyDir:</h3>
+<pre class=" language-cmd"><code id="pragma-line-178" class=" language-cmd">dfp --directory "C:\MyDir" --recursive
+dfp -d "C:\MyDir" -r
+</code></pre>
+<h3 id="save-fpf-as.dfp-into-cmydfp-filestest"><a id="pragma-line-183"></a>Save FPF as *.dfp into 'C:\MyDFP Files\Test':</h3>
+<pre class=" language-cmd"><code id="pragma-line-184" class=" language-cmd">dfp --directory "C:\MyDir" --recursive --save "C:\MyDFP Files\Test"
+dfp -d "C:\MyDir" -r -s "C:\MyDFP Files\Test"
+</code></pre>
+<h3 id="save-fpf-as.csv-into-cmydfp-filestest"><a id="pragma-line-189"></a>Save FPF as *.csv into 'C:\MyDFP Files\Test':</h3>
+<pre class=" language-cmd"><code id="pragma-line-190" class=" language-cmd">dfp --directory "C:\MyDir" --recursive --save "C:\MyDFP Files\Test" --format-csv
+dfp -d "C:\MyDir" -r -s "C:\MyDFP Files\Test" -csv
+</code></pre>
+<h2 id="compare-1"><a id="pragma-line-195"></a>8.2 Compare:</h2>
+<h3 id="compare-directories-cmydir1-to-cmydir2-and-print-result-in-color"><a id="pragma-line-196"></a>Compare directories "C:\MyDir1" to "C:\MyDir2" and print result in color:</h3>
+<pre class=" language-cmd"><code id="pragma-line-197" class=" language-cmd">dfp --compare-directories "C:\MyDir1" "C:\MyDir2" --print-colored
+dfp -cd "C:\MyDir1" "C:\MyDir2" -pc
+</code></pre>
+<h3 id="compare-two-fpfs-with-different-formats-and-print-verbose-result"><a id="pragma-line-202"></a>Compare two FPFs with different formats and print verbose result:</h3>
+<pre class=" language-cmd"><code id="pragma-line-203" class=" language-cmd">dfp --compare-fingerprints "temp\fingerprint1.dfp" "temp\fingerprint2.json" --report-verbose
+dfp -cf "temp\fingerprint1.dfp" "temp\fingerprint2.json" -rv
+</code></pre>
+<h3 id="compare-fpf-tempfingerprint.dfp-with-directory-cmydir-but-ignore-file-timestamps"><a id="pragma-line-208"></a>Compare FPF 'temp\fingerprint.dfp' with directory C:\MyDir but ignore file timestamps:</h3>
+<pre class=" language-cmd"><code id="pragma-line-209" class=" language-cmd">dfp --compare "temp\fingerprint.dfp" "C:\MyDir" --ignore-timestamps
+dfp -c "temp\fingerprint.dfp" "C:\MyDir" -its
+</code></pre>
+<h2 id="error-codes"><a id="pragma-line-214"></a>8.3 Error Codes</h2>
+<p id="pragma-line-215">Following codes are returend (%errorlevel%) after <em><strong>dfp.exe</strong></em> call:</p>
+<table id="pragma-line-217">
+<thead>
+<tr id="pragma-line-217">
+<th id="pragma-line-217">CODE:</th>
+<th id="pragma-line-217">MEANING:</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pragma-line-219">
+<td id="pragma-line-219">0</td>
+<td id="pragma-line-219">OK (no error).</td>
+</tr>
+<tr id="pragma-line-220">
+<td id="pragma-line-220">1</td>
+<td id="pragma-line-220">No parameters.</td>
+</tr>
+<tr id="pragma-line-221">
+<td id="pragma-line-221">2</td>
+<td id="pragma-line-221">Missing parameter.</td>
+</tr>
+<tr id="pragma-line-222">
+<td id="pragma-line-222">3</td>
+<td id="pragma-line-222">Unknown parameter.</td>
+</tr>
+<tr id="pragma-line-223">
+<td id="pragma-line-223">4</td>
+<td id="pragma-line-223">Internal error.</td>
+</tr>
+<tr id="pragma-line-224">
+<td id="pragma-line-224">5</td>
+<td id="pragma-line-224">Illegal value.</td>
+</tr>
+<tr id="pragma-line-225">
+<td id="pragma-line-225">6</td>
+<td id="pragma-line-225">Single parameter.</td>
+</tr>
+<tr id="pragma-line-226">
+<td id="pragma-line-226">7</td>
+<td id="pragma-line-226">File already exists.</td>
+</tr>
+<tr id="pragma-line-227">
+<td id="pragma-line-227">8</td>
+<td id="pragma-line-227">Writing fingerprint file failed.</td>
+</tr>
+<tr id="pragma-line-228">
+<td id="pragma-line-228">9</td>
+<td id="pragma-line-228">File not found.</td>
+</tr>
+<tr id="pragma-line-229">
+<td id="pragma-line-229">10</td>
+<td id="pragma-line-229">Directory not found.</td>
+</tr>
+<tr id="pragma-line-230">
+<td id="pragma-line-230">11</td>
+<td id="pragma-line-230">Calculate, save and compare at once is not provided.</td>
+</tr>
+<tr id="pragma-line-231">
+<td id="pragma-line-231">12</td>
+<td id="pragma-line-231">Illegal/Unknown fingerprint file extension.</td>
+</tr>
+<tr id="pragma-line-232">
+<td id="pragma-line-232">13</td>
+<td id="pragma-line-232">Unequal hashsum algorithms.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    <script src="http://markdown-editor-host/margin/prism.js"></script>
+    <script src="http://markdown-editor-host/margin/mermaid.min.js"></script>
+    <!--<script src="http://markdown-editor-host/margin/mathjax.js"></script>-->
+    <script>
+        mermaid.initialize({ 'securityLevel': 'loose', 'theme': 'forest', startOnLoad: true, flowchart: { htmlLabels: false } });
+    </script>
+    
+
+</body></html>
