@@ -186,8 +186,7 @@ B) Compare and show differencies between:
     - two fingerprint files or
     - a fingerprint file against a directory
 
-Abbreviations:
-  DEF = Default
+Used abbreviations:
   DFP = Directory FingerPrint
   FP  = FingerPrint
   FPF = FingerPrint File
@@ -216,7 +215,7 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
   4.2 HASHSUM OPTIONS:         SHORT:
     --use-crc32                | -crc32 .. CRC32.
     --use-md5                  | -md5 .... MD5.
-    --use-sha1                 | -sha1 ... SHA1 (DEF).
+    --use-sha1                 | -sha1 ... SHA1 (DEFAULT).
     --use-sha256               | -sha256 . SHA256.
     --use-sha512               | -sha512 . SHA512.
 
@@ -232,7 +231,7 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
 
   4.5 SAVE OPTIONS:            SHORT:
     --save                     | -s ...... Saves calculated fingerprint to file (see section 7.1!).
-    --format-dfp               | -dfp..... *.dfp (DEF)
+    --format-dfp               | -dfp..... *.dfp (DEFAULT)
     --format-xml               | -xml .... *.xml
     --format-json              | -json ... *.json
     --format-csv               | -csv .... *.csv (separated with ';').
@@ -294,7 +293,7 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
       dfp --directory ""C:\MyDir"" --recursive
       dfp -d ""C:\MyDir"" -r
 
-    - Save FPF as *.dfp (DEF) into 'C:\MyDFP Files\Test'
+    - Save FPF as *.dfp (DEFAULT) into 'C:\MyDFP Files\Test'
       dfp --directory ""C:\MyDir"" --recursive --save ""C:\MyDFP Files\Test""
       dfp -d ""C:\MyDir"" -r -s ""C:\MyDFP Files\Test""
 
