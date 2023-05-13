@@ -24,7 +24,6 @@ namespace ConsoleApp
 {
 
     using DirectoryFingerPrinting.API;
-    using DirectoryFingerPrinting.Models;
 
     internal static class ConsolePrinter
     {

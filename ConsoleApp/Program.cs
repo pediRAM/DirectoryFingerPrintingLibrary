@@ -52,8 +52,7 @@ internal class Program
             return;
         }
 
-        ExtOptions options;
-        if (!ArgumentParser.TryParse(args, out options, out EErrorCode pErrorcode, out string pErrorMsg))
+        if (!ArgumentParser.TryParse(args, out ExtOptions options, out EErrorCode pErrorcode, out string pErrorMsg))
         {
             Exit(pErrorcode, pErrorMsg);
             return;
