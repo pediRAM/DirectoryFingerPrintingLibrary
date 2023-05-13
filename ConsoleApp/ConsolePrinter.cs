@@ -1,28 +1,25 @@
-﻿/****************************************************************************************************************
-* DirectoryFingerPrintingLibrary is a free and open source API for creating metadata with checksums/hashsums    *
-* of directory content, used to compare, diff-building, security monitoring and more.                           *
-* Copyright (C) 2023 Free Software Foundation, Inc.                                                             *
-*                                                                                                               *
-* This file is part of DirectoryFingerPrintingLibrary.                                                          *
-*                                                                                                               *
-* DirectoryFingerPrintingLibrary is free software: you can redistribute it and/or modify it under the terms of  *
-* the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, *
-* or any later version.                                                                                         *
-*                                                                                                               *
-* DirectoryFingerPrintingLibrary is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;   *
-* without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                     *
-* See the GNU General Public License for more details.                                                          *
-*                                                                                                               *
-* You should have received a copy of the GNU General Public License along with DirectoryFingerPrintingLibrary.  *
-* If not, see <https://www.gnu.org/licenses/>.                                                                  *
-*                                                                                                               *
-* Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.             *
-*****************************************************************************************************************/
+﻿/*
+DirectoryFingerPrinting (DFP) is a free and open source API plus application for creating checksums/hashsums
+of directory content, used to compare, diff-building, security monitoring and more.
+Copyright (C) 2023 Pedram GANJEH HADIDI
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 
 namespace ConsoleApp
 {
-
     using DirectoryFingerPrinting.API;
 
     internal static class ConsolePrinter
@@ -166,30 +163,33 @@ Try 'dfp --help' for more information.";
         }
         internal static string GetVersionText()
         {
-            return @"dfp (directory fingerprinting) 1.0.0-beta
-Copyright (C) 2023 Free Software Foundation, Inc.
+            return @"
+**********************************************************
+*** Directory FingerPrinting (dfp) version: 1.0.0-beta ***
+**********************************************************
+Copyright (C) 2023 Pedram GANJEH HADIDI.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
-
-Written by Pedram GANJEH HADIDI, see <https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.";
+Written by Pedram GANJEH HADIDI. For more information visit:
+<https://github.com/pediRAM/DirectoryFingerPrintingLibrary>.
+";
         }
 
         internal static string GetHelpText()
         {
-            return @"*** Directory Fingerprint (dfp) Help Page ***
+            return GetVersionText() + @"
 With dfp you can:
-A) Calculate and save a Directory-FingerPrint or
+A) Calculate and save a Directory-FingerPrint file or
 B) Compare and show differencies between:
-    - two directories or
-    - two fingerprint files or
-    - a fingerprint file against a directory
+  - two directories or
+  - two fingerprint files or
+  - a fingerprint file against a directory
 
 Used abbreviations:
   DFP = Directory FingerPrint
   FP  = FingerPrint
-  FPF = FingerPrint File
-  
+  FPF = FingerPrint File  
 
 1 USAGE:
 dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
