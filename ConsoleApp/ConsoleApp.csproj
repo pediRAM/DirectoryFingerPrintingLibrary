@@ -12,10 +12,14 @@
 
   <ItemGroup>
     <None Remove="License.txt" />
+    <None Remove="Manual.html" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
