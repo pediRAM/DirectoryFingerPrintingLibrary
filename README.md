@@ -26,8 +26,8 @@ checksums for each file in that directory, like this (simplified):
 ```
 
 # Download:
-.NET6 must be pre-installed!
-[Version 1.0.0-beta](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/tree/main/Downloads/Setup_dfp_1.0.0_BETA_AMD64_x64.exe)
+.NET6 must be pre-installed!\
+[Setup_dfp_1.0.0_BETA_AMD64_x64.exe](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Downloads/Setup_dfp_1.0.0_BETA_AMD64_x64.exe)
 ```
 Name: Setup_dfp_1.0.0_BETA_AMD64_x64.exe
 Size: 239032 bytes (233 KiB)
