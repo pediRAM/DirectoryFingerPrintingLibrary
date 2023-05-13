@@ -166,7 +166,7 @@ Try 'dfp --help' for more information.";
         }
         internal static string GetVersionText()
         {
-            return @"dfp (directory fingerprinting) 1.0.0-alpha
+            return @"dfp (directory fingerprinting) 1.0.0-beta
 Copyright (C) 2023 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
