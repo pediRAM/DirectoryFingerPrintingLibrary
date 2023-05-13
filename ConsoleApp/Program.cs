@@ -113,9 +113,10 @@ internal class Program
             {
                 var serializerParadigm = FileSerializerFactory.CreateSerializer(Path.GetExtension(options.ComparePathParadigm));
                 var dfpParadigm = serializerParadigm.Load(options.ComparePathParadigm);
-                
+
+                options.BaseDirPath = options.ComparePathTestee;
                 var pathsOfTestee = GetPathsToProcess(options.ComparePathTestee, options);
-                var metaDatasOfTestee = CreateMetaDatas(options, pathsOfTestee);
+                var metaDatasOfTestee = CreateMetaDatas(options, pathsOfTestee).ToArray();
                 var dfpTestee = new DirectoryFingerprint
                 {
                     CreatedAt = DateTime.Now,
