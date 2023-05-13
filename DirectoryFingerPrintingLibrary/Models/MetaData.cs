@@ -28,7 +28,7 @@ namespace DirectoryFingerPrinting.Models
     #endregion Usings
 
     [XmlRoot]
-    [System.Diagnostics.DebuggerDisplay("Path:{Path}, Extension:{Extension}, FSType:{FSType}, Size:{Size}, CreatedAt:{CreatedAt}, ModifiedAt:{ModifiedAt}, AccessedAt:{AccessedAt}, Version:{Version}, Hashsum:{Hashsum}")]
+    [System.Diagnostics.DebuggerDisplay("RelativePath:{RelativePath}, Extension:{Extension}, FSType:{FSType}, Size:{Size}, CreatedAt:{CreatedAt}, ModifiedAt:{ModifiedAt}, AccessedAt:{AccessedAt}, Version:{Version}, Hashsum:{Hashsum}")]
     public class MetaData : IMetaData, ICloneable
     {
         #region Properties

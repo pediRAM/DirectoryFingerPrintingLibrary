@@ -56,6 +56,9 @@ namespace ConsoleApp
             public const string IGNORE_ACCESS_ERRORS             = "--ignore-access-errors";
             public const string IGNORE_ACCESS_ERRORS_SHORT       = "-iae";
 
+            public const string IGNORE_CASE                      = "--ignore-case";
+            public const string IGNORE_CASE_SHORT                = "-ic";
+
 
             public const string RECURSIVE                        = "--recursive";
             public const string RECURSIVE_SHORT                  = "-r";

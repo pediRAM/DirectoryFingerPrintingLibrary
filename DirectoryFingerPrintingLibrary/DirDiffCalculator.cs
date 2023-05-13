@@ -43,7 +43,7 @@ namespace DirectoryFingerPrinting
                 var fd = new FileDiff();
                 fd.Path = a.RelativePath;
 
-                var b = metaDatasB.SingleOrDefault(x => x.RelativePath.Equals(a.RelativePath, StringComparison.InvariantCultureIgnoreCase));
+                var b = metaDatasB.SingleOrDefault(x => x.RelativePath.Equals(a.RelativePath, Options.IsCaseSensitive? StringComparison.InvariantCulture : StringComparison.InvariantCultureIgnoreCase));
                 if (b == null)
                 {
                     fd.Differences.Add(new Difference

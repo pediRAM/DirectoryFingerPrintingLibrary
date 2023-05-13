@@ -35,6 +35,9 @@ namespace DirectoryFingerPrinting.Models
         public string BaseDirPath { get; set; }
 
         [XmlElement]
+        public bool IsCaseSensitive { get; set; } = true;
+
+        [XmlElement]
         public bool UseSize { get; set; }  = true;
 
         [XmlElement]

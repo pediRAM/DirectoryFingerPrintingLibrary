@@ -78,6 +78,11 @@ namespace ConsoleApp
                             }
                             break;
 
+                        case Const.Arguments.IGNORE_CASE:
+                        case Const.Arguments.IGNORE_CASE_SHORT:
+                        pOptions.IsCaseSensitive = false;
+                        break;
+
                         case Const.Arguments.IGNORE_TIMESTAMPS:
                         case Const.Arguments.IGNORE_TIMESTAMPS_SHORT:
                         pOptions.UseCreation = false;

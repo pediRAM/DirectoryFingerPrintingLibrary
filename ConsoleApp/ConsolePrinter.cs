@@ -244,6 +244,7 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
     --compare                  | -c ...... Compares a FPF against a directory.
 
   5.2 IGNORE OPTIONS:          SHORT:
+    --ignore-case              | -ic .... Compares filenames case insensitive.
     --ignore-timestamps        | -its.... Ignores all timestamps of files.
     --ignore-creation-date     | -icd ... Ignores created-at-timestamp.
     --ignore-last-modification | -ilm ... Ignores last-modification-at-timestamp.

@@ -26,6 +26,7 @@ using DirectoryFingerPrinting;
 using DirectoryFingerPrinting.API;
 using DirectoryFingerPrinting.API.Exceptions;
 using DirectoryFingerPrinting.Models;
+using System.Diagnostics;
 
 internal class Program
 {
@@ -39,13 +40,13 @@ internal class Program
             return;
         }
 
-        if (args[0] == "-v" || args[0] == "--version")
+        if (args[0] == Const.Arguments.VERSION_SHORT || args[0] == Const.Arguments.VERSION)
         {
             Exit(EErrorCode.None, ConsolePrinter.GetVersionText());
             return;
         }
 
-        if (args[0] == "/?" || args[0] == "-h" || args[0] == "--help")
+        if (args[0] == Const.Arguments.HELP1 || args[0] == Const.Arguments.HELP2 || args[0] == Const.Arguments.HELP3)
         {
             Exit(EErrorCode.None, ConsolePrinter.GetHelpText());
             return;
@@ -62,14 +63,17 @@ internal class Program
 
         if (options.DoCompareDirectories)
         {
-            var pathsOfParadigm = GetPathsToProcess(options.ComparePathParadigm, options);
-            var pathsOfTestee = GetPathsToProcess(options.ComparePathTestee, options);
+            var paradigmPaths = GetPathsToProcess(options.ComparePathParadigm, options);
+            var testeePaths = GetPathsToProcess(options.ComparePathTestee, options);
 
-            var metaDatasOfParadigm = CreateMetaDatas(options, pathsOfParadigm);
-            var metaDatasOfTestee = CreateMetaDatas(options, pathsOfTestee);
+            options.BaseDirPath = options.ComparePathParadigm;
+            var paradigmMetaDatas = CreateMetaDatas(options, paradigmPaths).ToArray();
+
+            options.BaseDirPath = options.ComparePathTestee;
+            var testeeMetaDatas = CreateMetaDatas(options, testeePaths).ToArray();
 
             var diffCalculator = new DirDiffCalculator(options);
-            diffs = diffCalculator.GetFileDifferencies(metaDatasOfParadigm, metaDatasOfTestee);
+            diffs = diffCalculator.GetFileDifferencies(paradigmMetaDatas, testeeMetaDatas);
         }
         else if (options.DoCompareFingerprints)
         {
@@ -231,7 +235,7 @@ internal class Program
         return extFilter.GetPathsToProcess(allPaths);
     }
 
-
+    [DebuggerStepThrough]
     private static IEnumerable<MetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
     {
         m_Factory ??= new MetaDataFactory(pOptions);

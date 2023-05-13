@@ -23,6 +23,8 @@ namespace DirectoryFingerPrinting.API
     {
         string BaseDirPath { get; }
 
+        bool IsCaseSensitive { get; }
+
         bool UseSize { get; }
 
         bool UseCreation { get; }
