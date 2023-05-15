@@ -99,7 +99,8 @@ namespace ConsoleApp
                     else
                         Console.Write(";");
                 }
-                if (pOptions.UseHashsum) Console.WriteLine($"{md.Hashsum};");
+                if (pOptions.UseHashsum) Console.Write($"{md.Hashsum};");
+                Console.WriteLine();
             }
         }
 

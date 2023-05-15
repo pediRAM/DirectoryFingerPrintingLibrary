@@ -1,6 +1,6 @@
 # Was ist Directory FingerPrinting (DFP)?
 Ein Fingerabdruck eines Verzeichnisses ist: die Summe aller Prüfsummen und Metadaten von Dateien darin.\
-***dfp.exe** liest Versionen, Zeitstempel und Größen von Dateien und berechnet Prüfsummen (Hashes) für jede Datei in diesem Verzeichnis, wie hier (vereinfacht):
+***dfp.exe*** liest Versionen, Zeitstempel und Größen von Dateien und berechnet Prüfsummen (Hashes) für jede Datei in diesem Verzeichnis, wie hier (vereinfacht):
 ```
 ---------------------------------------------------------------------------------------------------------------------
  Name                        | Modified at         | Size   | Version      | Hashsum (SHA1)
