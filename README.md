@@ -24,10 +24,22 @@ checksums for each file in that directory, like this (simplified):
 + File3.txt (File added)
 + Sub_Dir\File5.txt (File added)
 ```
+# What can you do with dfp.exe application?
+With dfp you can:
+A. ***Calculate*** and ***save*** the fingerprint of a directory or
+B. ***Compare*** and ***show*** the ***differencies*** between:
+- two directories or
+- two fingerprint files or
+- a fingerprint file against a directory
+C. print list of assembly (DLL/EXE) versions
+
+# Manuals:
+[English](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.en.md)\
+[German](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.de.md)
 
 # Download:
 .NET6 must be pre-installed!\
-[Setup_dfp_1.0.0_BETA_AMD64_x64.exe](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Downloads/Setup_dfp_1.0.0_BETA_AMD64_x64.exe)
+[Setup_dfp_1.0.1_BETA_AMD64_x64.exe](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Downloads/Setup_dfp_1.0.1_BETA_AMD64_x64.exe)
 ```
 Name: Setup_dfp_1.0.0_BETA_AMD64_x64.exe
 Size: 239032 bytes (233 KiB)
@@ -37,14 +49,6 @@ SHA256: 635E9651F634CF9911F8B776E5A8EADAC135D4237D8242685AA5FD49A30E094B
 SHA1: 11E5DCB0F430F5B0C1AF768C77E6F3BC6A164EDF
 BLAKE2sp: 42B7CB137193B7AE52AEC7DB627D5AE8FB006BE89A9F90432C70BFAE775D3275
 ```
-
-# What can you do with dfp.exe application?
-With dfp you can:
-A. ***Calculate*** and ***save*** the fingerprint of a directory or
-B. ***Compare*** and ***show*** the ***differencies*** between:
-- two directories or
-- two fingerprint files or
-- a fingerprint file against a directory
 
 # How to use dfp.exe
 Used abbreviations in this document:
