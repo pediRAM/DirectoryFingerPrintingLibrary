@@ -1,7 +1,6 @@
 # What is Directory FingerPrinting (DFP)?
-A fingerprint of a directory is same as hash/checkusm of a file, but for a directory.\
-***dfp.exe*** reads versions, timestamps and calculates
-checksums for each file in that directory, like this (simplified):
+A fingerprint of a directory is: the sum of all checksums and metadata of files in it.\
+***dfp.exe*** reads versions, timestamps and sizes of files and calculates checksums (hashes) for each file in that directory, like this (simplified):
 ```
 ---------------------------------------------------------------------------------------------------------------------
  Name                        | Modified at         | Size   | Version      | Hashsum (SHA1)
@@ -11,9 +10,16 @@ checksums for each file in that directory, like this (simplified):
  DirectoryFingerPrinting.dll | 2023-05-13 18:08.54 | 28160  | 1.0.0.0      | 8d8f029d9a43b2993377f8658c296d3cc32e29cf
  System.IO.Hashing.dll       | 2022-10-18 16:34.48 | 31360  | 7.0.22.51805 | 8edf3a7714ed9971396b87b8f057656f0b2c38f4
  ```
+ With such an information (like in the table above), you can recognize changes to a directory, like:
+ 1. Which (if any) files have been added or removed?
+ 2. Which files (if any) have been modified and how?\
+     2.1 Content, Size or Version
+     2.2 Timestamps (creation, last modification, last access)
+
+ # How is dfp.exe used?
  First you save the fingerprint of your directory. Later you can run ***dfp.exe*** to compare the fingerprint file
- whith the content of your directory now. And so, you can check if something has changed (or not), and if what
- exactly, like this:
+ whith the current content of your directory. And so, you can check if something has changed (or not), and if what
+ exactly has changed, like this:
  ```
 - File2.txt (File removed)
 - Sub_Dir\File4.txt (File removed)
@@ -213,10 +219,10 @@ dfp -c "temp\fingerprint.dfp" "C:\MyDir" -its
 ```
 
 ## 8.3 Error Codes
-Following codes are returend (%errorlevel%) after ***dfp.exe*** call:
+Following codes are returend (***%errorlevel%***) after ***dfp.exe*** call:
 
-|CODE:|MEANING:|
-|-----|--------|
+|CODE:| DESCRIPTION:  |
+|-----|---------------|
 | 0   | OK (no error).|
 | 1   | No parameters.|
 | 2   | Missing parameter.|
