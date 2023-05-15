@@ -64,7 +64,8 @@ namespace ConsoleApp
                     else
                         Console.Write($"| {"".PadRight(maxLenVersion)} ");
                 }
-                if (pOptions.UseHashsum) Console.WriteLine($"| {md.Hashsum}");
+                if (pOptions.UseHashsum) Console.Write($"| {md.Hashsum}");
+                Console.WriteLine();
             }
         }
 
