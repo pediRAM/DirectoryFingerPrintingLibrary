@@ -70,36 +70,36 @@ namespace ConsoleApp
         }
 
 
-        internal static void PrintUnformattedResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
+        internal static void PrintUnformattedResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas, string pSeparator = "\t")
         {
             if (pOptions.DoPrintHeader)
             { 
-                var columnsCaption = "Name;";
-                if (pOptions.UseCreation)         columnsCaption += "Created at;";
-                if (pOptions.UseLastModification) columnsCaption += "Modified at;";
-                if (pOptions.UseLastAccess)       columnsCaption += "Last Access at;";
-                if (pOptions.UseSize)             columnsCaption += "Size;";
-                if (pOptions.UseVersion)          columnsCaption += "Version;";
-                if (pOptions.UseHashsum)          columnsCaption += $"Hashsum ({pOptions.HashAlgo});";
+                var columnsCaption = $"Name{pSeparator}";
+                if (pOptions.UseCreation)         columnsCaption += $"Created at{pSeparator}";
+                if (pOptions.UseLastModification) columnsCaption += $"Modified at{pSeparator}";
+                if (pOptions.UseLastAccess)       columnsCaption += $"Last Access at{pSeparator}";
+                if (pOptions.UseSize)             columnsCaption += $"Size{pSeparator}";
+                if (pOptions.UseVersion)          columnsCaption += $"Version{pSeparator}";
+                if (pOptions.UseHashsum)          columnsCaption += $"Hashsum ({pOptions.HashAlgo}){pSeparator}";
                 Console.WriteLine(columnsCaption);
             }
 
             foreach (var md in pMetaDatas)
             {
-                Console.Write($"{md.RelativePath};");
-                if (pOptions.UseCreation)            Console.Write($"{md.CreatedAt:yyyy-MM-dd HH:mm.ss};");
-                if (pOptions.UseLastModification)    Console.Write($"{md.ModifiedAt:yyyy-MM-dd HH:mm.ss};");
-                if (pOptions.UseLastAccess)          Console.Write($"{md.AccessedAt:yyyy-MM-dd HH:mm.ss};");
-                if (pOptions.UseSize)                Console.Write($"{md.Size};");
+                Console.Write($"{md.RelativePath}{pSeparator}");
+                if (pOptions.UseCreation)            Console.Write($"{md.CreatedAt:yyyy-MM-dd HH:mm.ss}{pSeparator}");
+                if (pOptions.UseLastModification)    Console.Write($"{md.ModifiedAt:yyyy-MM-dd HH:mm.ss}{pSeparator}");
+                if (pOptions.UseLastAccess)          Console.Write($"{md.AccessedAt:yyyy-MM-dd HH:mm.ss}{pSeparator}");
+                if (pOptions.UseSize)                Console.Write($"{md.Size}{pSeparator}");
 
                 if (pOptions.UseVersion)
                 {
                     if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
-                        Console.Write($"{md.Version};");
+                        Console.Write($"{md.Version}{pSeparator}");
                     else
-                        Console.Write(";");
+                        Console.Write("{pSeparator}");
                 }
-                if (pOptions.UseHashsum) Console.Write($"{md.Hashsum};");
+                if (pOptions.UseHashsum) Console.Write($"{md.Hashsum}{pSeparator}");
                 Console.WriteLine();
             }
         }

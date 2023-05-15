@@ -1,9 +1,7 @@
 {
   "profiles": {
     "ConsoleApp": {
-      "commandName": "Project",
-      "commandLineArgs": "-d .\\ -ao -its -ihs -is",
-      "workingDirectory": "H:\\Github Repositories\\DirectoryFingerPrinting\\DirectoryFingerPrintingLibrary\\ConsoleApp\\bin\\Debug\\net6.0-windows"
+      "commandName": "Project"
     }
   }
 }

@@ -68,7 +68,7 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 # 4. Berechnung:
 ## 4.1 Filter Optionen:
 |PARAMETER:                 |KURZ: | BESCHREIBUNG: |
-|---------------------------|------|--------------|
+|---------------------------|------|---------------|
 |--directory                | -d   | Basisverzeichnis zur Berechnung von Fingerabdrücken.|
 |--recursive                | -r   | Rekursive Suche nach Dateien.|
 |--assemblies-only          | -ao  | Nur die *.dll und *.exe Dateien (alles andere wird ignoriert).|
@@ -79,8 +79,8 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--negative-list            | -n   | ***DATEIERWEITERUNG*** ist eine ***negative*** liste (Dateien werden ***ausgeschlossen***).|
 
 ## 4.2 Hash/Checksum Optionen:
-|PARAMETER:                |KURZ:     | BESCHREIBUNG:|
-|---------------------------|---------|-------------|
+|PARAMETER:                |KURZ:     | BESCHREIBUNG: |
+|---------------------------|---------|---------------|
 |--use-crc32                | -crc32  | CRC32.|
 |--use-md5                  | -md5    | MD5.|
 |--use-sha1                 | -sha1   | SHA1 ***(STANDARD)***.|
@@ -88,15 +88,15 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--use-sha512               | -sha512 | SHA512.|
 
 ## 4.3 Report Level Optionen:
-|PARAMETER:                 |KURZ: | BESCHREIBUNG:|
-|---------------------------|------|-------------|
+|PARAMETER:                 |KURZ: | BESCHREIBUNG: |
+|---------------------------|------|---------------|
 |--report-essential         | -re  | Minimalistische Ausgabe (gibt nur die +/-/~ und die Dateinamen aus).|
 |--report-informative       | -ri  | Minimalistische Ausgabe plus kurze Beschreibung.|
 |--report-verbose           | -rv  | Gibt alles aus.|
 
 ## 4.4 Display Optionen:
-|PARAMETER:                 |KURZ:|BESCHREIBUNG:|
-|---------------------------|------|------------|
+|PARAMETER:                 |KURZ:|BESCHREIBUNG: |
+|---------------------------|------|-------------|
 |--print-colored            | -pc  | Die Ausgabe erfolgt in Farben (Rot = entfernt, Blau = hinzugefügt, Gelb = verändert).|
 |--no-header                | -nh  | Ausgabe enthält keinen Tabellenkopf.|
 |--no-format                | -nf  | Die Ausgabe des Verzeichnis-Fingerabdrucks erfolgt ohne Formatierung.|
@@ -112,15 +112,15 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 
 # 5. Compare:
 ## 5.1 Type of Comparison:
-|PARAMETER:                 |KURZ: |BESCHREIBUNG:|
-|---------------------------|------|------------|
+|PARAMETER:                 |KURZ: |BESCHREIBUNG: |
+|---------------------------|------|--------------|
 |--compare-directories      | -cd  | Vergleicht zwei Verzeichnisse.|
 |--compare-fingerprints     | -cf  | Vergleicht zwei Verzeichnis-Fingerabdruck-Dateien.|
 |--compare                  | -c   | Vergleicht eine Verzeichnis-Fingerabdruck-Datei mit ein Verzeichnis.|
 
 ## 5.2 Ignore Optionen:
-|PARAMETER:                 |KURZ: |BESCHREIBUNG:|
-|---------------------------|------|-------------|
+|PARAMETER:                 |KURZ: |BESCHREIBUNG: |
+|---------------------------|------|--------------|
 |--ignore-case              | -ic  | Ignoriert die Groß-Klein-Schreibung.|
 |--ignore-timestamps        | -its | Ignoriert alle Datei-Zeitstempeln.|
 |--ignore-creation-date     | -icd | Ignoriert das Erstelldatum der Dateien.|
