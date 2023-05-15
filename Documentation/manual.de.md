@@ -10,16 +10,16 @@ Ein Fingerabdruck eines Verzeichnisses ist: die Summe aller Prüfsummen und Metad
  DirectoryFingerPrinting.dll | 2023-05-13 18:08.54 | 28160  | 1.0.0.0      | 8d8f029d9a43b2993377f8658c296d3cc32e29cf
  System.IO.Hashing.dll       | 2022-10-18 16:34.48 | 31360  | 7.0.22.51805 | 8edf3a7714ed9971396b87b8f057656f0b2c38f4
  ```
- Mit solchen Informationen (wie in der obigen Tabelle) können Sie Änderungen in einem Verzeichnis erkennen, wie z.B.:
+ Mit diese Informationen (wie in der obigen Tabelle) können Sie Änderungen in einem Verzeichnis erkennen, wie z.B.:
 1. Welche Dateien wurden hinzugefügt oder entfernt?
 2. Welche Dateien wurden geändert und auf welche Weise?\
     2.1 Inhalt, Größe oder Version
     2.2 Zeitstempel (Erstellung, letzte Änderung, letzter Zugriff)
 
  # Wie wird dfp.exe verwendet?
-Zuerst berechnen und speichern Sie den Fingerabdruck Ihres Verzeichnisses. Später können Sie ***dfp.exe*** ausführen,
+Speichern Sie zuerst den Fingerabdruck Ihres Verzeichnisses. Später können Sie ***dfp.exe*** ausführen,
 um die Fingerabdruckdatei mit den aktuellen Inhalt Ihres Verzeichnisses zu vergleichen.
-Und so können Sie überprüfen, ob sich etwas geändert hat oder nicht, und falls doch, was genau hat sich so geändert:
+Und so können Sie überprüfen, ob Änderungen vorliegen oder nicht, und falls doch, was genau geändert wurde:
  ```
 - File2.txt (File removed)
 - Sub_Dir\File4.txt (File removed)
@@ -29,13 +29,13 @@ Und so können Sie überprüfen, ob sich etwas geändert hat oder nicht, und falls d
 ```
 
 # Was können Sie mit dfp.exe Anwendung tun?
-Mit dfp können Sie:
-A. ***Berechnen*** und ***Speichern*** des Fingerabdrucks eines Verzeichnisses oder
-B. ***Vergleich** und ***Anzeige** von ***Unterschiede*** zwischen:
-    - zwei Verzeichnisse oder
-    - zwei Fingerabdruck-Dateien oder
-    - eine Fingerabdruckdatei gegen ein Verzeichnis
-C. ***Auflistung*** von ***DLL-/EXE-Dateien*** mit ihre ***Versionen***
+Mit ***dfp.exe*** können Sie:
+A. den Fingerabdrucks eines Verzeichnisses ***Berechnen*** und ***Speichern***, oder
+B. die ***Unterschiede*** zwischen wie folgt ***anzeigen***:
+    - zwei Verzeichnisse vergleichen
+    - zwei Fingerabdruck-Dateien vergleichen
+    - eine Fingerabdruckdatei gegen ein Verzeichnis vergleichen
+C. ***Auflistung*** von ***DLL-/EXE-Dateien*** mit ihren ***Versionen***
 
 Hinweise:\
 Die folgenden Zeichen, habe folgende Bedeutungen:\
