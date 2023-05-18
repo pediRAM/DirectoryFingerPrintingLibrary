@@ -64,7 +64,7 @@ namespace ConsoleApp
 
                 if (pOptions.UseVersion)
                 {
-                    if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe))
+                    if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe) && md.Version != null)
                         Console.Write($"| {md.Version.PadRight(maxLenVersion)} ");
                     else
                         Console.Write($"| {"".PadRight(maxLenVersion)} ");
