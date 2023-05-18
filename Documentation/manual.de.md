@@ -1,6 +1,6 @@
 # Was ist Directory FingerPrinting (DFP)?
-Ein Fingerabdruck eines Verzeichnisses ist: die Summe aller Prüfsummen und Metadaten von Dateien darin.\
-***dfp.exe*** liest Versionen, Zeitstempel und Größen von Dateien und berechnet Prüfsummen (Hashes) für jede Datei in diesem Verzeichnis, wie hier (vereinfacht):
+Ein Fingerabdruck eines Verzeichnisses ist: die Summe aller PrÃ¼fsummen und Metadaten von Dateien darin.\
+***dfp.exe*** liest Versionen, Zeitstempel und GrÃ¶ÃŸen von Dateien und berechnet PrÃ¼fsummen (Hashes) fÃ¼r jede Datei in diesem Verzeichnis, wie hier (vereinfacht):
 ```
 ---------------------------------------------------------------------------------------------------------------------
  Name                        | Modified at         | Size   | Version      | Hashsum (SHA1)
@@ -10,16 +10,16 @@ Ein Fingerabdruck eines Verzeichnisses ist: die Summe aller Prüfsummen und Metad
  DirectoryFingerPrinting.dll | 2023-05-13 18:08.54 | 28160  | 1.0.0.0      | 8d8f029d9a43b2993377f8658c296d3cc32e29cf
  System.IO.Hashing.dll       | 2022-10-18 16:34.48 | 31360  | 7.0.22.51805 | 8edf3a7714ed9971396b87b8f057656f0b2c38f4
  ```
- Mit diese Informationen (wie in der obigen Tabelle) können Sie Änderungen in einem Verzeichnis erkennen, wie z.B.:
-1. Welche Dateien wurden hinzugefügt oder entfernt?
-2. Welche Dateien wurden geändert und auf welche Weise?\
-    2.1 Inhalt, Größe oder Version
-    2.2 Zeitstempel (Erstellung, letzte Änderung, letzter Zugriff)
+ Mit diese Informationen (wie in der obigen Tabelle) kÃ¶nnen Sie Ã„nderungen in einem Verzeichnis erkennen, wie z.B.:
+1. Welche Dateien wurden hinzugefÃ¼gt oder entfernt?
+2. Welche Dateien wurden geÃ¤ndert und auf welche Weise?\
+    2.1 Inhalt, GrÃ¶ÃŸe oder Version
+    2.2 Zeitstempel (Erstellung, letzte Ã„nderung, letzter Zugriff)
 
  # Wie wird dfp.exe verwendet?
-Speichern Sie zuerst den Fingerabdruck Ihres Verzeichnisses. Später können Sie ***dfp.exe*** ausführen,
+Speichern Sie zuerst den Fingerabdruck Ihres Verzeichnisses. SpÃ¤ter kÃ¶nnen Sie ***dfp.exe*** ausfÃ¼hren,
 um die Fingerabdruckdatei mit den aktuellen Inhalt Ihres Verzeichnisses zu vergleichen.
-Und so können Sie überprüfen, ob Änderungen vorliegen oder nicht, und falls doch, was genau geändert wurde:
+Und so kÃ¶nnen Sie Ã¼berprÃ¼fen, ob Ã„nderungen vorliegen oder nicht, und falls doch, was genau geÃ¤ndert wurde:
  ```
 - File2.txt (File removed)
 - Sub_Dir\File4.txt (File removed)
@@ -28,8 +28,8 @@ Und so können Sie überprüfen, ob Änderungen vorliegen oder nicht, und falls doch
 + Sub_Dir\File5.txt (File added)
 ```
 
-# Was können Sie mit dfp.exe Anwendung tun?
-Mit ***dfp.exe*** können Sie:
+# Was kÃ¶nnen Sie mit dfp.exe Anwendung tun?
+Mit ***dfp.exe*** kÃ¶nnen Sie:
 A. den Fingerabdrucks eines Verzeichnisses ***Berechnen*** und ***Speichern***, oder
 B. die ***Unterschiede*** zwischen wie folgt ***anzeigen***:
     - zwei Verzeichnisse vergleichen
@@ -39,11 +39,11 @@ C. ***Auflistung*** von ***DLL-/EXE-Dateien*** mit ihren ***Versionen***
 
 Hinweise:\
 Die folgenden Zeichen, habe folgende Bedeutungen:\
-***+*** : die Datei wurde hinzugefügt.\
+***+*** : die Datei wurde hinzugefÃ¼gt.\
 ***-*** : die Datei wurde entfernt.\
-***~*** : die Datei wurde verändert.
+***~*** : die Datei wurde verÃ¤ndert.
 
-Gebrauchte Abkürzungen in diesem Dokument:
+Gebrauchte AbkÃ¼rzungen in diesem Dokument:
 - *DFP* = Verzeichnis-Fingerabdruck
 - *FP* = FingerPrint
 - *FPF* = FingerPrint Datei
@@ -69,7 +69,7 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 ## 4.1 Filter Optionen:
 |PARAMETER:                 |KURZ: | BESCHREIBUNG: |
 |---------------------------|------|---------------|
-|--directory                | -d   | Basisverzeichnis zur Berechnung von Fingerabdrücken.|
+|--directory                | -d   | Basisverzeichnis zur Berechnung von FingerabdrÃ¼cken.|
 |--recursive                | -r   | Rekursive Suche nach Dateien.|
 |--assemblies-only          | -ao  | Nur die *.dll und *.exe Dateien (alles andere wird ignoriert).|
 |--ignore-hidden-files      | -ihf | Ignoriert versteckte Dateien.|
@@ -95,16 +95,19 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--report-verbose           | -rv  | Gibt alles aus.|
 
 ## 4.4 Display Optionen:
-|PARAMETER:                 |KURZ:|BESCHREIBUNG: |
-|---------------------------|------|-------------|
-|--print-colored            | -pc  | Die Ausgabe erfolgt in Farben (Rot = entfernt, Blau = hinzugefügt, Gelb = verändert).|
-|--no-header                | -nh  | Ausgabe enthält keinen Tabellenkopf.|
-|--no-format                | -nf  | Die Ausgabe des Verzeichnis-Fingerabdrucks erfolgt ohne Formatierung.|
+|PARAMETER:                 |KURZ:  |BESCHREIBUNG: |
+|---------------------------|-------|-------------|
+|--print-colored            | -pc   | Die Ausgabe erfolgt in Farben (Rot = entfernt, Blau = hinzugefÃ¼gt, Gelb = verÃ¤ndert).|
+|--no-header                | -nh   | Ausgabe enthÃ¤lt keinen Tabellenkopf.|
+|--no-format                | -nf   | Die Ausgabe des Verzeichnis-Fingerabdrucks erfolgt ohne Formatierung.|
+|--print-sorted-ascendent   | -asc  | Die Verzeichnis-FingerabdrÃ¼cke werden aufsteigend sortiert ausgegeben.|
+|--print-sorted-descendent  | -desc | Die Verzeichnis-FingerabdrÃ¼cke werden absteigend sortiert ausgegeben.|
+|--print-only-filename      | -pof  | Nur der Dateiname statt des relativen Dateipfads wird ausgegeben|
 
 ## 4.5 Save Optionen:
 |PARAMETER:                 |KURZ:  |BESCHREIBUNG: |
 |---------------------------|-------|--------------|
-|--save                     | -s    | Speichert die Fingerabdrücke in eine Datei (mehr in Abschnitt ***7.1***!).|
+|--save                     | -s    | Speichert die FingerabdrÃ¼cke in eine Datei (mehr in Abschnitt ***7.1***!).|
 |--format-dfp               | -dfp  | *.dfp ***(STANDARD)***|
 |--format-xml               | -xml  | *.xml|
 |--format-json              | -json | *.json|
@@ -121,23 +124,23 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 ## 5.2 Ignore Optionen:
 |PARAMETER:                 |KURZ: |BESCHREIBUNG: |
 |---------------------------|------|--------------|
-|--ignore-case              | -ic  | Ignoriert die Groß-Klein-Schreibung.|
+|--ignore-case              | -ic  | Ignoriert die GroÃŸ-Klein-Schreibung.|
 |--ignore-timestamps        | -its | Ignoriert alle Datei-Zeitstempeln.|
 |--ignore-creation-date     | -icd | Ignoriert das Erstelldatum der Dateien.|
-|--ignore-last-modification | -ilm | Ignoriert den Änderungs-Zeitstempel der Dateien.|
+|--ignore-last-modification | -ilm | Ignoriert den Ã„nderungs-Zeitstempel der Dateien.|
 |--ignore-last-access       | -ila | Ignoriert den Zugriff-Zeitstempel der Dateien.|
-|--ignore-size              | -is  | Ignoriert die Dateilängen.|
+|--ignore-size              | -is  | Ignoriert die DateilÃ¤ngen.|
 |--ignore-version           | -iv  | Ignoriert die Versionen (nur bei *.dll und *.exe Dateien!).|
 |--ignore-hashsum           | -ihs | Ignoriert die Checksummen (Hashwerte).|
 
 # 6. Dateierweiterung:
-Eine Liste von Dateierweiterungen umgeschlossen in einfache oder doppelte Anführungszeichen, ohne Asterisk ('*') und/oder Punkte  ('**.**'), wie z.B.:\
+Eine Liste von Dateierweiterungen umgeschlossen in einfache oder doppelte AnfÃ¼hrungszeichen, ohne Asterisk ('*') und/oder Punkte  ('**.**'), wie z.B.:\
 - **'dll exe xml'** oder **'dll,exe,xml'** oder **'dll;exe;xml'**\
 oder
 - **"dll exe xml"** oder **"dll,exe,xml"** oder **"dll;exe;xml"**
 
 ## 6.1 Trennzeichen:
-Sie können die Erweiterungen mit folgenden Trennzeichen von einander trennen:
+Sie kÃ¶nnen die Erweiterungen mit folgenden Trennzeichen von einander trennen:
 - Semikolon ('**;**')
 - Komma ('**,**')
 - Leerzeichen (' ')
@@ -145,16 +148,16 @@ Sie können die Erweiterungen mit folgenden Trennzeichen von einander trennen:
 ## 6.2 Beispiele:
 "config,dll,exe" oder "config;dll;exe" oder "config dll exe".
 
-# 7. Dateinamen und Dateierweiterung von Verzeichnis-Fingerabdrücke:
-Sollte für die Speicherung der Fingerabdruck-Datei keinen Namen angegeben werden,
+# 7. Dateinamen und Dateierweiterung von Verzeichnis-FingerabdrÃ¼cke:
+Sollte fÃ¼r die Speicherung der Fingerabdruck-Datei keinen Namen angegeben werden,
 wird automatisch ein Zeitstempel als Dateiname verwendet.\
-Als Format und Dateierweiterung wird - falls nicht angegeben - "***dfp***" (*.***dfp***) automatisch ausgewählt ***(STANDARD)***.\
-Außer ***dfp** Format stehen folgende Formate ebenfalls zur Verfügung:\
+Als Format und Dateierweiterung wird - falls nicht angegeben - "***dfp***" (*.***dfp***) automatisch ausgewÃ¤hlt ***(STANDARD)***.\
+AuÃŸer ***dfp** Format stehen folgende Formate ebenfalls zur VerfÃ¼gung:\
 - CSV
 - JSON
 - XML
 
-## 7.1 Dateinamenformat für automatisch vergebene Namen:
+## 7.1 Dateinamenformat fÃ¼r automatisch vergebene Namen:
 ***yyyy-MM-dd_HH.mm.ss.*** (***csv*** | ***dfp*** | ***json*** | ***xml***)
 
 ## 7.2 Beispiele:
@@ -166,19 +169,19 @@ Außer ***dfp** Format stehen folgende Formate ebenfalls zur Verfügung:\
 
 # 8. Praktische Anwendungs-Beispiele:
 ## 8.1 Berechnung
-### Gibt die Fingerabdrücke von Dateien der oberste Ebene aus:
+### Gibt die FingerabdrÃ¼cke von Dateien der oberste Ebene aus:
 ```cmd
 dfp --directory .\
 dfp -d .\
 ```
 
-### Gibt nur die Werte für DLL- und EXE-Dateien aus (alles andere wird ignoriert):
+### Gibt nur die Werte fÃ¼r DLL- und EXE-Dateien aus (alles andere wird ignoriert):
 ```cmd
 dfp --directory .\ --assembly-only
 dfp -d .\ -ao
 ```
 
-### Ausgabe nur für Dateien mit den folgenden Erweiterungen: *.json, *.txt, *.xml und *.yaml:
+### Ausgabe nur fÃ¼r Dateien mit den folgenden Erweiterungen: *.json, *.txt, *.xml und *.yaml:
 ```cmd
 dfp --directory .\ --positive-list --extensions "json,txt,xml,yaml"
 dfp -d .\ -p -x "json,txt,xml,yaml"
@@ -196,7 +199,7 @@ dfp --directory .\ --use-sha256 --no-header
 dfp -d .\ -sha256 -nh
 ```
 
-### Gibt Fingerabdrücke von allen Dateien (recursiv) in C:\MyDir aus:
+### Gibt FingerabdrÃ¼cke von allen Dateien (recursiv) in C:\MyDir aus:
 ```cmd
 dfp --directory "C:\MyDir" --recursive
 dfp -d "C:\MyDir" -r
@@ -227,14 +230,14 @@ dfp --compare-fingerprints "temp\fingerprint1.dfp" "temp\fingerprint2.json" --re
 dfp -cf "temp\fingerprint1.dfp" "temp\fingerprint2.json" -rv
 ```
 
-### Vergleicht die Fingerabdrücke aus der Datei 'temp\fingerprint.dfp' mit dem aktuellen Inhalt des Verzeichnisses 'C:\MyDir', ignoriert dabei die Datei-Zeitstempeln:
+### Vergleicht die FingerabdrÃ¼cke aus der Datei 'temp\fingerprint.dfp' mit dem aktuellen Inhalt des Verzeichnisses 'C:\MyDir', ignoriert dabei die Datei-Zeitstempeln:
 ```cmd
 dfp --compare "temp\fingerprint.dfp" "C:\MyDir" --ignore-timestamps
 dfp -c "temp\fingerprint.dfp" "C:\MyDir" -its
 ```
 
 ## 8.3 Fehlercodes:
-Folgende Werte werden nach der Ausführung von ***dfp.exe*** zurückgeliefert (***%errorlevel%***):
+Folgende Werte werden nach der AusfÃ¼hrung von ***dfp.exe*** zurÃ¼ckgeliefert (***%errorlevel%***):
 
 |CODE:|Bedeutung: |
 |-----|-----------|
@@ -243,12 +246,12 @@ Folgende Werte werden nach der Ausführung von ***dfp.exe*** zurückgeliefert (***
 | 2   | Fehlendes Parameter.|
 | 3   | Unbekanntes Parameter.|
 | 4   | Interner Fehler.|
-| 5   | Ungültiger Parameter-Wert.|
+| 5   | UngÃ¼ltiger Parameter-Wert.|
 | 6   | Fehlendes zweites Parameter.|
 | 7   | Datei existiert bereits.|
 | 8   | Schreiben der Fingerabdruck-Datei fehlgeschlagen.|
 | 9   | Datei nicht gefunden.|
 | 10  | Verzeichnis nicht gefunden.|
-| 11  | Berechnung, Speicherung und Vergleichen in einem Zug wird nicht unterstützt.|
-| 12  | Ungültige/Unbekannte Dateierweiterung für Fingerabdruck-Datei.|
+| 11  | Berechnung, Speicherung und Vergleichen in einem Zug wird nicht unterstÃ¼tzt.|
+| 12  | UngÃ¼ltige/Unbekannte Dateierweiterung fÃ¼r Fingerabdruck-Datei.|
 | 13  | Ungleiche Hashsummen-Algorithmen. |

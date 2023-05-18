@@ -141,14 +141,14 @@ namespace ConsoleApp
             public const string REPORTLEVEL_VERBOSE              = "--report-verbose";
             public const string REPORTLEVEL_VERBOSE_SHORT        = "-rv";
 
-            public const string ORDER_TYPE_ASC                   = "--sort-ascendent";
+            public const string ORDER_TYPE_ASC                   = "--print-sorted-ascendent";
             public const string ORDER_TYPE_ASC_SHORT             = "-asc";
 
-            public const string ORDER_TYPE_DESC                  = "--sort-descendent";
+            public const string ORDER_TYPE_DESC                  = "--print-sorted-descendent";
             public const string ORDER_TYPE_DESC_SHORT            = "-desc";
 
-            public const string FILENAME_ONLY                    = "--filename-only";
-            public const string FILENAME_ONLY_SHORT              = "-fno";
+            public const string FILENAME_ONLY                    = "--print-only-filename";
+            public const string FILENAME_ONLY_SHORT              = "-pof";
         }
 
         public static class Errors

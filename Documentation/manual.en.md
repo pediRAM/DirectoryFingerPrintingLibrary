@@ -84,16 +84,19 @@ Call ***dfp.exe*** in console as follow:
 ## 4.3 Report Level Options:
 |PARAMETER:                 |SHORT:| DESCRIPTION:|
 |---------------------------|------|-------------|
-|--report-essential         | -re  | Prints only +/-/~ and filename.|
+|--report-essential         | -re  | Prints only +/-/~ and filename ***(DEFAULT)***.|
 |--report-informative       | -ri  | Prints essential with matter of change (human friendly).|
 |--report-verbose           | -rv  | Prints everything.|
 
 ## 4.4 Display Options:
-|PARAMETER:                 |SHORT:|DESCRIPTION:|
-|---------------------------|------|------------|
-|--print-colored            | -pc  | Prints result in colors (red = removed, blue = added, yellow = changed).|
-|--no-header                | -nh  | No header will be printed.|
-|--no-format                | -nf  | Prints unformatted DFP.|
+|PARAMETER:                 |SHORT: |DESCRIPTION:|
+|---------------------------|-------|------------|
+|--print-colored            | -pc   | Prints result in colors (red = removed, blue = added, yellow = changed).|
+|--no-header                | -nh   | No header will be printed.|
+|--no-format                | -nf   | Prints unformatted DFP.|
+|--print-sorted-ascendent   | -asc  | Prints fingerprints sorted by filepaths/filenames ascendent.|
+|--print-sorted-descendent  | -desc | Prints fingerprints sorted by filepaths/filenames descendent.|
+|--print-only-filename      | -pof  | Prints filenames instead of relative paths.|
 
 ## 4.5 Save Options:
 |PARAMETER:                 |SHORT: |DESCRIPTION:|

@@ -252,6 +252,9 @@ dfp ( (HELP | VERSION) | (CACLULATE | COMPARE ) [OPTIONS]+) )
     --print-colored            | -pc ..... Prints result in colors (red = removed, blue = added, yellow = changed).
     --no-header                | -nh ..... No header will be printed.
     --no-format                | -nf ..... Prints unformatted DFP.
+    --print-sorted-ascendent   | -asc .... Prints fingerprints sorted by filepaths/filenames ascendent.
+    --print-sorted-descendent  | -desc ... Prints fingerprints sorted by filepaths/filenames descendent.
+    --print-only-filename      | -pof .... Prints filenames instead of relative paths.
 
   4.5 SAVE OPTIONS:            SHORT:
     --save                     | -s ...... Saves calculated fingerprint to file (see section 7.1!).
