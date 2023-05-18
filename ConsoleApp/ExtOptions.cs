@@ -72,5 +72,11 @@ namespace ConsoleApp
 
         [XmlIgnore]
         public EReportLevel DiffOutputLevel { get; set; } = EReportLevel.Essential;
+
+        [XmlIgnore]
+        public EOrderType OrderType { get; set; } = EOrderType.None;
+
+        [XmlIgnore]
+        public bool DoPrintFilenameOnly { get; set; } = false;
     }
 }

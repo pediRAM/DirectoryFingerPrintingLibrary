@@ -26,7 +26,8 @@ namespace ConsoleApp
     {
         internal static void PrintResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
         {
-            int maxLenPath      = Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
+            int maxLenPath = pOptions.DoPrintFilenameOnly ? Math.Max(4, pMetaDatas.Max(m => Path.GetFileName(m.RelativePath).Length)) : Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
+
             int maxLenVersion   = Math.Max(7, pMetaDatas.Where(m => m.Version != null).Max(m => m.Version.Length));
             int maxLenSize      = Math.Max(5, (int)Math.Ceiling(Math.Log10(pMetaDatas.Max(m => m.Size))));
             int maxLenHash      = Math.Max(15, pMetaDatas.FirstOrDefault().Hashsum.Length);
@@ -48,10 +49,14 @@ namespace ConsoleApp
                 Console.WriteLine(columnsCaption);
                 Console.WriteLine(line);
             }
-
-            foreach (var md in pMetaDatas)
+            
+            foreach (var md in GetSorted(pMetaDatas, pOptions))
             {
-                Console.Write($" {md.RelativePath.PadRight(maxLenPath)} ");
+                if(pOptions.DoPrintFilenameOnly)
+                    Console.Write($" {Path.GetFileName(md.RelativePath).PadRight(maxLenPath)} ");
+                else
+                    Console.Write($" {md.RelativePath.PadRight(maxLenPath)} ");
+
                 if (pOptions.UseCreation)         Console.Write($"| {md.CreatedAt:yyyy-MM-dd HH:mm.ss} ");
                 if (pOptions.UseLastModification) Console.Write($"| {md.ModifiedAt:yyyy-MM-dd HH:mm.ss} ");
                 if (pOptions.UseLastAccess)       Console.Write($"| {md.AccessedAt:yyyy-MM-dd HH:mm.ss} ");
@@ -69,6 +74,25 @@ namespace ConsoleApp
             }
         }
 
+        internal static IEnumerable<IMetaData> GetSorted(IEnumerable<IMetaData> pMetaDatas, ExtOptions pOptions)
+        {
+            switch (pOptions.OrderType)
+            {
+                case EOrderType.Ascendant: 
+                if (pOptions.DoPrintFilenameOnly)
+                    return pMetaDatas.OrderBy(x => Path.GetFileName(x.RelativePath));
+                else
+                    return pMetaDatas.OrderBy(x => x.RelativePath);
+
+                case EOrderType.Descendent:
+                if (pOptions.DoPrintFilenameOnly)
+                    return pMetaDatas.OrderByDescending(x => Path.GetFileName(x.RelativePath));
+                else
+                    return pMetaDatas.OrderByDescending(x => x.RelativePath);
+
+                default: return pMetaDatas.ToList();
+            }
+        }
 
         internal static void PrintUnformattedResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas, string pSeparator = "\t")
         {
@@ -130,8 +154,7 @@ namespace ConsoleApp
                         case EReportLevel.Verbose:
                         Console.WriteLine($"{ToChar(m.DiffType)} {d.Path} ({m})");
                         break;
-                    }
-                    
+                    }                    
                 }
             }
 

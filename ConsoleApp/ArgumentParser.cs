@@ -517,6 +517,21 @@ namespace ConsoleApp
                         pOptions.DiffOutputLevel = EReportLevel.Verbose;
                         break;
 
+                        case Const.Arguments.ORDER_TYPE_ASC:
+                        case Const.Arguments.ORDER_TYPE_ASC_SHORT:
+                        pOptions.OrderType = EOrderType.Ascendant;
+                        break;
+
+                        case Const.Arguments.ORDER_TYPE_DESC:
+                        case Const.Arguments.ORDER_TYPE_DESC_SHORT:
+                        pOptions.OrderType = EOrderType.Descendent;
+                        break;
+
+                        case Const.Arguments.FILENAME_ONLY:
+                        case Const.Arguments.FILENAME_ONLY_SHORT:
+                        pOptions.DoPrintFilenameOnly = true;
+                        break;
+
                         default:
                         pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + GetParamValue(args, index, 0);
                         pErrorCode = EErrorCode.UnknownParameter;
