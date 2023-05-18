@@ -32,9 +32,10 @@ A fingerprint of a directory is: the sum of all checksums and metadata of files 
 With dfp you can:
 A. ***Calculate*** and ***save*** the fingerprint of a directory or
 B. ***Compare*** and ***show*** the ***differencies*** between:
-- two directories or
-- two fingerprint files or
-- a fingerprint file against a directory
+    - two directories or
+    - two fingerprint files or
+    - a fingerprint file against a directory
+C. print list of assembly (DLL/EXE) versions
 
 # How to use dfp.exe
 Used abbreviations in this document:
@@ -46,7 +47,7 @@ Used abbreviations in this document:
 # 1. Usage:
 Call ***dfp.exe*** in console as follow:
 
-**dfp** ( (**HELP** | **VERSION**) | (**CACLULATE** | **COMPARE** ) [**OPTIONS**]+) )
+**dfp** ( (**HELP** | **VERSION**) | (**CACLULATION** | **COMPARE** ) [**OPTIONS**]+) )
 
 
 # 2. Help:

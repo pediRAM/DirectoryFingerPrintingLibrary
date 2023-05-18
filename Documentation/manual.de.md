@@ -58,12 +58,12 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 # 2. Hilfe:
 |PARAMETER: |KURZ:     | BESCHREIBUNG: |
 |-----------|----------|---------------|
-|--help     | -h or /? | Zeigt diesen Hilfetext.|
+|--help     | -h or /? | Zeigt diesen Hilfetext an.|
 
 # 3. Version:
 |PARAMETER: |KURZ:     | BESCHREIBUNG: |
 |-----------|----------|---------------|
-|--version  | -v       | Zeigt Version und Lizenz-Informationen.|
+|--version  | -v       | Zeigt die Version und Lizenz-Informationen an.|
 
 # 4. Berechnung:
 ## 4.1 Filter Optionen:

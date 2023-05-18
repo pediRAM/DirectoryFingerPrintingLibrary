@@ -61,7 +61,7 @@ Used abbreviations in this document:
 # 1. Usage:
 Call ***dfp.exe*** in console as follow:
 
-**dfp** ( (**HELP** | **VERSION**) | (**CACLULATE** | **COMPARE** ) [**OPTIONS**]+) )
+**dfp** ( (**HELP** | **VERSION**) | (**CACLULATION** | **COMPARE** ) [**OPTIONS**]+) )
 
 
 # 2. Help:
