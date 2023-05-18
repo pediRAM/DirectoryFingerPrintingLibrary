@@ -1,1 +1,8 @@
+V 1.0.1
+- FIXED null-reference-exception when version was null
+- ADDED sorted output
+- ADDED ouput filename instead (relative) filepath
+- UPDATED Installer
+- REMOVED installer of ver. 1.0.0
+
 V 1.0.0.0 alpha
