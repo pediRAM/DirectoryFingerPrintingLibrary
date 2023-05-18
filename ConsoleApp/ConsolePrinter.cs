@@ -121,7 +121,7 @@ namespace ConsoleApp
                     if ((md.FSType == EFSType.Dll || md.FSType == EFSType.Exe) && md.Version != null)
                         Console.Write($"{md.Version}{pSeparator}");
                     else
-                        Console.Write("{pSeparator}");
+                        Console.Write($"{pSeparator}");
                 }
                 if (pOptions.UseHashsum) Console.Write($"{md.Hashsum}{pSeparator}");
                 Console.WriteLine();
