@@ -80,7 +80,7 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--positive-list            | -p   | ***DATEIERWEITERUNG*** ist eine ***positive*** liste (Dateien werden ***inkludiert***).|
 |--negative-list            | -n   | ***DATEIERWEITERUNG*** ist eine ***negative*** liste (Dateien werden ***ausgeschlossen***).|
 
-## 4.2 Hash/Checksum Optionen:
+## 4.2 Hash/Checksumme-Optionen:
 |PARAMETER:                |KURZ:     | BESCHREIBUNG: |
 |---------------------------|---------|---------------|
 |--use-crc32                | -crc32  | CRC32.|
@@ -89,14 +89,14 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--use-sha256               | -sha256 | SHA256.|
 |--use-sha512               | -sha512 | SHA512.|
 
-## 4.3 Report Level Optionen:
+## 4.3 Vergleichergebnis-Optionen:
 |PARAMETER:                 |KURZ: | BESCHREIBUNG: |
 |---------------------------|------|---------------|
 |--report-essential         | -re  | Minimalistische Ausgabe (gibt nur die +/-/~ und die Dateinamen aus).|
 |--report-informative       | -ri  | Minimalistische Ausgabe plus kurze Beschreibung.|
 |--report-verbose           | -rv  | Gibt alles aus.|
 
-## 4.4 Display Optionen:
+## 4.4 Anzeige-Optionen:
 |PARAMETER:                 |KURZ:  |BESCHREIBUNG: |
 |---------------------------|-------|-------------|
 |--print-colored            | -pc   | Die Ausgabe erfolgt in Farben (Rot = entfernt, Blau = hinzugefügt, Gelb = verändert).|
@@ -106,7 +106,7 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--print-sorted-descendent  | -desc | Die Verzeichnis-Fingerabdrücke werden absteigend sortiert ausgegeben.|
 |--print-only-filename      | -pof  | Nur der Dateiname statt des relativen Dateipfads wird ausgegeben|
 
-## 4.5 Save Optionen:
+## 4.5 Speicher-Optionen:
 |PARAMETER:                 |KURZ:  |BESCHREIBUNG: |
 |---------------------------|-------|--------------|
 |--save                     | -s    | Speichert die Fingerabdrücke in eine Datei (mehr in Abschnitt ***7.1***!).|
@@ -115,15 +115,15 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--format-json              | -json | *.json|
 |--format-csv               | -csv  | *.csv (mit ';' als Trennzeichen).|
 
-# 5. Compare:
-## 5.1 Type of Comparison:
+# 5. Vergleich:
+## 5.1 Vergleich-Modus:
 |PARAMETER:                 |KURZ: |BESCHREIBUNG: |
 |---------------------------|------|--------------|
 |--compare-directories      | -cd  | Vergleicht zwei Verzeichnisse.|
 |--compare-fingerprints     | -cf  | Vergleicht zwei Verzeichnis-Fingerabdruck-Dateien.|
 |--compare                  | -c   | Vergleicht eine Verzeichnis-Fingerabdruck-Datei mit ein Verzeichnis.|
 
-## 5.2 Ignore Optionen:
+## 5.2 Optionen um Vergleichsoptionen zu übergehen:
 |PARAMETER:                 |KURZ: |BESCHREIBUNG: |
 |---------------------------|------|--------------|
 |--ignore-case              | -ic  | Ignoriert die Groß-Klein-Schreibung.|
