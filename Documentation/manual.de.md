@@ -30,12 +30,14 @@ Und so können Sie überprüfen, ob Änderungen vorliegen oder nicht, und falls 
 
 # Was können Sie mit dfp.exe Anwendung tun?
 Mit ***dfp.exe*** können Sie:
-A. den Fingerabdrucks eines Verzeichnisses ***Berechnen*** und ***Speichern***, oder
-B. die ***Unterschiede*** zwischen wie folgt ***anzeigen***:
-    - zwei Verzeichnisse vergleichen
-    - zwei Fingerabdruck-Dateien vergleichen
-    - eine Fingerabdruckdatei gegen ein Verzeichnis vergleichen
-C. ***Auflistung*** von ***DLL-/EXE-Dateien*** mit ihren ***Versionen***
+1. eine ***Liste*** von ***Assembly-Dateien*** (*.dll / *.exe) mit ihren ***Versionen*** in einem Verzeichnis (auch rekursiv) anzeigen
+2. den ***Fingerabdruck*** eines Verzeichnisses ***Berechnen*** und ***Speichern***, oder
+3. die ***Unterschiede*** zwischen:
+    - zwei **Verzeichnisse**, oder
+    - zwei **Fingerabdruck-Dateien**, oder
+    - eine **Fingerabdruckdatei** und ein **Verzeichnis**
+
+***vergleichen*** und ***anzeigen***.
 
 Hinweise:\
 Die folgenden Zeichen, habe folgende Bedeutungen:\
@@ -134,7 +136,7 @@ Rufen Sie ***dfp.exe*** in der Eingabeaufforderung (Konsole/Terminal/Prompt) wie
 |--ignore-hashsum           | -ihs | Ignoriert die Checksummen (Hashwerte).|
 
 # 6. Dateierweiterung:
-Eine Liste von Dateierweiterungen umgeschlossen in einfache oder doppelte Anführungszeichen, ohne Asterisk ('*') und/oder Punkte  ('**.**'), wie z.B.:\
+Eine Liste von Dateierweiterungen umgeschlossen in einfache oder doppelte Anführungszeichen, ohne Asterisk ('*') und/oder Punkte  ('**.**'), wie z.B.:
 - **'dll exe xml'** oder **'dll,exe,xml'** oder **'dll;exe;xml'**\
 oder
 - **"dll exe xml"** oder **"dll,exe,xml"** oder **"dll;exe;xml"**
@@ -152,7 +154,7 @@ Sie können die Erweiterungen mit folgenden Trennzeichen von einander trennen:
 Sollte für die Speicherung der Fingerabdruck-Datei keinen Namen angegeben werden,
 wird automatisch ein Zeitstempel als Dateiname verwendet.\
 Als Format und Dateierweiterung wird - falls nicht angegeben - "***dfp***" (*.***dfp***) automatisch ausgewählt ***(STANDARD)***.\
-Außer ***dfp** Format stehen folgende Formate ebenfalls zur Verfügung:\
+Außer ***dfp*** Format stehen folgende Formate ebenfalls zur Verfügung:
 - CSV
 - JSON
 - XML
