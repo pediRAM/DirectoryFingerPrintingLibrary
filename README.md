@@ -42,6 +42,6 @@ checksums for each file in that directory, like this (simplified):
 [German](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.de.md)
 
 # Downloads:
-[Downloads page...](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/Downloads/README.md)
+[Downloads page...](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/tree/main/Downloads/README.md)
 
 
