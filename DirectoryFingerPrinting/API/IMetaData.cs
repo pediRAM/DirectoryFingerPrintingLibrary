@@ -18,12 +18,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using System;
+
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    /// <summary>
+    /// Provides data about characteristics of a file.
+    /// </summary>
+    public interface IMetaData
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        string RelativePath { get; }
+
+        string Extension { get; }
+
+        EFSType FSType { get; }
+
+        long Size { get; }
+
+        DateTime CreatedAt { get; }
+
+        DateTime ModifiedAt { get; }
+
+        DateTime AccessedAt { get; }
+
+        string Version { get; }
+
+        string Hashsum { get; }
     }
 }

@@ -6,20 +6,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <AssemblyName>dfp</AssemblyName>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.2</FileVersion>
+    <Copyright>Copyright © 2023 Pedram GANJEH HADIDI</Copyright>
+    <Product>Directory FingerPrinting .NET6</Product>
+    <Description>Calculates and compares directory checksums</Description>
+    <Title>Directory FingerPrinting 1.0.2</Title>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="License.txt" />
-    <None Remove="Manual.html" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="License.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Manual.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -29,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DirectoryFingerPrintingLibrary\DirectoryFingerPrinting.csproj" />
+    <ProjectReference Include="..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj" />
   </ItemGroup>
 
 </Project>

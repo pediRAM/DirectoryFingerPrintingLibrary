@@ -18,12 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using DirectoryFingerPrinting.Models;
+
+namespace ConsoleApp.File
 {
-    internal enum EOrderType
+    internal interface IFileSerializer
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        DirectoryFingerprint Load(string pPath);
+        void Save(string pPath, DirectoryFingerprint pDirectoryFingerprint);
     }
 }

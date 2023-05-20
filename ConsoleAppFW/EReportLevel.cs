@@ -20,10 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace ConsoleApp
 {
-    internal enum EOrderType
+    internal enum EReportLevel
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        Essential   = 0,
+        Informative = 1,
+        Verbose     = 2
     }
 }

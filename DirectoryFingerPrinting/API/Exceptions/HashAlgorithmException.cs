@@ -18,12 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using System;
+
+namespace DirectoryFingerPrinting.API.Exceptions
 {
-    internal enum EOrderType
+    public class HashAlgorithmException : Exception
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        public HashAlgorithmException(EHashAlgo a, EHashAlgo b) : base("Hashsum algorithms are not equal!")
+        {
+            HashAlgorithmA = a;
+            HashAlgorithmB = b;
+        }
+
+        public EHashAlgo HashAlgorithmA { get; }
+        public EHashAlgo HashAlgorithmB { get; }
     }
 }

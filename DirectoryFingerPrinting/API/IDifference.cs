@@ -18,12 +18,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    public interface IDifference
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        /// <summary>
+        /// Type of difference.
+        /// </summary>
+        EDiffType DiffType { get; set; }
+
+        /// <summary>
+        /// Name of file characteristic/property.
+        /// </summary>
+        string Matter { get; set; }
+
+        string ParadigmValue { get; set; }
+
+        string TestValue { get; set; }
     }
 }

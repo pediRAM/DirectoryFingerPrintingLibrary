@@ -18,12 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using System.Collections.Generic;
+
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    public interface IDirDiffCalculator
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA,  IDirectoryFingerprint dfpB);
+        IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> dfpA,  IEnumerable<IMetaData> dfpB);
     }
 }

@@ -18,12 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting
 {
-    internal enum EOrderType
+    public static class AsmConst
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        public const string DIRECTORY_FINGERPRINT_MODEL_VERSION = "1.0";
     }
 }

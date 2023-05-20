@@ -18,12 +18,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using DirectoryFingerPrinting.API;
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+
+namespace DirectoryFingerPrinting.Models
 {
-    internal enum EOrderType
+    [XmlRoot]
+    public class DirectoryFingerprint : IDirectoryFingerprint
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        [XmlElement]
+        public string Version { get; set; }
+
+        [XmlElement]
+        public DateTime CreatedAt { get; set; }
+
+        [XmlElement]
+        public string Hostname { get; set; }
+
+        [XmlElement]
+        public EHashAlgo HashAlgorithm { get; set; }
+
+        [XmlElement]
+        public MetaData[] MetaDatas { get; set; }
+
+        public IEnumerable<IMetaData> GetMetaDatas() => MetaDatas;
     }
 }

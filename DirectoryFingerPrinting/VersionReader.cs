@@ -18,12 +18,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting
 {
-    internal enum EOrderType
+    #region Usings
+    using System.Diagnostics;
+    #endregion Usings
+
+
+    internal static class VersionReader
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        public static bool TryRead(string pExePath, out FileVersionInfo fileVersion)
+        {
+            fileVersion = null;
+            try
+            {
+                fileVersion = FileVersionInfo.GetVersionInfo(pExePath);
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
     }
 }

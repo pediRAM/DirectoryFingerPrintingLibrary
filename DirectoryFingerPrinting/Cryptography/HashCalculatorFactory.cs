@@ -18,12 +18,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.Cryptography
 {
-    internal enum EOrderType
+    using DirectoryFingerPrinting.API;
+    using System;
+
+    public static class HashCalculatorFactory
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        public static IHashCalculator Create(EHashAlgo algorithm)
+        {
+            switch (algorithm)
+            {
+                case EHashAlgo.CRC32:  return new CRC32();
+                //case EHashAlgo.CRC64:  return new CRC64();
+                case EHashAlgo.MD5:    return new HashCalculator("MD5");
+                case EHashAlgo.SHA1:   return new HashCalculator("SHA1");
+                case EHashAlgo.SHA256: return new HashCalculator("SHA256");
+                case EHashAlgo.SHA512: return new HashCalculator("SHA512");
+            }
+
+            throw new NotImplementedException();
+        }
     }
 }

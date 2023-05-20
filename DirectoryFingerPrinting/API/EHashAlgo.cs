@@ -18,12 +18,46 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    /// <summary>
+    /// EHashAlgo.
+    /// </summary>
+    public enum EHashAlgo
     {
+        /// <summary>
+        /// None: no algorithm selected.
+        /// </summary>
         None = 0,
-        Ascendant = 1,
-        Descendent = 2
+
+        /// <summary>
+        /// CRC32.
+        /// </summary>
+        CRC32,
+
+        ///// <summary>
+        ///// CRC64.
+        ///// </summary>
+        //CRC64,
+
+        /// <summary>
+        /// MD5.
+        /// </summary>
+        MD5,
+
+        /// <summary>
+        /// SHA1.
+        /// </summary>
+        SHA1,
+
+        /// <summary>
+        /// SHA256.
+        /// </summary>
+        SHA256,
+
+        /// <summary>
+        /// SHA512.
+        /// </summary>
+        SHA512,
     }
 }

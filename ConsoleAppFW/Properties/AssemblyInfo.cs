@@ -18,12 +18,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
-{
-    internal enum EOrderType
-    {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
-    }
-}
+using ConsoleAppFW;
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+
+[assembly: AssemblyTitle(AsmConst.TITLE)]
+[assembly: AssemblyDescription(AsmConst.DESCRIPTION)]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct(AsmConst.PRODUCT)]
+[assembly: AssemblyCopyright(AsmConst.COPYRIGHT)]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+[assembly: ComVisible(false)]
+[assembly: Guid("e577bc24-81c2-4ad7-9f69-e53829615d1e")]
+
+[assembly: AssemblyVersion(AsmConst.VERSION)]
+[assembly: AssemblyFileVersion(AsmConst.VERSION)]

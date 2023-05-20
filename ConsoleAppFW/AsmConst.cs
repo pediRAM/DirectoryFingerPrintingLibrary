@@ -18,12 +18,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace ConsoleAppFW
 {
-    internal enum EOrderType
+    internal static class AsmConst
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        internal const string MAJOR = "1";
+        internal const string MINOR = "0";
+        internal const string BUILD = "2";
+
+        public const string VERSION = $"{MAJOR}.{MINOR}.{BUILD}";
+
+        public const string TITLE = @"Directory FingerPrinting " + VERSION;
+
+        public const string DESCRIPTION = @"Calculates and compares directory checksums";
+
+        public const string PRODUCT = @"Directory FingerPrinting .NET FW 4.8";
+
+        public const string COPYRIGHT = @"Copyright © 2023 Pedram GANJEH HADIDI";
     }
 }

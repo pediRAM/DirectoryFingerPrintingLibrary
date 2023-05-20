@@ -18,12 +18,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using DirectoryFingerPrinting.Models;
+using System.Collections.Generic;
+using System.IO;
+
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    public interface IMetaDataFactory
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
+        IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
+
+        MetaData CreateMetaData(FileInfo pFileInfo);
+        MetaData CreateMetaData(string pFilePath);
     }
 }

@@ -18,12 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using System.IO;
+
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    public interface IHashCalculator
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        string GetHash(string pFilePath);
+        string GetHash(FileInfo pFileInfo);
     }
 }

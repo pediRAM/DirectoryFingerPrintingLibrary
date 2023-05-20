@@ -18,12 +18,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using System.Xml.Serialization;
+
 namespace ConsoleApp
 {
-    internal enum EOrderType
+    internal enum EOutputFormat
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        /// <summary>
+        /// Default.
+        /// </summary>
+        [XmlEnum]
+        Dfp  = 0,
+
+        [XmlEnum]
+        Xml  = 1,
+
+        [XmlEnum]
+        Json = 2,
+
+        [XmlEnum]
+        CSV  = 3,
     }
 }

@@ -20,7 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace ConsoleApp
 {
+    using ConsoleAppFW;
     using DirectoryFingerPrinting.API;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
 
     internal static class ConsolePrinter
     {
@@ -188,9 +193,9 @@ Try 'dfp --help' for more information.";
         }
         internal static string GetVersionText()
         {
-            return @"
+            return @$"
 **********************************************************
-*** Directory FingerPrinting (dfp) version: 1.0.2      ***
+*** Directory FingerPrinting (dfp) version: {AsmConst.VERSION,-11}***
 **********************************************************
 Copyright (C) 2023 Pedram GANJEH HADIDI.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.

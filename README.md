@@ -1,6 +1,8 @@
 # DirectoryFingerPrintingLibrary
 In C#/.NET written library for creating, listing and comparing fingerprints of directory content (only windows file systems!)
 
+![dfp.exe at work](/Documentation/dfp_video.gif)
+
 # What is Directory FingerPrinting (DFP)?
 A fingerprint of a directory is same as hash/checkusm of a file, but for a directory.\
 ***dfp.exe*** reads versions, timestamps and calculates
@@ -14,6 +16,7 @@ checksums for each file in that directory, like this (simplified):
  DirectoryFingerPrinting.dll | 2023-05-13 18:08.54 | 28160  | 1.0.0.0      | 8d8f029d9a43b2993377f8658c296d3cc32e29cf
  System.IO.Hashing.dll       | 2022-10-18 16:34.48 | 31360  | 7.0.22.51805 | 8edf3a7714ed9971396b87b8f057656f0b2c38f4
  ```
+
  First you save the fingerprint of your directory. Later you can run ***dfp.exe*** to compare the fingerprint file
  whith the content of your directory now. And so, you can check if something has changed (or not), and if what
  exactly, like this:
@@ -37,9 +40,8 @@ C. print list of assembly (DLL/EXE) versions
 [English](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.en.md)\
 [German](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.de.md)
 
-# Download:
-.NET6 must be pre-installed!\
-[Setup_dfp_1.0.1_BETA_AMD64_x64.exe](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Downloads/Setup_dfp_1.0.1_BETA_AMD64_x64.exe)
+# Downloads:
+[Downloads page...](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/Downloads/README.md)
 ```
 Name: Setup_dfp_1.0.1_BETA_AMD64_x64.exe
 Size: 270757 bytes (264 KiB)

@@ -18,12 +18,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+using System.Collections.Generic;
+
+namespace DirectoryFingerPrinting.API
 {
-    internal enum EOrderType
+    public interface IOptions
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        string BaseDirPath { get; }
+
+        bool IsCaseSensitive { get; }
+
+        bool UseSize { get; }
+
+        bool UseCreation { get; }
+
+        bool UseLastModification { get; }
+
+        bool UseLastAccess { get; }
+
+        bool UseVersion { get; }
+
+        bool UseHashsum { get; }
+
+        bool EnableRecursive { get; }
+
+        bool UsePositiveList { get; }
+
+        HashSet<string> Extensions { get; }
+
+        EHashAlgo HashAlgo { get; }
     }
 }
