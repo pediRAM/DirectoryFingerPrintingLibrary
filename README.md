@@ -1,5 +1,5 @@
 # DirectoryFingerPrintingLibrary
-In .NET/C# written library for creating, listing and comparing fingerprints of directory content (only windows file systems!)
+In .NET/C# written library (.NET Standard 2.0) and console application (.NET6 and FW4.8) for creating, listing and comparing fingerprints of directory content (only windows file systems!)
 
 ![dfp.exe at work](/Documentation/dfp_video.gif)
 
@@ -28,7 +28,7 @@ checksums for each file in that directory, like this (simplified):
 + Sub_Dir\File5.txt (File added)
 ```
 # What can you do with dfp.exe application?
-With dfp you can:
+***dfp.exe*** enables you to:
 
 1. ***List*** ***filenames*** and ***Versions*** of assembly files (*.dll/*.exe) in a directory (also recursive)
 2. ***Calculate*** and ***save*** the fingerprint of a directory or
