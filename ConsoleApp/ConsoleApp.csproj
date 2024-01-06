@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DirectoryFingerPrinting.App.Lib\DirectoryFingerPrinting.App.Lib.csproj" />
-    <ProjectReference Include="..\DirectoryFingerPrintingLibrary\DirectoryFingerPrinting.App.Lib\DirectoryFingerPrinting.App.Lib.csproj" />
     <ProjectReference Include="..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj" />
   </ItemGroup>
 
