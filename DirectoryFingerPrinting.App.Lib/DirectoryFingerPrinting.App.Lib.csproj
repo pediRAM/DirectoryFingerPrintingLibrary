@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj" />
+    <ProjectReference Include="..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj" />
   </ItemGroup>
 
 </Project>
