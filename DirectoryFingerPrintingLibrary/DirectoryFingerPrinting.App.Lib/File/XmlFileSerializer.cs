@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp.File
+namespace DirectoryFingerPrinting.App.Lib.File
 {
     using DirectoryFingerPrinting.Models;
     using System.IO;
@@ -39,10 +39,8 @@ namespace ConsoleApp.File
         {
             var xmlWriterSettings = new XmlWriterSettings() { NewLineHandling = NewLineHandling.Entitize, Indent = true };
             var xmlSerializer = new XmlSerializer(typeof(DirectoryFingerprint));
-            using (XmlWriter xmlWriter = XmlWriter.Create(pFilePath, xmlWriterSettings))
-            {
-                xmlSerializer.Serialize(xmlWriter, pDirectoryFingerPrint);
-            }
+            using XmlWriter xmlWriter = XmlWriter.Create(pFilePath, xmlWriterSettings);
+            xmlSerializer.Serialize(xmlWriter, pDirectoryFingerPrint);
         }
     }
 }

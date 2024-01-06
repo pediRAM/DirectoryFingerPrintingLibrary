@@ -113,11 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsmConst.cs" />
-    <Compile Include="File\CsvFileSerializer.cs" />
-    <Compile Include="File\FileSerializerFactory.cs" />
-    <Compile Include="File\IFileSerializer.cs" />
-    <Compile Include="File\JsonFileSerializer.cs" />
-    <Compile Include="File\XmlFileSerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -18,24 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp.File
+using DirectoryFingerPrinting.Models;
+
+namespace DirectoryFingerPrinting.App.Lib.File
 {
-    using DirectoryFingerPrinting.Models;
-    using System.Text;
-    using System.Text.Json;
-
-    internal class JsonFileSerializer : IFileSerializer
+    public interface IFileSerializer
     {
-        public DirectoryFingerprint Load(string pPath)
-        {
-            var jsonString = System.IO.File.ReadAllText(pPath, Encoding.UTF8);
-            return JsonSerializer.Deserialize<DirectoryFingerprint>(jsonString);
-        }
-
-        public void Save(string pPath, DirectoryFingerprint pDirectoryFingerprint)
-        {
-            var jsonString = JsonSerializer.Serialize(pDirectoryFingerprint, new JsonSerializerOptions { WriteIndented = true });
-            System.IO.File.WriteAllText(pPath, jsonString, Encoding.UTF8);
-        }
+        DirectoryFingerprint Load(string pPath);
+        void Save(string pPath, DirectoryFingerprint pDirectoryFingerprint);
     }
 }

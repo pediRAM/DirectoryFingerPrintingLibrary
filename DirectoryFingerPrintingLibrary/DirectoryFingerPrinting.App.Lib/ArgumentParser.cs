@@ -252,7 +252,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
-                                    else if (File.Exists(args[index + 1]))
+                                    else if (System.IO.File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_EXISTS + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
@@ -315,7 +315,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!File.Exists(args[index + 1]))
+                                    if (!System.IO.File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
@@ -457,7 +457,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!File.Exists(args[index + 1]))
+                                    if (!System.IO.File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
@@ -489,7 +489,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!File.Exists(args[index + 1]))
+                                    if (!System.IO.File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;

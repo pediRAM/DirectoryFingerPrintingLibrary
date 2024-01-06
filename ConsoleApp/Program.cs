@@ -18,12 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using ConsoleApp;
-using ConsoleApp.File;
+
 using DirectoryFingerPrinting;
 using DirectoryFingerPrinting.API;
 using DirectoryFingerPrinting.API.Exceptions;
 using DirectoryFingerPrinting.App.Lib;
+using DirectoryFingerPrinting.App.Lib.File;
 using DirectoryFingerPrinting.Models;
 using System.Diagnostics;
 

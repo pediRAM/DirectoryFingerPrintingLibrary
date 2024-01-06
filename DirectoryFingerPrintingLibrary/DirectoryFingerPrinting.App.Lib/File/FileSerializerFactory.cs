@@ -18,11 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.App.Lib;
 
-namespace ConsoleApp.File
+using System;
+
+namespace DirectoryFingerPrinting.App.Lib.File
 {
-    internal class FileSerializerFactory
+    public class FileSerializerFactory
     {
         public static IFileSerializer CreateSerializer(EOutputFormat pFormat)
         {
