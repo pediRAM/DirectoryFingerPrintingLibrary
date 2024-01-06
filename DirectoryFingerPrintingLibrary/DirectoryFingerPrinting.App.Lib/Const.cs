@@ -20,8 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace DirectoryFingerPrinting.App.Lib
 {
+    /// <summary>
+    /// Contains constants used in CLI apps, like: arguments, error codes, messages and date-time formats.
+    /// </summary>
     public static class Const
     {
+        /// <summary>
+        /// Contains available argument symbols.
+        /// </summary>
         public static class Arguments
         {
             public const string ASSEMBLIES_ONLY                  = "--assemblies-only";
@@ -155,6 +161,9 @@ namespace DirectoryFingerPrinting.App.Lib
             public const string SIZES     = "--sizes";
         }
 
+        /// <summary>
+        /// Error codes for returning in case of error (%errorlevel% in cmd.exe).
+        /// </summary>
         public static class Errors
         {
             public const string BAD_OR_EMPTY_EXTENSION_LIST = "Bad/empty extensions list!";
@@ -176,11 +185,17 @@ namespace DirectoryFingerPrinting.App.Lib
             //public const string XXX =
         }
 
+        /// <summary>
+        /// Contains messages.
+        /// </summary>
         public static class Messages
         {
             public const string NO_FILE_PASSED = "No file passed the filters.";
         }
 
+        /// <summary>
+        /// Contains formats.
+        /// </summary>
         public static class Formats
         {
             public const string DATETIME = "yyyy-MM-dd HH:mm:ss";

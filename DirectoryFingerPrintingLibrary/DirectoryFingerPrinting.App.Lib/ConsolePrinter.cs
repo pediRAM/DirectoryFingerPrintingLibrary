@@ -26,8 +26,16 @@ namespace DirectoryFingerPrinting.App.Lib
     using System.IO;
     using System.Linq;
 
+    /// <summary>
+    /// Provides methods to print messages and results to console.
+    /// </summary>
     public static class ConsolePrinter
     {
+        /// <summary>
+        /// Prints the given results to console.
+        /// </summary>
+        /// <param name="pOptions">Print options.</param>
+        /// <param name="pMetaDatas">Meta data of files.</param>
         public static void PrintResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
         {
             int maxLenPath = pOptions.DoPrintFilenameOnly ? Math.Max(4, pMetaDatas.Max(m => Path.GetFileName(m.RelativePath).Length)) : Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
@@ -78,7 +86,13 @@ namespace DirectoryFingerPrinting.App.Lib
             }
         }
 
-        public static IEnumerable<IMetaData> GetSorted(IEnumerable<IMetaData> pMetaDatas, ExtOptions pOptions)
+        /// <summary>
+        /// Sorts the given meta datas
+        /// </summary>
+        /// <param name="pMetaDatas">Meta data of files.</param>
+        /// <param name="pOptions"></param>
+        /// <returns></returns>
+        private static IEnumerable<IMetaData> GetSorted(IEnumerable<IMetaData> pMetaDatas, ExtOptions pOptions)
         {
             switch (pOptions.OrderType)
             {

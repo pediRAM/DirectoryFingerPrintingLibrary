@@ -24,9 +24,19 @@ namespace DirectoryFingerPrinting.App.Lib
     using System.IO;
     using System.Text.RegularExpressions;
 
-
+    /// <summary>
+    /// Provides methods for parsing arguments used by cli apps.
+    /// </summary>
     public class ArgumentParser
     {
+        /// <summary>
+        /// Parses arguments and returns TRUE if succeeded, else FALSE.
+        /// </summary>
+        /// <param name="args">Arguments to parse.</param>
+        /// <param name="pOptions">Options.</param>
+        /// <param name="pErrorCode">Error code (in case of missing/illegal parameters).</param>
+        /// <param name="pErrorMsg">Error message (in case of missing/illegal parameters).</param>
+        /// <returns></returns>
         public static bool TryParse(string[] args,  out ExtOptions pOptions, out EErrorCode pErrorCode, out string pErrorMsg)
         {
             pOptions = new ExtOptions { BaseDirPath = Environment.CurrentDirectory };
@@ -120,7 +130,7 @@ namespace DirectoryFingerPrinting.App.Lib
                         case Const.Arguments.IGNORE_HASHSUM:
                         case Const.Arguments.IGNORE_HASHSUM_SHORT:
                         pOptions.UseHashsum = false;
-                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.None;
+                        pOptions.HashAlgo = API.EHashAlgo.None;
                         break;
 
                         case Const.Arguments.RECURSIVE:
@@ -163,7 +173,7 @@ namespace DirectoryFingerPrinting.App.Lib
 
                         case Const.Arguments.USE_CRC32:
                         case Const.Arguments.USE_CRC32_SHORT:
-                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.CRC32;
+                        pOptions.HashAlgo = API.EHashAlgo.CRC32;
                         break;
 
                         //case Const.Arguments.USE_CRC64:
@@ -172,22 +182,22 @@ namespace DirectoryFingerPrinting.App.Lib
 
                         case Const.Arguments.USE_MD5:
                         case Const.Arguments.USE_MD5_SHORT:
-                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.MD5;
+                        pOptions.HashAlgo = API.EHashAlgo.MD5;
                         break;
 
                         case Const.Arguments.USE_SHA1:
                         case Const.Arguments.USE_SHA1_SHORT:
-                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA1;
+                        pOptions.HashAlgo = API.EHashAlgo.SHA1;
                         break;
 
                         case Const.Arguments.USE_SHA256:
                         case Const.Arguments.USE_SHA256_SHORT:
-                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA256;
+                        pOptions.HashAlgo = API.EHashAlgo.SHA256;
                         break;
 
                         case Const.Arguments.USE_SHA512:
                         case Const.Arguments.USE_SHA512_SHORT:
-                        pOptions.HashAlgo = DirectoryFingerPrinting.API.EHashAlgo.SHA512;
+                        pOptions.HashAlgo = API.EHashAlgo.SHA512;
                         break;
 
                         case Const.Arguments.NO_HEADER:
@@ -245,7 +255,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
-                                    else if (System.IO.File.Exists(args[index + 1]))
+                                    else if (File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_EXISTS + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.IllegalValue;
@@ -308,7 +318,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!System.IO.File.Exists(args[index + 1]))
+                                    if (!File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
@@ -340,7 +350,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!System.IO.Directory.Exists(args[index + 1]))
+                                    if (!Directory.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
@@ -379,7 +389,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!System.IO.Directory.Exists(args[index + 1]))
+                                    if (!Directory.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
@@ -411,7 +421,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!System.IO.Directory.Exists(args[index + 1]))
+                                    if (!Directory.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
@@ -450,7 +460,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!System.IO.File.Exists(args[index + 1]))
+                                    if (!File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;
@@ -482,7 +492,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                         return false;
                                     }
 
-                                    if (!System.IO.File.Exists(args[index + 1]))
+                                    if (!File.Exists(args[index + 1]))
                                     {
                                         pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
                                         pErrorCode = EErrorCode.FileNotFound;

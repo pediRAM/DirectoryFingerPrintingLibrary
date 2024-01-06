@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace DirectoryFingerPrinting.App.Lib
 {
+    /// <summary>
+    /// Contains all error codes as enumerations.
+    /// </summary>
     public enum EErrorCode
     {
         None                            = 0,

@@ -20,10 +20,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace DirectoryFingerPrinting.App.Lib
 {
+    /// <summary>
+    /// Order types for sorting results.
+    /// </summary>
     public enum EOrderType
     {
+        /// <summary>
+        /// No sorting at all. The results are output as they have been found while processing files.
+        /// </summary>
         None = 0,
+
+        /// <summary>
+        /// A to Z.
+        /// </summary>
         Ascendant = 1,
+        
+        /// <summary>
+        /// Z to A.
+        /// </summary>
         Descendent = 2
     }
 }
