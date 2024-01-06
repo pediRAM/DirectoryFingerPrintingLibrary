@@ -71,9 +71,8 @@ namespace DirectoryFingerPrinting.App.Lib
                     {
                         case Const.Arguments.ASSEMBLIES_ONLY:
                         case Const.Arguments.ASSEMBLIES_ONLY_SHORT:
-                        pOptions.Extensions.Add(".dll");
-                        pOptions.Extensions.Add(".exe");
-                        pOptions.UsePositiveList = true;
+                        SetAssembliesOnly(pOptions);
+                        
                         break;
 
                         case Const.Arguments.DIRECTORY:
@@ -97,9 +96,7 @@ namespace DirectoryFingerPrinting.App.Lib
 
                         case Const.Arguments.IGNORE_TIMESTAMPS:
                         case Const.Arguments.IGNORE_TIMESTAMPS_SHORT:
-                        pOptions.UseCreation = false;
-                        pOptions.UseLastAccess = false;
-                        pOptions.UseLastModification = false;
+                        IgnoreTimestamps(pOptions);
                         break;
 
                         case Const.Arguments.IGNORE_SIZE:
@@ -545,6 +542,32 @@ namespace DirectoryFingerPrinting.App.Lib
                         pOptions.DoPrintFilenameOnly = true;
                         break;
 
+                        case Const.Arguments.VERSIONS:
+                        SetAssembliesOnly(pOptions);
+                        IgnoreTimestamps(pOptions);
+                        pOptions.UseSize = false;
+                        pOptions.UseHashsum = false;
+                        pOptions.UseVersion = true;
+                        pOptions.EnableRecursive = false;
+                        break;
+
+                        case Const.Arguments.CHECKSUMS:
+                        SetAssembliesOnly(pOptions);
+                        IgnoreTimestamps(pOptions);
+                        pOptions.UseSize = false;
+                        pOptions.UseHashsum = true;
+                        pOptions.UseVersion = false;
+                        pOptions.EnableRecursive = false;
+                        break;
+
+                        case Const.Arguments.SIZES:
+                        IgnoreTimestamps(pOptions);
+                        pOptions.UseSize = true;
+                        pOptions.UseHashsum = false;
+                        pOptions.UseVersion = false;
+                        pOptions.EnableRecursive = false;
+                        break;
+
                         default:
                         pErrorMsg = string.Format(Const.Errors.UNKOWN_PARAM, a) + GetParamValue(args, index, 0);
                         pErrorCode = EErrorCode.UnknownParameter;
@@ -577,6 +600,20 @@ namespace DirectoryFingerPrinting.App.Lib
                 pErrorCode = EErrorCode.InternalError;
                 return false;
             }
+        }
+
+        private static void IgnoreTimestamps(ExtOptions pOptions)
+        {
+            pOptions.UseCreation = false;
+            pOptions.UseLastAccess = false;
+            pOptions.UseLastModification = false;
+        }
+
+        private static void SetAssembliesOnly(ExtOptions pOptions)
+        {
+            pOptions.Extensions.Add(".dll");
+            pOptions.Extensions.Add(".exe");
+            pOptions.UsePositiveList = true;
         }
 
         private static string GetParamValue(string[] pArgs, int pIndex, int pValue)
