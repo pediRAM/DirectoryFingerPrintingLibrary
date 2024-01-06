@@ -17,12 +17,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-using System.Text.RegularExpressions;
-
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.App.Lib
 {
-    internal class ArgumentParser
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text.RegularExpressions;
+
+
+    public class ArgumentParser
     {
         public static bool TryParse(string[] args,  out ExtOptions pOptions, out EErrorCode pErrorCode, out string pErrorMsg)
         {

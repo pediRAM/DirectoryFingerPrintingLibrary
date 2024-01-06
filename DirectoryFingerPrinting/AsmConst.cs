@@ -23,5 +23,6 @@ namespace DirectoryFingerPrinting
     public static class AsmConst
     {
         public const string DIRECTORY_FINGERPRINT_MODEL_VERSION = "1.0";
+        public const string VERSION = "1.0.4";
     }
 }

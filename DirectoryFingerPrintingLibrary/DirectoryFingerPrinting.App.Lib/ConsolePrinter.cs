@@ -18,18 +18,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.App.Lib
 {
-    using ConsoleAppFW;
     using DirectoryFingerPrinting.API;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
 
-    internal static class ConsolePrinter
+    public static class ConsolePrinter
     {
-        internal static void PrintResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
+        public static void PrintResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
         {
             int maxLenPath = pOptions.DoPrintFilenameOnly ? Math.Max(4, pMetaDatas.Max(m => Path.GetFileName(m.RelativePath).Length)) : Math.Max(4, pMetaDatas.Max(m => m.RelativePath.Length));
 
@@ -79,7 +78,7 @@ namespace ConsoleApp
             }
         }
 
-        internal static IEnumerable<IMetaData> GetSorted(IEnumerable<IMetaData> pMetaDatas, ExtOptions pOptions)
+        public static IEnumerable<IMetaData> GetSorted(IEnumerable<IMetaData> pMetaDatas, ExtOptions pOptions)
         {
             switch (pOptions.OrderType)
             {
@@ -99,7 +98,7 @@ namespace ConsoleApp
             }
         }
 
-        internal static void PrintUnformattedResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas, string pSeparator = "\t")
+        public static void PrintUnformattedResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas, string pSeparator = "\t")
         {
             if (pOptions.DoPrintHeader)
             { 
@@ -134,7 +133,7 @@ namespace ConsoleApp
         }
 
 
-        internal static void PrintDiffs(IEnumerable<IFileDiff> diffs, ExtOptions pOptions)
+        public static void PrintDiffs(IEnumerable<IFileDiff> diffs, ExtOptions pOptions)
         {
             foreach (var d in diffs)
             {
@@ -186,16 +185,16 @@ namespace ConsoleApp
                 _ => '~'
             };
         }
-        internal static string GetUsageText()
+        public static string GetUsageText()
         {
             return @"Usage: dfp [OPTION]...
 Try 'dfp --help' for more information.";
         }
-        internal static string GetVersionText()
+        public static string GetVersionText(string pVersion)
         {
             return @$"
 **********************************************************
-*** Directory FingerPrinting (dfp) version: {AsmConst.VERSION,-11}***
+*** Directory FingerPrinting (dfp) version: {pVersion,-11}***
 **********************************************************
 Copyright (C) 2023 Pedram GANJEH HADIDI.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
@@ -206,9 +205,9 @@ Written by Pedram GANJEH HADIDI. For more information visit:
 ";
         }
 
-        internal static string GetHelpText()
+        public static string GetHelpText(string pVersion)
         {
-            return GetVersionText() + @"
+            return GetVersionText(pVersion) + @"
 With dfp you can:
 A) Calculate and save a Directory-FingerPrint file or
 B) Compare and show differencies between:

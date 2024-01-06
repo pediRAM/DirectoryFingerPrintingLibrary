@@ -18,9 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.App.Lib
 {
-    internal static class Const
+    public static class Const
     {
         public static class Arguments
         {
@@ -149,6 +149,10 @@ namespace ConsoleApp
 
             public const string FILENAME_ONLY                    = "--print-only-filename";
             public const string FILENAME_ONLY_SHORT              = "-pof";
+
+            public const string VERSIONS  = "--versions";
+            public const string CHECKSUMS = "--checksums";
+            public const string SIZES     = "--sizes";
         }
 
         public static class Errors

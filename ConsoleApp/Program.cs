@@ -23,6 +23,7 @@ using ConsoleApp.File;
 using DirectoryFingerPrinting;
 using DirectoryFingerPrinting.API;
 using DirectoryFingerPrinting.API.Exceptions;
+using DirectoryFingerPrinting.App.Lib;
 using DirectoryFingerPrinting.Models;
 using System.Diagnostics;
 
@@ -40,13 +41,13 @@ internal class Program
 
         if (args[0] == Const.Arguments.VERSION_SHORT || args[0] == Const.Arguments.VERSION)
         {
-            Exit(EErrorCode.None, ConsolePrinter.GetVersionText());
+            Exit(EErrorCode.None, ConsolePrinter.GetVersionText(AsmConst.VERSION));
             return;
         }
 
         if (args[0] == Const.Arguments.HELP1 || args[0] == Const.Arguments.HELP2 || args[0] == Const.Arguments.HELP3)
         {
-            Exit(EErrorCode.None, ConsolePrinter.GetHelpText());
+            Exit(EErrorCode.None, ConsolePrinter.GetHelpText(AsmConst.VERSION));
             return;
         }
         

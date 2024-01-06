@@ -18,24 +18,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
-{
-    public enum EErrorCode
-    {
-        None                            = 0,
-        NoParameters                    = 1,
-        MissingParameter                = 2,
-        UnknownParameter                = 3,
-        InternalError                   = 4,
-        IllegalValue                    = 5,
-        SingleParameter                 = 6,
-        FileExists                      = 7,
-        WriteDpfFileFailed              = 8,
-        FileNotFound                    = 9,
-        DirectoryNotFound               = 10,
-        CannotSaveAndCompare            = 11,
-        IllegalFingerprintFileExtension = 12,
-        UnequalHashAlgorithms           = 13,
+using System.Xml.Serialization;
 
+namespace DirectoryFingerPrinting.App.Lib
+{
+    public enum EOutputFormat
+    {
+        /// <summary>
+        /// Default.
+        /// </summary>
+        [XmlEnum]
+        Dfp  = 0,
+
+        [XmlEnum]
+        Xml  = 1,
+
+        [XmlEnum]
+        Json = 2,
+
+        [XmlEnum]
+        CSV  = 3,
     }
 }

@@ -18,16 +18,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.API;
-
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.App.Lib
 {
-    internal class ExtensionFilter
+    using DirectoryFingerPrinting.API;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
+
+    public class ExtensionFilter
     {
         public ExtensionFilter(IOptions pOptions)
             => Options = pOptions;
 
-        private IOptions Options { get; init; }
+        private IOptions Options { get; }
 
         public List<string> GetPathsToProcess(IEnumerable<string> pPaths)
         {

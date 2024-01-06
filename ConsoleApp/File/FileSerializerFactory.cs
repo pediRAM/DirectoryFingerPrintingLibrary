@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using DirectoryFingerPrinting.App.Lib;
+
 namespace ConsoleApp.File
 {
     internal class FileSerializerFactory

@@ -18,12 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using System.Xml.Serialization;
-
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.App.Lib
 {
+    using System.Xml.Serialization;
+
+
     [XmlRoot]
-    internal class ExtOptions : DirectoryFingerPrinting.Models.Options
+    public class ExtOptions : Models.Options
     {
         [XmlIgnore]
         public bool DoPrintHeader { get; set; } = true;

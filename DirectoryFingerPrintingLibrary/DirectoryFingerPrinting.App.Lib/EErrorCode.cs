@@ -18,12 +18,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace ConsoleApp
+namespace DirectoryFingerPrinting.App.Lib
 {
-    internal enum EOrderType
+    public enum EErrorCode
     {
-        None = 0,
-        Ascendant = 1,
-        Descendent = 2
+        None                            = 0,
+        NoParameters                    = 1,
+        MissingParameter                = 2,
+        UnknownParameter                = 3,
+        InternalError                   = 4,
+        IllegalValue                    = 5,
+        SingleParameter                 = 6,
+        FileExists                      = 7,
+        WriteDpfFileFailed              = 8,
+        FileNotFound                    = 9,
+        DirectoryNotFound               = 10,
+        CannotSaveAndCompare            = 11,
+        IllegalFingerprintFileExtension = 12,
+        UnequalHashAlgorithms           = 13,
+
     }
 }

@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{827143B7-3
 		Todo.txt = Todo.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryFingerPrinting", "..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj", "{C5FB7DBF-AA07-4D7B-B284-867EEED22E8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryFingerPrinting", "..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj", "{C5FB7DBF-AA07-4D7B-B284-867EEED22E8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppFW", "..\ConsoleAppFW\ConsoleAppFW.csproj", "{E577BC24-81C2-4AD7-9F69-E53829615D1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryFingerPrinting.App.Lib", "DirectoryFingerPrinting.App.Lib\DirectoryFingerPrinting.App.Lib.csproj", "{C6DE9063-082A-47A0-9B8C-F97E09430DCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E577BC24-81C2-4AD7-9F69-E53829615D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E577BC24-81C2-4AD7-9F69-E53829615D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E577BC24-81C2-4AD7-9F69-E53829615D1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6DE9063-082A-47A0-9B8C-F97E09430DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6DE9063-082A-47A0-9B8C-F97E09430DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6DE9063-082A-47A0-9B8C-F97E09430DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6DE9063-082A-47A0-9B8C-F97E09430DCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

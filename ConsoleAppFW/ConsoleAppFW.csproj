@@ -112,16 +112,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArgumentParser.cs" />
     <Compile Include="AsmConst.cs" />
-    <Compile Include="ConsolePrinter.cs" />
-    <Compile Include="Const.cs" />
-    <Compile Include="EErrorCode.cs" />
-    <Compile Include="EOrderType.cs" />
-    <Compile Include="EOutputFormat.cs" />
-    <Compile Include="EReportLevel.cs" />
-    <Compile Include="ExtensionFilter.cs" />
-    <Compile Include="ExtOptions.cs" />
     <Compile Include="File\CsvFileSerializer.cs" />
     <Compile Include="File\FileSerializerFactory.cs" />
     <Compile Include="File\IFileSerializer.cs" />
@@ -141,6 +132,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectoryFingerPrintingLibrary\DirectoryFingerPrinting.App.Lib\DirectoryFingerPrinting.App.Lib.csproj">
+      <Project>{c6de9063-082a-47a0-9b8c-f97e09430dcd}</Project>
+      <Name>DirectoryFingerPrinting.App.Lib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DirectoryFingerPrinting\DirectoryFingerPrinting.csproj">
       <Project>{c5fb7dbf-aa07-4d7b-b284-867eeed22e8a}</Project>
       <Name>DirectoryFingerPrinting</Name>
