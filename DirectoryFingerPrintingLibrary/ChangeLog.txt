@@ -1,4 +1,15 @@
-V 1.0.1.1
+V 1.0.2.4
+- Removed ConsoleAppFW
+
+V 1.0.2.3
+- ConsoleApp is now targeting:
+	- net48
+	- net6.0
+	- net7.0
+	- net8.0
+- Added build.ps1
+
+V 1.0.2.2
 - Added quick options:
 	- --versions
 	- --checksums
