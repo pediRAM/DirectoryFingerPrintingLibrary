@@ -22,7 +22,9 @@ namespace DirectoryFingerPrinting.App.Lib
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Reflection;
     using System.Text.RegularExpressions;
+    using System.Xml.Linq;
 
     /// <summary>
     /// Provides methods for parsing arguments used by cli apps.
@@ -78,14 +80,61 @@ namespace DirectoryFingerPrinting.App.Lib
                         case Const.Arguments.DIRECTORY:
                         case Const.Arguments.DIRECTORY_SHORT:
                             {
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
 
                                 pOptions.BaseDirPath = args[++index];
+                            }
+                            break;
+
+                        case Const.Arguments.LOAD_OPTIONS:
+                        case Const.Arguments.LOAD_OPTIONS_SHORT:
+                            {
+                                if (IsLastArgument(args, index))
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1, a);
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                if (!System.IO.File.Exists(args[index + 1]))
+                                {
+                                    pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1, a);
+                                    pErrorCode = EErrorCode.FileNotFound;
+                                    return false;
+                                }
+
+                                pOptions = LoadOptions(args[index + 1]);
+                            }
+                            break;
+
+                        case Const.Arguments.SAVE_OPTIONS:
+                        case Const.Arguments.SAVE_OPTIONS_SHORT:
+                            {
+                                if (IsLastArgument(args, index))
+                                {
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1, a);
+                                    pErrorCode = EErrorCode.MissingParameter;
+                                    return false;
+                                }
+
+                                if (!IsValidPath(args[index + 1]))
+                                {
+                                    pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1, a);
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+                                else if (System.IO.File.Exists(args[index + 1]))
+                                {
+                                    pErrorMsg = Const.Errors.FILE_EXISTS + GetParamValue(args, index, 1, a);
+                                    pErrorCode = EErrorCode.IllegalValue;
+                                    return false;
+                                }
+                                SaveOptions(args[index + 1], pOptions);
                             }
                             break;
 
@@ -148,9 +197,9 @@ namespace DirectoryFingerPrinting.App.Lib
                         case Const.Arguments.EXTENSIONS:
                         case Const.Arguments.EXTENSIONS_SHORT:
                             {
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_EXTENSION_LIST + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -236,7 +285,7 @@ namespace DirectoryFingerPrinting.App.Lib
                             {
                                 pOptions.DoSave = true;
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
                                     // Name will be chosed automatically (= timestamp).
                                     //pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE;
@@ -248,13 +297,13 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
                                     else if (System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_EXISTS + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.FILE_EXISTS + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
@@ -299,9 +348,9 @@ namespace DirectoryFingerPrinting.App.Lib
                             {
                                 pOptions.DoCompareFingerprintAgainstDirectory = true;
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -310,14 +359,14 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.FileNotFound;
                                         return false;
                                     }
@@ -331,9 +380,9 @@ namespace DirectoryFingerPrinting.App.Lib
                                     return false;
                                 }
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -342,14 +391,14 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!Directory.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
                                         return false;
                                     }
@@ -370,9 +419,9 @@ namespace DirectoryFingerPrinting.App.Lib
                             {
                                 pOptions.DoCompareDirectories = true;
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -381,14 +430,14 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!Directory.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
                                         return false;
                                     }
@@ -402,9 +451,9 @@ namespace DirectoryFingerPrinting.App.Lib
                                     return false;
                                 }
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_DIR_PATH + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -413,14 +462,14 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DIRECTORY + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!Directory.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.DIRECTORY_NOT_FOUND + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.DirectoryNotFound;
                                         return false;
                                     }
@@ -441,9 +490,9 @@ namespace DirectoryFingerPrinting.App.Lib
                             {
                                 pOptions.DoCompareFingerprints = true;
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -452,14 +501,14 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.FileNotFound;
                                         return false;
                                     }
@@ -473,9 +522,9 @@ namespace DirectoryFingerPrinting.App.Lib
                                     return false;
                                 }
 
-                                if (args.Length <= index + 1)
+                                if (IsLastArgument(args, index))
                                 {
-                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                    pErrorMsg = Const.Errors.MISSING_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                     pErrorCode = EErrorCode.MissingParameter;
                                     return false;
                                 }
@@ -484,14 +533,14 @@ namespace DirectoryFingerPrinting.App.Lib
                                 {
                                     if (!IsValidPath(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.ILLEGAL_PATH_DFP_FILE + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.IllegalValue;
                                         return false;
                                     }
 
                                     if (!System.IO.File.Exists(args[index + 1]))
                                     {
-                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1);
+                                        pErrorMsg = Const.Errors.FILE_NOT_FOUND + GetParamValue(args, index, 1, a);
                                         pErrorCode = EErrorCode.FileNotFound;
                                         return false;
                                     }
@@ -602,6 +651,21 @@ namespace DirectoryFingerPrinting.App.Lib
             }
         }
 
+        private static void SaveOptions(string pFilepath, ExtOptions pOptions)
+        {
+            string jsonText = System.Text.Json.JsonSerializer.Serialize<ExtOptions>(pOptions, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            System.IO.File.WriteAllText(pFilepath, jsonText, System.Text.Encoding.UTF8);
+        }
+
+        private static bool IsLastArgument(string[] args, int index)
+            => args.Length <= index + 1;
+        
+        private static ExtOptions LoadOptions(string pFilepath)
+        {
+            string jsonText = System.IO.File.ReadAllText(pFilepath, System.Text.Encoding.UTF8);
+            return System.Text.Json.JsonSerializer.Deserialize<ExtOptions>(jsonText);
+        }
+
         private static void IgnoreTimestamps(ExtOptions pOptions)
         {
             pOptions.UseCreation = false;
@@ -618,6 +682,14 @@ namespace DirectoryFingerPrinting.App.Lib
 
         private static string GetParamValue(string[] pArgs, int pIndex, int pValue)
             => $" (Parameter {pIndex + 1 + pValue}, value: '{pArgs[pIndex + pValue]}')";
+
+        private static string GetParamValue(string[] pArgs, int pIndex, int pValue, string pOptionName)
+        {
+            if (pArgs.Length > pIndex + pValue)
+                return $" (Parameter {pIndex + 1 + pValue} after '{pOptionName}', value: '{pArgs[pIndex + pValue]}')";
+            
+            return $" (Parameter {pIndex + 1 + pValue} after '{pOptionName}', value: none/empty!)";
+        }
 
         private static bool IsValidPath(string pPath)
         {

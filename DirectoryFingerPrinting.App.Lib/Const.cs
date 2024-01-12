@@ -156,6 +156,12 @@ namespace DirectoryFingerPrinting.App.Lib
             public const string FILENAME_ONLY                    = "--print-only-filename";
             public const string FILENAME_ONLY_SHORT              = "-pof";
 
+            public const string LOAD_OPTIONS                    = "--load-options";
+            public const string LOAD_OPTIONS_SHORT              = "-lo";
+
+            public const string SAVE_OPTIONS                    = "--save-options";
+            public const string SAVE_OPTIONS_SHORT              = "-so";
+
             public const string VERSIONS  = "--versions";
             public const string CHECKSUMS = "--checksums";
             public const string SIZES     = "--sizes";
