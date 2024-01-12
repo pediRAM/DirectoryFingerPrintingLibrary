@@ -1,3 +1,13 @@
+V 1.0.1.1
+- Added quick options:
+	- --versions
+	- --checksums
+	- --sizes
+- Added load/save options:
+	- --load-options -lo
+	- --save-options -so
+- Added name of option when missing/illegal argument errors are printed to output
+
 V 1.0.1
 - FIXED null-reference-exception when version was null
 - ADDED sorted output
