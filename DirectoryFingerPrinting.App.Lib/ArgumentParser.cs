@@ -109,6 +109,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                 }
 
                                 pOptions = LoadOptions(args[index + 1]);
+                                index++;
                             }
                             break;
 
@@ -173,10 +174,10 @@ namespace DirectoryFingerPrinting.App.Lib
                         pOptions.UseVersion = false;
                         break;
 
-                        case Const.Arguments.IGNORE_HASHSUM:
-                        case Const.Arguments.IGNORE_HASHSUM_SHORT:
+                        case Const.Arguments.IGNORE_CHECKSUM:
+                        case Const.Arguments.IGNORE_CHECKSUM_SHORT:
                         pOptions.UseHashsum = false;
-                        pOptions.HashAlgo = API.EHashAlgo.None;
+                        pOptions.HashAlgo = Interfaces.EHashAlgo.None;
                         break;
 
                         case Const.Arguments.RECURSIVE:
@@ -219,7 +220,7 @@ namespace DirectoryFingerPrinting.App.Lib
 
                         case Const.Arguments.USE_CRC32:
                         case Const.Arguments.USE_CRC32_SHORT:
-                        pOptions.HashAlgo = API.EHashAlgo.CRC32;
+                        pOptions.HashAlgo = Interfaces.EHashAlgo.CRC32;
                         break;
 
                         //case Const.Arguments.USE_CRC64:
@@ -228,22 +229,22 @@ namespace DirectoryFingerPrinting.App.Lib
 
                         case Const.Arguments.USE_MD5:
                         case Const.Arguments.USE_MD5_SHORT:
-                        pOptions.HashAlgo = API.EHashAlgo.MD5;
+                        pOptions.HashAlgo = Interfaces.EHashAlgo.MD5;
                         break;
 
                         case Const.Arguments.USE_SHA1:
                         case Const.Arguments.USE_SHA1_SHORT:
-                        pOptions.HashAlgo = API.EHashAlgo.SHA1;
+                        pOptions.HashAlgo = Interfaces.EHashAlgo.SHA1;
                         break;
 
                         case Const.Arguments.USE_SHA256:
                         case Const.Arguments.USE_SHA256_SHORT:
-                        pOptions.HashAlgo = API.EHashAlgo.SHA256;
+                        pOptions.HashAlgo = Interfaces.EHashAlgo.SHA256;
                         break;
 
                         case Const.Arguments.USE_SHA512:
                         case Const.Arguments.USE_SHA512_SHORT:
-                        pOptions.HashAlgo = API.EHashAlgo.SHA512;
+                        pOptions.HashAlgo = Interfaces.EHashAlgo.SHA512;
                         break;
 
                         case Const.Arguments.NO_HEADER:

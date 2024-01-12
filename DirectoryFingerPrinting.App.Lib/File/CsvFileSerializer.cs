@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 namespace DirectoryFingerPrinting.App.Lib.File
 {
     using DirectoryFingerPrinting;
-    using DirectoryFingerPrinting.API;
+    using DirectoryFingerPrinting.Interfaces;
     using DirectoryFingerPrinting.Models;
     using System;
     using System.Collections.Generic;

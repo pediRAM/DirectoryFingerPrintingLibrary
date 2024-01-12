@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces
 {
     /// <summary>
     /// Type of difference.

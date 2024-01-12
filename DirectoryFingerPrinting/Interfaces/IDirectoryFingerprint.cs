@@ -19,30 +19,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 using System;
+using System.Collections.Generic;
 
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces
 {
-    /// <summary>
-    /// Provides data about characteristics of a file.
-    /// </summary>
-    public interface IMetaData
+    public interface IDirectoryFingerprint
     {
-        string RelativePath { get; }
-
-        string Extension { get; }
-
-        EFSType FSType { get; }
-
-        long Size { get; }
-
         DateTime CreatedAt { get; }
-
-        DateTime ModifiedAt { get; }
-
-        DateTime AccessedAt { get; }
-
+        EHashAlgo HashAlgorithm { get; }
+        string Hostname { get; }
+        IEnumerable<IMetaData> GetMetaDatas();
         string Version { get; }
-
-        string Hashsum { get; }
     }
 }

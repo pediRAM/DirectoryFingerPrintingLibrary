@@ -18,13 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using System.Collections.Generic;
+using System;
 
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces.Exceptions
 {
-    public interface IDirDiffCalculator
+    public class HashAlgorithmException : Exception
     {
-        IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA,  IDirectoryFingerprint dfpB);
-        IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> dfpA,  IEnumerable<IMetaData> dfpB);
+        public HashAlgorithmException(EHashAlgo a, EHashAlgo b) : base("Hashsum algorithms are not equal!")
+        {
+            HashAlgorithmA = a;
+            HashAlgorithmB = b;
+        }
+
+        public EHashAlgo HashAlgorithmA { get; }
+        public EHashAlgo HashAlgorithmB { get; }
     }
 }

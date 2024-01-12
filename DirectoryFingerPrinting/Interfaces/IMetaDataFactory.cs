@@ -18,22 +18,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.API
+using DirectoryFingerPrinting.Models;
+using System.Collections.Generic;
+using System.IO;
+
+namespace DirectoryFingerPrinting.Interfaces
 {
-    public interface IDifference
+    public interface IMetaDataFactory
     {
-        /// <summary>
-        /// Type of difference.
-        /// </summary>
-        EDiffType DiffType { get; set; }
+        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
+        IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
 
-        /// <summary>
-        /// Name of file characteristic/property.
-        /// </summary>
-        string Matter { get; set; }
-
-        string ParadigmValue { get; set; }
-
-        string TestValue { get; set; }
+        MetaData CreateMetaData(FileInfo pFileInfo);
+        MetaData CreateMetaData(string pFilePath);
     }
 }

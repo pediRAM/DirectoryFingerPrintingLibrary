@@ -18,18 +18,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.Models;
-using System.Collections.Generic;
 using System.IO;
 
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces
 {
-    public interface IMetaDataFactory
+    public interface IHashCalculator
     {
-        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
-        IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
-
-        MetaData CreateMetaData(FileInfo pFileInfo);
-        MetaData CreateMetaData(string pFilePath);
+        string GetHash(string pFilePath);
+        string GetHash(FileInfo pFileInfo);
     }
 }

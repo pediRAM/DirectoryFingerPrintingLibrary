@@ -18,14 +18,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.API
-{
-    using System.Collections.Generic;
+using System.Collections.Generic;
 
-    public interface IFileDiff
+namespace DirectoryFingerPrinting.Interfaces
+{
+    public interface IOptions
     {
-        string Path { get; }
-        IEnumerable<IDifference> GetDifferences();
-        IDifference GetMostImportantDifference();
+        string BaseDirPath { get; }
+
+        bool IsCaseSensitive { get; }
+
+        bool UseSize { get; }
+
+        bool UseCreation { get; }
+
+        bool UseLastModification { get; }
+
+        bool UseLastAccess { get; }
+
+        bool UseVersion { get; }
+
+        bool UseHashsum { get; }
+
+        bool EnableRecursive { get; }
+
+        bool UsePositiveList { get; }
+
+        HashSet<string> Extensions { get; }
+
+        EHashAlgo HashAlgo { get; }
     }
 }

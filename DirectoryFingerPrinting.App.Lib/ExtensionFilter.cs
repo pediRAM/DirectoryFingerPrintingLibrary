@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace DirectoryFingerPrinting.App.Lib
 {
-    using DirectoryFingerPrinting.API;
+    using DirectoryFingerPrinting.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.IO;

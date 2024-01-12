@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.API;
+using DirectoryFingerPrinting.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;

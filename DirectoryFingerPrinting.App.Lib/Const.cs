@@ -54,8 +54,8 @@ namespace DirectoryFingerPrinting.App.Lib
             public const string IGNORE_VERSION                   = "--ignore-version";
             public const string IGNORE_VERSION_SHORT             = "-iv";
 
-            public const string IGNORE_HASHSUM                   = "--ignore-hashsum";
-            public const string IGNORE_HASHSUM_SHORT             = "-ihs";
+            public const string IGNORE_CHECKSUM                   = "--ignore-ckecksum";
+            public const string IGNORE_CHECKSUM_SHORT             = "-ics";
 
             public const string IGNORE_HIDDEN_FILES              = "--ignore-hidden-files";
             public const string IGNORE_HIDDEN_FILES_SHORT        = "-ihf";

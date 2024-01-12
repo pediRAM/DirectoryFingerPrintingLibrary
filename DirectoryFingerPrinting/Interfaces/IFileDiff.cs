@@ -18,41 +18,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces
 {
-    /// <summary>
-    /// Types of directory content (File System Types).
-    /// </summary>
-    public enum EFSType
+    using System.Collections.Generic;
+
+    public interface IFileDiff
     {
-        /// <summary>
-        /// Filetype is something else than listed here.
-        /// </summary>
-        Misc = 0,
-
-        /// <summary>
-        /// Directory.
-        /// </summary>
-        Dir = 1,
-
-        /// <summary>
-        /// Dll: Dynamic Linked Library (*.dll).
-        /// </summary>
-        Dll = 2,
-
-        /// <summary>
-        /// Executable (*.exe).
-        /// </summary>
-        Exe = 3,
-
-        /// <summary>
-        /// SText: Structured Text, like: *.ini, *.json, *.xml, *.yaml,...
-        /// </summary>
-        FormattedText = 4,
-
-        /// <summary>
-        /// Text (*.txt).
-        /// </summary>
-        Text = 5,
+        string Path { get; }
+        IEnumerable<IDifference> GetDifferences();
+        IDifference GetMostImportantDifference();
     }
 }

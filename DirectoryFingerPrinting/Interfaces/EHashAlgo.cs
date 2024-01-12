@@ -18,19 +18,46 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using System;
-
-namespace DirectoryFingerPrinting.API.Exceptions
+namespace DirectoryFingerPrinting.Interfaces
 {
-    public class HashAlgorithmException : Exception
+    /// <summary>
+    /// EHashAlgo.
+    /// </summary>
+    public enum EHashAlgo
     {
-        public HashAlgorithmException(EHashAlgo a, EHashAlgo b) : base("Hashsum algorithms are not equal!")
-        {
-            HashAlgorithmA = a;
-            HashAlgorithmB = b;
-        }
+        /// <summary>
+        /// None: no algorithm selected.
+        /// </summary>
+        None = 0,
 
-        public EHashAlgo HashAlgorithmA { get; }
-        public EHashAlgo HashAlgorithmB { get; }
+        /// <summary>
+        /// CRC32.
+        /// </summary>
+        CRC32,
+
+        ///// <summary>
+        ///// CRC64.
+        ///// </summary>
+        //CRC64,
+
+        /// <summary>
+        /// MD5.
+        /// </summary>
+        MD5,
+
+        /// <summary>
+        /// SHA1.
+        /// </summary>
+        SHA1,
+
+        /// <summary>
+        /// SHA256.
+        /// </summary>
+        SHA256,
+
+        /// <summary>
+        /// SHA512.
+        /// </summary>
+        SHA512,
     }
 }

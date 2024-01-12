@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace DirectoryFingerPrinting.Cryptography
 {
-    using DirectoryFingerPrinting.API;
+    using DirectoryFingerPrinting.Interfaces;
     using System;
 
     public static class HashCalculatorFactory

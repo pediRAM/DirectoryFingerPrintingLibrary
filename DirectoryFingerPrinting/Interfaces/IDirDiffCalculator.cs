@@ -20,32 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Collections.Generic;
 
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces
 {
-    public interface IOptions
+    public interface IDirDiffCalculator
     {
-        string BaseDirPath { get; }
-
-        bool IsCaseSensitive { get; }
-
-        bool UseSize { get; }
-
-        bool UseCreation { get; }
-
-        bool UseLastModification { get; }
-
-        bool UseLastAccess { get; }
-
-        bool UseVersion { get; }
-
-        bool UseHashsum { get; }
-
-        bool EnableRecursive { get; }
-
-        bool UsePositiveList { get; }
-
-        HashSet<string> Extensions { get; }
-
-        EHashAlgo HashAlgo { get; }
+        IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA,  IDirectoryFingerprint dfpB);
+        IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> dfpA,  IEnumerable<IMetaData> dfpB);
     }
 }

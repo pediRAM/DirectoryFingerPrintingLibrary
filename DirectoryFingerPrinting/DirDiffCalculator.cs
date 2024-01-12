@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.API;
-using DirectoryFingerPrinting.API.Exceptions;
+using DirectoryFingerPrinting.Interfaces;
+using DirectoryFingerPrinting.Interfaces.Exceptions;
 using DirectoryFingerPrinting.Models;
 using System;
 using System.Collections.Generic;

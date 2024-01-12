@@ -18,17 +18,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using System;
-using System.Collections.Generic;
-
-namespace DirectoryFingerPrinting.API
+namespace DirectoryFingerPrinting.Interfaces
 {
-    public interface IDirectoryFingerprint
+    /// <summary>
+    /// Types of directory content (File System Types).
+    /// </summary>
+    public enum EFSType
     {
-        DateTime CreatedAt { get; }
-        EHashAlgo HashAlgorithm { get; }
-        string Hostname { get; }
-        IEnumerable<IMetaData> GetMetaDatas();
-        string Version { get; }
+        /// <summary>
+        /// Filetype is something else than listed here.
+        /// </summary>
+        Misc = 0,
+
+        /// <summary>
+        /// Directory.
+        /// </summary>
+        Dir = 1,
+
+        /// <summary>
+        /// Dll: Dynamic Linked Library (*.dll).
+        /// </summary>
+        Dll = 2,
+
+        /// <summary>
+        /// Executable (*.exe).
+        /// </summary>
+        Exe = 3,
+
+        /// <summary>
+        /// SText: Structured Text, like: *.ini, *.json, *.xml, *.yaml,...
+        /// </summary>
+        FormattedText = 4,
+
+        /// <summary>
+        /// Text (*.txt).
+        /// </summary>
+        Text = 5,
     }
 }

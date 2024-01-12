@@ -18,46 +18,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.API
+using System;
+
+namespace DirectoryFingerPrinting.Interfaces
 {
     /// <summary>
-    /// EHashAlgo.
+    /// Provides data about characteristics of a file.
     /// </summary>
-    public enum EHashAlgo
+    public interface IMetaData
     {
-        /// <summary>
-        /// None: no algorithm selected.
-        /// </summary>
-        None = 0,
+        string RelativePath { get; }
 
-        /// <summary>
-        /// CRC32.
-        /// </summary>
-        CRC32,
+        string Extension { get; }
 
-        ///// <summary>
-        ///// CRC64.
-        ///// </summary>
-        //CRC64,
+        EFSType FSType { get; }
 
-        /// <summary>
-        /// MD5.
-        /// </summary>
-        MD5,
+        long Size { get; }
 
-        /// <summary>
-        /// SHA1.
-        /// </summary>
-        SHA1,
+        DateTime CreatedAt { get; }
 
-        /// <summary>
-        /// SHA256.
-        /// </summary>
-        SHA256,
+        DateTime ModifiedAt { get; }
 
-        /// <summary>
-        /// SHA512.
-        /// </summary>
-        SHA512,
+        DateTime AccessedAt { get; }
+
+        string Version { get; }
+
+        string Hashsum { get; }
     }
 }

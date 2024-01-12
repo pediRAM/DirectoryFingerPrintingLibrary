@@ -19,8 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 using DirectoryFingerPrinting;
-using DirectoryFingerPrinting.API;
-using DirectoryFingerPrinting.API.Exceptions;
+using DirectoryFingerPrinting.Interfaces;
+using DirectoryFingerPrinting.Interfaces.Exceptions;
 using DirectoryFingerPrinting.App.Lib;
 using DirectoryFingerPrinting.App.Lib.File;
 using DirectoryFingerPrinting.Models;

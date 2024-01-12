@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 namespace DirectoryFingerPrinting
 {
     #region Usings
-    using DirectoryFingerPrinting.API;
+    using DirectoryFingerPrinting.Interfaces;
     using DirectoryFingerPrinting.Cryptography;
     using DirectoryFingerPrinting.Models;
     using System;
