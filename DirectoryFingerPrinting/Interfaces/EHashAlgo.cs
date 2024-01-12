@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using System.Text.Json.Serialization;
+
 namespace DirectoryFingerPrinting.Interfaces
 {
     /// <summary>
@@ -28,36 +30,37 @@ namespace DirectoryFingerPrinting.Interfaces
         /// <summary>
         /// None: no algorithm selected.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         None = 0,
 
         /// <summary>
         /// CRC32.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         CRC32,
-
-        ///// <summary>
-        ///// CRC64.
-        ///// </summary>
-        //CRC64,
 
         /// <summary>
         /// MD5.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         MD5,
 
         /// <summary>
         /// SHA1.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         SHA1,
 
         /// <summary>
         /// SHA256.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         SHA256,
 
         /// <summary>
         /// SHA512.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         SHA512,
     }
 }

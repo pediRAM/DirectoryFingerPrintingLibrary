@@ -18,7 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-
 using System;
 
 namespace DirectoryFingerPrinting.App.Lib.File
@@ -30,9 +29,9 @@ namespace DirectoryFingerPrinting.App.Lib.File
             return pFormat switch
             {
                 // is default (= xml).
-                EOutputFormat.Dfp or EOutputFormat.Xml => new XmlFileSerializer(),
+                EOutputFormat.DFP or EOutputFormat.XML => new XmlFileSerializer(),
                 EOutputFormat.CSV => new CsvFileSerializer(),
-                EOutputFormat.Json => new JsonFileSerializer(),
+                EOutputFormat.JSON => new JsonFileSerializer(),
                 _ => throw new NotImplementedException($"Format: {pFormat} is not implemented!"),
             };
         }

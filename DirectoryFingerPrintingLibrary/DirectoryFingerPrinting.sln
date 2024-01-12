@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryFingerPrinting", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppFW", "..\ConsoleAppFW\ConsoleAppFW.csproj", "{E577BC24-81C2-4AD7-9F69-E53829615D1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryFingerPrinting.App.Lib", "..\DirectoryFingerPrinting.App.Lib\DirectoryFingerPrinting.App.Lib.csproj", "{C6DE9063-082A-47A0-9B8C-F97E09430DCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryFingerPrinting.App.Lib", "..\DirectoryFingerPrinting.App.Lib\DirectoryFingerPrinting.App.Lib.csproj", "{C6DE9063-082A-47A0-9B8C-F97E09430DCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

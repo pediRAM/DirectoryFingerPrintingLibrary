@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace DirectoryFingerPrinting.App.Lib
@@ -28,15 +29,19 @@ namespace DirectoryFingerPrinting.App.Lib
         /// Default.
         /// </summary>
         [XmlEnum]
-        Dfp  = 0,
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        DFP  = 0,
 
         [XmlEnum]
-        Xml  = 1,
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        XML  = 1,
 
         [XmlEnum]
-        Json = 2,
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        JSON = 2,
 
         [XmlEnum]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         CSV  = 3,
     }
 }

@@ -17,14 +17,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 namespace DirectoryFingerPrinting.App.Lib
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Reflection;
     using System.Text.RegularExpressions;
-    using System.Xml.Linq;
 
     /// <summary>
     /// Provides methods for parsing arguments used by cli apps.
@@ -136,6 +135,7 @@ namespace DirectoryFingerPrinting.App.Lib
                                     return false;
                                 }
                                 SaveOptions(args[index + 1], pOptions);
+                                index++;
                             }
                             break;
 
@@ -259,17 +259,17 @@ namespace DirectoryFingerPrinting.App.Lib
 
                         case Const.Arguments.OUPUT_FORMAT_DFP:
                         case Const.Arguments.OUPUT_FORMAT_DFP_SHORT:
-                        pOptions.OutputFormat = EOutputFormat.Dfp;
+                        pOptions.OutputFormat = EOutputFormat.DFP;
                         break;
 
                         case Const.Arguments.OUPUT_FORMAT_XML:
                         case Const.Arguments.OUPUT_FORMAT_XML_SHORT:
-                        pOptions.OutputFormat = EOutputFormat.Xml;
+                        pOptions.OutputFormat = EOutputFormat.XML;
                         break;
 
                         case Const.Arguments.OUPUT_FORMAT_JSON:
                         case Const.Arguments.OUPUT_FORMAT_JSON_SHORT:
-                        pOptions.OutputFormat = EOutputFormat.Json;
+                        pOptions.OutputFormat = EOutputFormat.JSON;
                         break;
 
                         case Const.Arguments.OUPUT_FORMAT_CSV:
@@ -654,7 +654,7 @@ namespace DirectoryFingerPrinting.App.Lib
 
         private static void SaveOptions(string pFilepath, ExtOptions pOptions)
         {
-            string jsonText = System.Text.Json.JsonSerializer.Serialize<ExtOptions>(pOptions, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            string jsonText = System.Text.Json.JsonSerializer.Serialize<ExtOptions>(pOptions, JsonSerializationOptionFactory.BuildOptions());
             System.IO.File.WriteAllText(pFilepath, jsonText, System.Text.Encoding.UTF8);
         }
 
@@ -664,7 +664,7 @@ namespace DirectoryFingerPrinting.App.Lib
         private static ExtOptions LoadOptions(string pFilepath)
         {
             string jsonText = System.IO.File.ReadAllText(pFilepath, System.Text.Encoding.UTF8);
-            return System.Text.Json.JsonSerializer.Deserialize<ExtOptions>(jsonText);
+            return System.Text.Json.JsonSerializer.Deserialize<ExtOptions>(jsonText, JsonSerializationOptionFactory.BuildOptions());
         }
 
         private static void IgnoreTimestamps(ExtOptions pOptions)
@@ -689,7 +689,7 @@ namespace DirectoryFingerPrinting.App.Lib
             if (pArgs.Length > pIndex + pValue)
                 return $" (Parameter {pIndex + 1 + pValue} after '{pOptionName}', value: '{pArgs[pIndex + pValue]}')";
             
-            return $" (Parameter {pIndex + 1 + pValue} after '{pOptionName}', value: none/empty!)";
+            return $" (Parameter {pIndex + 1 + pValue} after '{pOptionName}')";
         }
 
         private static bool IsValidPath(string pPath)

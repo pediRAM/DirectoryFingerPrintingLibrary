@@ -81,7 +81,7 @@ namespace DirectoryFingerPrinting.App.Lib
         /// Gets/Sets the format for saving: DFP (default), CSV, JSON, XML.
         /// </summary>
         [XmlIgnore]
-        public EOutputFormat OutputFormat { get; set; } = EOutputFormat.Dfp;
+        public EOutputFormat OutputFormat { get; set; } = EOutputFormat.DFP;
 
         /// <summary>
         /// Enables comparing content of two directories.

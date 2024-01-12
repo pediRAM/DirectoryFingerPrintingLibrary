@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using System.Text.Json.Serialization;
+
 namespace DirectoryFingerPrinting.App.Lib
 {
     /// <summary>
@@ -28,16 +30,19 @@ namespace DirectoryFingerPrinting.App.Lib
         /// <summary>
         /// No sorting at all. The results are output as they have been found while processing files.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         None = 0,
 
         /// <summary>
         /// A to Z.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Ascendant = 1,
-        
+
         /// <summary>
         /// Z to A.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Descendent = 2
     }
 }

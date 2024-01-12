@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using System.Text.Json.Serialization;
+
 namespace DirectoryFingerPrinting.Interfaces
 {
     /// <summary>
@@ -28,31 +30,37 @@ namespace DirectoryFingerPrinting.Interfaces
         /// <summary>
         /// Filetype is something else than listed here.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Misc = 0,
 
         /// <summary>
         /// Directory.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         Dir = 1,
 
         /// <summary>
         /// Dll: Dynamic Linked Library (*.dll).
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Dll = 2,
 
         /// <summary>
         /// Executable (*.exe).
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Exe = 3,
 
         /// <summary>
         /// SText: Structured Text, like: *.ini, *.json, *.xml, *.yaml,...
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         FormattedText = 4,
 
         /// <summary>
         /// Text (*.txt).
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Text = 5,
     }
 }

@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+using System.Text.Json.Serialization;
+
 namespace DirectoryFingerPrinting.Interfaces
 {
     /// <summary>
@@ -25,63 +27,61 @@ namespace DirectoryFingerPrinting.Interfaces
     /// </summary>
     public enum EDiffType
     {
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         None = 0,
 
         /// <summary>
         /// Last Access date/time is different.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Access = 1,
 
         /// <summary>
         /// Modification date/time is different.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Modification = 2,
 
         /// <summary>
         /// Creation date/time is different.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Creation = 3,
 
         /// <summary>
         /// Enlarged: size of file in [bytes] has been increased.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Enlarged = 4,
 
         /// <summary>
         /// Reduced: size of file in [bytes] has been decreased.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Reduced = 5,
 
         /// <summary>
         /// Versions are different.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Version = 6,
 
         /// <summary>
         /// Hashsum is different.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Hash = 7,
 
         /// <summary>
         /// Added: file/dir has been added to the file structure.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Added = 8,
 
         /// <summary>
         /// Removed: file/dir has been removed from the file structure.
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
         Removed = 9,
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

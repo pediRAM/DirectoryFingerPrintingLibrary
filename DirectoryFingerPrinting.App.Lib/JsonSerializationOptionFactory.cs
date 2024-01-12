@@ -18,19 +18,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using System.Text.Json.Serialization;
-
 namespace DirectoryFingerPrinting.App.Lib
 {
-    public enum EReportLevel
+    using DirectoryFingerPrinting.Interfaces;
+    using System.Text.Json;
+
+
+    internal class JsonSerializationOptionFactory
     {
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        Essential   = 0,
-
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        Informative = 1,
-
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        Verbose     = 2
+        public static JsonSerializerOptions BuildOptions() => new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Converters =
+            {
+                new CaseInsensitiveEnumConverter<EDiffType>(),
+                new CaseInsensitiveEnumConverter<EFSType>(),
+                new CaseInsensitiveEnumConverter<EHashAlgo>(),
+                new CaseInsensitiveEnumConverter<EOrderType>(),
+                new CaseInsensitiveEnumConverter<EOutputFormat>(),
+                new CaseInsensitiveEnumConverter<EReportLevel>(),
+            }
+        };
     }
 }
