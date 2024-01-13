@@ -24,6 +24,9 @@ using System.IO;
 
 namespace DirectoryFingerPrinting.Interfaces
 {
+    /// <summary>
+    /// Defines methods for calculating checksums of files.
+    /// </summary>
     public interface IHashCalculator
     {
         string GetHash(string pFilePath);

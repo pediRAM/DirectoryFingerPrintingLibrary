@@ -1,9 +1,76 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>10</LangVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+    <AssemblyVersion>1.0.4</AssemblyVersion>
+    <FileVersion>1.0.4</FileVersion>
+
+    <Version>1.0.4</Version>
+    <VersionSuffix></VersionSuffix>
+    <PackageVersion>1.0.4</PackageVersion>
+    
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <Title>DirectoryFingerPrinting library provides methods and types for calculating checksums (hash) of files in a directory and compare the content of two directories or their states for forensic or versioning tasks.</Title>
+    
+    <Description>
+      Facilitates defining classes with revertible properties.
+      Ideal for scenarios where you need to simply revert all changed values, like user-modified settings, without saving the changes to the model or file.
+    </Description>
+    <PackageTags>directory directories file fingerprint filehash checksum hash metadata calculate calculation comparing compare comparison forensic versioning CRC32 MD5 SHA-1 SHA-256 SHA-512 SHA1 SHA256 SHA512</PackageTags>
+
+    <PackageReleaseNotes>Release 1.0.4</PackageReleaseNotes>
+    
+    <Authors>Pedram GANJEH-HADIDI</Authors>
+    <Owners>Pedram GANJEH-HADIDI</Owners>
+    
+    
+    
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <!--<PackageLicenseFile>License.txt</PackageLicenseFile>-->
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright (C)2024 by Pedram GANJEH-HADIDI</Copyright>
+
+
+
+    <ProjectUrl>https://github.com/pediRAM/DirectoryFingerPrintingLibrary</ProjectUrl>
+    <PackageProjectUrl>https://github.com/pediRAM/DirectoryFingerPrintingLibrary</PackageProjectUrl>
+    
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/pediRAM/DirectoryFingerPrintingLibrary.git</RepositoryUrl>
+    <ApplicationIcon>dfp-logo.ico</ApplicationIcon>
+    
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="dfp-logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="7.0.2" />

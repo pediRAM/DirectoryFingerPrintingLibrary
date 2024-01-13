@@ -25,9 +25,19 @@ using System.IO;
 
 namespace DirectoryFingerPrinting
 {
+    /// <summary>
+    /// Provides extension-methods which construct relative-path for a given full-path etc.
+    /// </summary>
     public static class PathExtensions
     {
-        // see: https://stackoverflow.com/a/32113484
+        /// <summary>
+        /// Returns the relative path of given file-fullpath.
+        /// See also: https://stackoverflow.com/a/32113484
+        /// </summary>
+        /// <param name="pDirPath"></param>
+        /// <param name="pFilePath"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static string GetRelativePath(string pDirPath, string pFilePath)
         {
             if (string.IsNullOrEmpty(pDirPath))

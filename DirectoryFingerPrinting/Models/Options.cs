@@ -29,6 +29,9 @@ namespace DirectoryFingerPrinting.Models
     using System.Xml.Serialization;
     #endregion Usings
 
+    /// <summary>
+    /// Contains minimum settings for claculating directory-fingerprints or comparing them.
+    /// </summary>
     [XmlRoot]
     [System.Diagnostics.DebuggerDisplay("BaseDirPath:{BaseDirPath}, UseSize:{UseSize}, UseCreation:{UseCreation}, UseLastModification:{UseLastModification}, UseLastAccess:{UseLastAccess}, UseVersion:{UseVersion}, UseHashsum:{UseHashsum}, EnableRecursive:{EnableRecursive}, UsePositiveList:{UsePositiveList}, Extensions:{Extensions}, HashAlgo:{HashAlgo}")]
     public class Options : IOptions, ICloneable

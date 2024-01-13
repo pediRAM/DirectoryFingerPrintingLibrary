@@ -25,12 +25,35 @@ using System.Collections.Generic;
 
 namespace DirectoryFingerPrinting.Interfaces
 {
+    /// <summary>
+    /// Defines the properties needed for saving a directory-fingerprint into a file.
+    /// </summary>
     public interface IDirectoryFingerprint
     {
+        /// <summary>
+        /// Timestamp when instance was created.
+        /// </summary>
         DateTime CreatedAt { get; }
+
+        /// <summary>
+        /// Used hash algorithm.
+        /// </summary>
         EHashAlgo HashAlgorithm { get; }
+
+        /// <summary>
+        /// Name of the host, where the instance was made (directory-fingerprint was created).
+        /// </summary>
         string Hostname { get; }
+
+        /// <summary>
+        /// Returns the <see cref="IMetaData"/>s.
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<IMetaData> GetMetaDatas();
+
+        /// <summary>
+        /// Returns the version of DirectoryFingerprinting binary when the instance was created.
+        /// </summary>
         string Version { get; }
     }
 }

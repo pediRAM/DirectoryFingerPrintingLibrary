@@ -29,6 +29,9 @@ namespace DirectoryFingerPrinting.Models
     using System.Xml.Serialization;
     #endregion Usings
 
+    /// <summary>
+    /// A single difference.
+    /// </summary>
     [XmlRoot]
     [System.Diagnostics.DebuggerDisplay("DiffType:{DiffType}, Matter:{Matter}, ParadigmValue:{ParadigmValue}, TestValue:{TestValue}")]
     public class Difference : IDifference, ICloneable

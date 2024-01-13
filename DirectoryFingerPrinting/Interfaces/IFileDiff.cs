@@ -24,6 +24,9 @@ namespace DirectoryFingerPrinting.Interfaces
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Defines methods to get differencies of a file comparison.
+    /// </summary>
     public interface IFileDiff
     {
         string Path { get; }

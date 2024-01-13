@@ -29,14 +29,28 @@ using System.Linq;
 
 namespace DirectoryFingerPrinting
 {
+    /// <summary>
+    /// Provides methods to compare <see cref="IMetaData"/> of two files or two directories.
+    /// </summary>
     public class DirDiffCalculator : IDirDiffCalculator
     {
+        /// <summary>
+        /// Creates a new instance and sets the options.
+        /// </summary>
+        /// <param name="pOptions"></param>
         public DirDiffCalculator(IOptions pOptions) => Options = pOptions;
 
-
+        /// <summary>
+        /// Options used for comparison.
+        /// </summary>
         public IOptions Options { get; }
 
-
+        /// <summary>
+        /// Returns the differencies between two files.
+        /// </summary>
+        /// <param name="metaDatasA"></param>
+        /// <param name="metaDatasB"></param>
+        /// <returns></returns>
         public IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> metaDatasA, IEnumerable<IMetaData> metaDatasB)
         {
             var fileDiffs = new List<FileDiff>();
@@ -87,7 +101,13 @@ namespace DirectoryFingerPrinting
             return fileDiffs;
         }
 
-
+        /// <summary>
+        /// Returns the differencies between two directories.
+        /// </summary>
+        /// <param name="dfpA"></param>
+        /// <param name="dfpB"></param>
+        /// <returns></returns>
+        /// <exception cref="HashAlgorithmException"></exception>
         public IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA, IDirectoryFingerprint dfpB)
         {
             if (Options.UseHashsum && dfpA.HashAlgorithm != dfpA.HashAlgorithm)

@@ -29,9 +29,13 @@ namespace DirectoryFingerPrinting.Interfaces
     /// </summary>
     public enum EDiffType
     {
+        /// <summary>
+        /// None.
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         None = 0,
 
+        
         /// <summary>
         /// Last Access date/time is different.
         /// </summary>

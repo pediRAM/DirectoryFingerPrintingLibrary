@@ -25,8 +25,17 @@ namespace DirectoryFingerPrinting.Cryptography
     using DirectoryFingerPrinting.Interfaces;
     using System;
 
+    /// <summary>
+    /// Provides static method to build <see cref="HashCalculator"/> for a given <see cref="EHashAlgo"/>.
+    /// </summary>
     public static class HashCalculatorFactory
     {
+        /// <summary>
+        /// Builds and returns a new instance of <see cref="HashCalculator"/> for the given <see cref="EHashAlgo"/>.
+        /// </summary>
+        /// <param name="algorithm">crc32, md5, sha1, sha256, sha512.</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static IHashCalculator Create(EHashAlgo algorithm)
         {
             switch (algorithm)

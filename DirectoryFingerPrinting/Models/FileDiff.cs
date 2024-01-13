@@ -30,6 +30,9 @@ namespace DirectoryFingerPrinting.Models
     using System.Xml.Serialization;
     #endregion Usings
 
+    /// <summary>
+    /// Contains all differencies of a file against another one (after comparison).
+    /// </summary>
     [XmlRoot]
     [System.Diagnostics.DebuggerDisplay("Path:{Path}, Differences:{Differences}")]
     public class FileDiff : IFileDiff

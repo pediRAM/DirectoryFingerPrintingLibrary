@@ -24,9 +24,25 @@ using System.Collections.Generic;
 
 namespace DirectoryFingerPrinting.Interfaces
 {
+    /// <summary>
+    /// Defines methods to calculate differencies between two files or two directories.
+    /// </summary>
     public interface IDirDiffCalculator
     {
+        /// <summary>
+        /// Returns the differencies between two fingerprints (directory-fingerprints).
+        /// </summary>
+        /// <param name="dfpA"></param>
+        /// <param name="dfpB"></param>
+        /// <returns></returns>
         IEnumerable<IFileDiff> GetFileDifferencies(IDirectoryFingerprint dfpA,  IDirectoryFingerprint dfpB);
+
+        /// <summary>
+        /// Returns the differencies between two group of <see cref="IMetaData"/>s).
+        /// </summary>
+        /// <param name="dfpA"></param>
+        /// <param name="dfpB"></param>
+        /// <returns></returns>
         IEnumerable<IFileDiff> GetFileDifferencies(IEnumerable<IMetaData> dfpA,  IEnumerable<IMetaData> dfpB);
     }
 }
