@@ -1,15 +1,14 @@
-﻿using DirectoryFingerPrinting;
-using DirectoryFingerPrinting.Interfaces;
-using DirectoryFingerPrinting.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp
+﻿namespace DirectoryFingerPrinting
 {
-    internal class DemoClass
+    using DirectoryFingerPrinting.Interfaces;
+    using DirectoryFingerPrinting.Models;
+    using System.Collections.Generic;
+    using System.IO;
+
+    /// <summary>
+    /// This class demonstrates in short how to use the DFP lib.
+    /// </summary>
+    public class DemoClass
     {
         public void Demo()
         {
