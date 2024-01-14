@@ -45,6 +45,7 @@ namespace DirectoryFingerPrinting.Cryptography
                 case EHashAlgo.MD5:    return new HashCalculator("MD5");
                 case EHashAlgo.SHA1:   return new HashCalculator("SHA1");
                 case EHashAlgo.SHA256: return new HashCalculator("SHA256");
+                case EHashAlgo.SHA384: return new HashCalculator("SHA384");
                 case EHashAlgo.SHA512: return new HashCalculator("SHA512");
             }
 

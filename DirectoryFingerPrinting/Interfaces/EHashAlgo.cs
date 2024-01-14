@@ -60,6 +60,12 @@ namespace DirectoryFingerPrinting.Interfaces
         SHA256,
 
         /// <summary>
+        /// SHA384.
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        SHA384,
+
+        /// <summary>
         /// SHA512.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
