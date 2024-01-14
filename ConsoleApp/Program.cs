@@ -121,7 +121,7 @@ internal class Program
                     CreatedAt = DateTime.Now,
                     Hostname = Environment.MachineName,
                     HashAlgorithm = dfpParadigm.HashAlgorithm,
-                    MetaDatas = CreateMetaDatas(options, pathsOfTestee).ToArray(),
+                    MetaDatas = (MetaData[])CreateMetaDatas(options, pathsOfTestee).ToArray(),
                     Version = AsmConst.DIRECTORY_FINGERPRINT_MODEL_VERSION
                 };
 
@@ -196,7 +196,7 @@ internal class Program
     }
 
 
-    private static bool TrySaveResult(ExtOptions pOptions, IEnumerable<MetaData> pMetaDatas)
+    private static bool TrySaveResult(ExtOptions pOptions, IEnumerable<IMetaData> pMetaDatas)
     {
         var dfp = new DirectoryFingerprint
         {
@@ -204,7 +204,7 @@ internal class Program
             CreatedAt = DateTime.UtcNow,
             Hostname = Environment.MachineName,
             HashAlgorithm = pOptions.HashAlgo,
-            MetaDatas = pMetaDatas.ToArray()
+            MetaDatas = (MetaData[])pMetaDatas.ToArray()
         };
 
         IFileSerializer fs = FileSerializerFactory.CreateSerializer(pOptions.OutputFormat);
@@ -236,7 +236,7 @@ internal class Program
     }
 
     [DebuggerStepThrough]
-    private static IEnumerable<MetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
+    private static IEnumerable<IMetaData> CreateMetaDatas(IOptions pOptions, IEnumerable<string> pPaths)
     {
         m_Factory ??= new MetaDataFactory(pOptions);
         foreach (var path in pPaths)

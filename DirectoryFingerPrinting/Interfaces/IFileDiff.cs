@@ -30,7 +30,17 @@ namespace DirectoryFingerPrinting.Interfaces
     public interface IFileDiff
     {
         string Path { get; }
+
+        /// <summary>
+        /// Returns the differences.
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<IDifference> GetDifferences();
+
+        /// <summary>
+        /// Returns the most significant difference (mostly Existance then Checksum and then Size, LastModification timestamp etc.).
+        /// </summary>
+        /// <returns></returns>
         IDifference GetMostImportantDifference();
     }
 }

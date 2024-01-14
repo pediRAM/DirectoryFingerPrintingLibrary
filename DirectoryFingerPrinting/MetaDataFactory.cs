@@ -53,10 +53,10 @@ namespace DirectoryFingerPrinting
                 yield return CreateMetaData(fi);
         }
 
-        public MetaData CreateMetaData(string pFilePath)
+        public IMetaData CreateMetaData(string pFilePath)
             => CreateMetaData(new FileInfo(pFilePath));
 
-        public MetaData CreateMetaData(FileInfo pFileInfo)
+        public IMetaData CreateMetaData(FileInfo pFileInfo)
         {
             var metaData = new MetaData
             {

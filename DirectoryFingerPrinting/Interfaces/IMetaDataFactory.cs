@@ -26,12 +26,37 @@ using System.IO;
 
 namespace DirectoryFingerPrinting.Interfaces
 {
+    /// <summary>
+    /// Defines methods for creating <see cref="IMetaData"/> for given file by filepath or files by given directorypath or <see cref="DirectoryInfo"/>.
+    /// </summary>
     public interface IMetaDataFactory
     {
-        IEnumerable<IMetaData> CreateMetaDatas(string pPath);
+        /// <summary>
+        /// Returns the metadata for all files in given directory path.
+        /// </summary>
+        /// <param name="pDirPath"></param>
+        /// <returns></returns>
+        IEnumerable<IMetaData> CreateMetaDatas(string pDirPath);
+
+        /// <summary>
+        /// Returns the metadata for all files in given <see cref="DirectoryInfo"/>.
+        /// </summary>
+        /// <param name="pDirInfo"></param>
+        /// <returns></returns>
         IEnumerable<IMetaData> CreateMetaDatas(DirectoryInfo pDirInfo);
 
-        MetaData CreateMetaData(FileInfo pFileInfo);
-        MetaData CreateMetaData(string pFilePath);
+        /// <summary>
+        /// Returns the metadata for given <see cref="FileInfo"/>.
+        /// </summary>
+        /// <param name="pFileInfo"></param>
+        /// <returns></returns>
+        IMetaData CreateMetaData(FileInfo pFileInfo);
+
+        /// <summary>
+        /// Returns the metadata for given filepath.
+        /// </summary>
+        /// <param name="pFilePath"></param>
+        /// <returns></returns>
+        IMetaData CreateMetaData(string pFilePath);
     }
 }
