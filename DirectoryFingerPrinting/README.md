@@ -1,5 +1,25 @@
-﻿# DirectoryFingerPrinting
-DirectoryFingerPrintubg is a powerful .NET/C# library designed for file and directory checksums and metadata management. It offers a comprehensive set of features, including:
+﻿![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+
+This is the english documentation. Following translations are available:
+- [普通话 (Mandarin) :cn:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Mandarin.md)
+- [Español :es:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Spanish.md)
+- [Pусский :ru:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Russian.md)
+- [Deutsch :de: :austria: :switzerland:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/German.md)
+- [हिंदी :india:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Hindi.md)
+- [Türkçe :tr:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Turkish.md)
+- [فارسی :iran: :afghanistan: :tajikistan:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Farsi.md)
+
+
+# DirectoryFingerPrinting
+**DirectoryFingerPrinting** (short: **DFP**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic or versioning tasks.
+
+Save the current state (meta-data of whole files) of a directory as a tiny **DFP** file, later you can compare the content of the directory against the **DFP** file and so recognize if there were any changes, and if so what has been changed in that directory.
+
+The **DFP** library offers a comprehensive set of features, including:
 
 - Retrieving metadata such as **checksum**, creation date, **last modification date**, and **size** for files in a directory and subdirectories (recursive).
 - **Calculating checksums** (**hashes**) for all files within a directory.
@@ -10,6 +30,9 @@ DirectoryFingerPrintubg is a powerful .NET/C# library designed for file and dire
 - **Identify changes**: Detect additions, removals, and modifications to files.
 - **Efficient file comparisons**: Quickly compare and report differences between directories.
 - **Selectable hashing algorithms**: CRC32, MD5, SHA1, SHA256, SHA512
+
+## UML class diagramm
+![UML class diagram](UML_Class_Diagram.png)
 
 ## Demonstration code
 ```cs
