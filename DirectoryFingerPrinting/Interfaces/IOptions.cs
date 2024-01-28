@@ -25,7 +25,7 @@ using System.Collections.Generic;
 namespace DirectoryFingerPrinting.Interfaces
 {
     /// <summary>
-    /// Defines the minimum options needed for calculating and/or comparison of two directory-fingerprints.
+    /// Defines the minimum options needed for filtering files, calculating file-checksums and comparison of two directories.
     /// </summary>
     public interface IOptions
     {
