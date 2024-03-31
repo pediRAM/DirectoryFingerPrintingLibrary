@@ -2,7 +2,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrintingLibrary)](https://www.nuget.org/packages/DirectoryFingerPrintingLibrary)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting.Library)](https://www.nuget.org/packages/DirectoryFingerPrinting.Library)
 
 This is the english documentation. Following translations are available:
 - [普通话 (Mandarin) :cn:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Mandarin.md)
@@ -14,8 +14,8 @@ This is the english documentation. Following translations are available:
 - [فارسی :iran: :afghanistan: :tajikistan:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Farsi.md)
 
 
-# DirectoryFingerPrintingLibrary
-**DirectoryFingerPrinting** (short: **DFP**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic, version or change management tasks.
+# DirectoryFingerPrinting.Library
+**DirectoryFingerPrinting.Library** (short: **DFP lib**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic, version or change management tasks.
 
 **Purpose:** This library offers types and methods for retrieving all or specific (configurable) differences between the files in two directories.
 Save the current state (meta-data of whole files) of a directory as a tiny **DFP** file, later you can compare the content of the directory against the **DFP** file and so recognize if there were any changes, and if so what has been changed in that directory.
@@ -36,7 +36,7 @@ The **DFP** library offers a comprehensive set of features, including:
 ![UML class diagram](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/UML_Class_Diagram.png)
 
 ## Demonstration code
-```cs
+```csharp
 public void Demo()
 {
    // Create settings:

@@ -1,11 +1,11 @@
-![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrintingLibrary/main/Documentation/icon.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting.Library)](https://www.nuget.org/packages/DirectoryFingerPrinting.Library)
 
-# DirectoryFingerPrinting
-**DirectoryFingerPrinting** (kurz **DFP**) ist eine leistungsstarke .NET/C#-Bibliothek, die für die Erstellung und Sammlung von Datei- und Verzeichnisprüfsummen und Metadaten für forensische, Versions- oder Änderungsverwaltungsaufgaben entwickelt wurde.
+# DirectoryFingerPrinting.Library
+**DirectoryFingerPrinting.Library** (kurz **DFP lib**) ist eine leistungsstarke .NET/C#-Bibliothek, die für die Erstellung und Sammlung von Datei- und Verzeichnisprüfsummen und Metadaten für forensische, Versions- oder Änderungsverwaltungsaufgaben entwickelt wurde.
 
 **Zweck:** Diese Bibliothek bietet Typen und Methoden zum Abrufen aller oder bestimmter (konfigurierbarer) Unterschiede zwischen den Dateien in zwei Verzeichnissen. Speichern Sie den aktuellen Zustand (Metadaten aller Dateien) eines Verzeichnisses als kleine **DFP**-Datei. Später können Sie den Inhalt des Verzeichnisses mit der **DFP**-Datei vergleichen und so erkennen, ob Änderungen vorgenommen wurden, und wenn ja, was in diesem Verzeichnis geändert wurde.
 

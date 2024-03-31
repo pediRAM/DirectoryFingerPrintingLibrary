@@ -1,11 +1,11 @@
-![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrintingLibrary/main/Documentation/icon.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting.Library)](https://www.nuget.org/packages/DirectoryFingerPrinting.Library)
 
-# DirectoryFingerPrinting
-**DirectoryFingerPrinting** (kısaltma: **DFP**), adli, sürüm veya değişiklik yönetimi görevleri için dosya ve dizin özetlerini ve meta verilerini oluşturmak ve toplamak için tasarlanmış güçlü bir .NET/C# kütüphanesidir.
+# DirectoryFingerPrinting.Library
+**DirectoryFingerPrinting.Library** (kısaltma: **DFP lib**), adli, sürüm veya değişiklik yönetimi görevleri için dosya ve dizin özetlerini ve meta verilerini oluşturmak ve toplamak için tasarlanmış güçlü bir .NET/C# kütüphanesidir.
 
 **Amaç:** Bu kütüphane, iki dizin arasındaki dosyaların tümünü veya belirli (ayarlanabilir) farkları almak için türler ve yöntemler sunar. Bir dizinin mevcut durumunu (tüm dosyaların meta verileri) küçük bir **DFP** dosyası olarak kaydedin. Daha sonra, dizinin içeriğini **DFP** dosyası ile karşılaştırabilir ve böylece herhangi bir değişiklik olup olmadığını ve öyleyse o dizinde neyin değiştiğini tanımlayabilirsiniz.
 

@@ -1,11 +1,11 @@
-![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrintingLibrary/main/Documentation/icon.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting.Library)](https://www.nuget.org/packages/DirectoryFingerPrinting.Library)
 
-# DirectoryFingerPrinting
-**DirectoryFingerPrinting**（简称**DFP**）是一个强大的.NET/C#库，旨在用于创建和收集文件和目录的校验和和元数据，用于取证、版本或变更管理任务。
+# DirectoryFingerPrinting.Library
+**DirectoryFingerPrinting.Library**（简称**DFP lib**）是一个强大的.NET/C#库，旨在用于创建和收集文件和目录的校验和和元数据，用于取证、版本或变更管理任务。
 
 **目的:** 该库提供了类型和方法，用于检索两个目录中文件之间的所有或特定（可配置）差异。
 将目录的当前状态（整个文件的元数据）保存为一个小的**DFP**文件，稍后您可以将目录的内容与**DFP**文件进行比较，从而识别是否有任何更改，以及在该目录中发生了什么更改。

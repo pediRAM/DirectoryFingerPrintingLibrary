@@ -1,11 +1,11 @@
-![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrintingLibrary/main/Documentation/icon.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting.Library)](https://www.nuget.org/packages/DirectoryFingerPrinting.Library)
 
-# DirectoryFingerPrinting (डायरेक्टरी फिंगरप्रिंटिंग)
-**डायरेक्टरी फिंगरप्रिंटिंग** (संक्षेप में **DFP**) एक शक्तिशाली .NET/C# पुस्तकालय है जो फॉरेंसिक, संस्करण या परिवर्तन प्रबंधन कार्यों के लिए फ़ाइल और निर्देशिका चेकसम और मेटाडेटा बनाने और एकत्रित करने के लिए डिज़ाइन किया गया है।
+# DirectoryFingerPrinting.Library (डायरेक्टरी फिंगरप्रिंटिंग)
+**डायरेक्टरी फिंगरप्रिंटिंग** (संक्षेप में **DFP lib**) एक शक्तिशाली .NET/C# पुस्तकालय है जो फॉरेंसिक, संस्करण या परिवर्तन प्रबंधन कार्यों के लिए फ़ाइल और निर्देशिका चेकसम और मेटाडेटा बनाने और एकत्रित करने के लिए डिज़ाइन किया गया है।
 
 **उद्देश्य:** यह पुस्तकालय दो निर्देशिकाओं में फ़ाइलों के बीच सभी या विशिष्ट (कन्फ़िगरेबल) अंतरों को प्राप्त करने के लिए प्रकार और विधियों को प्रदान करता है। एक छोटे **DFP** फ़ाइल के रूप में एक निर्देशिका की वर्तमान स्थिति (सभी फ़ाइलों के मेटाडेटा) को सहेजें, बाद में आप निर्देशिका की सामग्री को **DFP** फ़ाइल के साथ तुलना कर सकते हैं और इस रूप में पहचान सकते हैं कि क्या कोई भी बदलाव हुआ है, और अगर हां, तो उस निर्देशिका में क्या बदलाव हुआ है।
 
@@ -70,4 +70,3 @@ public void Demo()
 
    // अंतरों को दिख
    ```
-   

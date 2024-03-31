@@ -1,11 +1,11 @@
-![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrintingLibrary/main/Documentation/icon.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting.Library)](https://www.nuget.org/packages/DirectoryFingerPrinting.Library)
 
-# DirectoryFingerPrinting (اثرانگشت پوشه)
-**فینگرپرینتینگ دایرکتوری** (مخفف **DFP**) یک کتابخانه قدرتمند .NET/C# است که برای ایجاد و جمع‌آوری چک‌سام‌ها و متادادهای فایل و دایرکتوری برای کارهای کیفری، نسخه‌بندی یا مدیریت تغییرات طراحی شده است.
+# DirectoryFingerPrinting.Library (اثرانگشت پوشه)
+**فینگرپرینتینگ دایرکتوری** (مخفف **DFP lib**) یک کتابخانه قدرتمند .NET/C# است که برای ایجاد و جمع‌آوری چک‌سام‌ها و متادادهای فایل و دایرکتوری برای کارهای کیفری، نسخه‌بندی یا مدیریت تغییرات طراحی شده است.
 
 **هدف:** این کتابخانه انواع و متدها برای به‌دست آوردن تمام یا برخی از تفاوت‌های (قابل پیکربندی) میان فایل‌ها در دو دایرکتوری را فراهم می‌کند. وضعیت فعلی (متاداده‌های تمامی فایل‌ها) یک دایرکتوری را به عنوان یک فایل **DFP** کوچک ذخیره کنید، سپس می‌توانید محتوای دایرکتوری را با فایل **DFP** مقایسه کرده و بنابراین تشخیص دهید که آیا هر گونه تغییری اتفاق افتاده است و اگر بله، چه چیزی در آن دایرکتوری تغییر کرده است.
 
