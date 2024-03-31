@@ -80,13 +80,3 @@ public void Demo()
    // Show or save differences2...
 }
 ```
-
-
-# Manuals:
-[English](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.en.md)\
-[German](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.de.md)
-
-# Downloads:
-[Downloads page...](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/tree/main/Downloads/README.md)
-
-
