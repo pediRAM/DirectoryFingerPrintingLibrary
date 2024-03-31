@@ -1,41 +1,86 @@
-# DirectoryFingerPrintingLibrary
-In .NET/C# written library (.NET Standard 2.0) and console application (.NET6 and FW4.8) for creating, listing and comparing fingerprints of directory content (only windows file systems!)
+![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
 
-![dfp.exe at work](/Documentation/dfp_video.gif)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
 
-# What is Directory FingerPrinting (DFP)?
-A fingerprint of a directory is same as hash/checkusm of a file, but for a directory.\
-***dfp.exe*** reads versions, timestamps and calculates
-checksums for each file in that directory, like this (simplified):
+This is the english documentation. Following translations are available:
+- [普通话 (Mandarin) :cn:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Mandarin.md)
+- [Español :es:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Spanish.md)
+- [Pусский :ru:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Russian.md)
+- [Deutsch :de: :austria: :switzerland:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/German.md)
+- [हिंदी :india:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Hindi.md)
+- [Türkçe :tr:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Turkish.md)
+- [فارسی :iran: :afghanistan: :tajikistan:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Farsi.md)
+
+
+# DirectoryFingerPrinting
+**DirectoryFingerPrinting** (short: **DFP**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic, version or change management tasks.
+
+**Purpose:** This library offers types and methods for retrieving all or specific (configurable) differences between the files in two directories.
+Save the current state (meta-data of whole files) of a directory as a tiny **DFP** file, later you can compare the content of the directory against the **DFP** file and so recognize if there were any changes, and if so what has been changed in that directory.
+
+The **DFP** library offers a comprehensive set of features, including:
+
+- Retrieving metadata such as **checksum**, creation date, **last modification date**, and **size** for files in a directory and subdirectories (recursive).
+- **Calculating checksums** (**hashes**) for all files within a directory.
+- **Comparing and detecting changes** between two directories or fingerprint files.
+## Key Features
+- **Obtain file metadata**: Access creation dates, modification dates, sizes, and more.
+- **Calculate checksums**: Generate hash values (e.g., SHA-1) for files within a directory.
+- **Identify changes**: Detect additions, removals, and modifications to files.
+- **Efficient file comparisons**: Quickly compare and report differences between directories.
+- **Selectable hashing algorithms**: CRC32, MD5, SHA1, SHA256, SHA512
+
+## UML class diagramm
+![UML class diagram](Documentation/UML_Class_Diagram.png)
+
+
+## Demonstration code
+```cs
+public void Demo()
+{
+   // Create settings:
+   IOptions options = new Options
+   {
+         UseHashsum = true,
+         UseSize = true,
+         UseVersion = true,
+         UseLastModification = true,
+         HashAlgo = EHashAlgo.SHA512,
+         // More options...
+   };
+
+   // Create metadata factory:
+   IMetaDataFactory metaDataFactory = new MetaDataFactory(options);
+
+   // Get the metadata for a single file:
+   IMetaData metaData1 = metaDataFactory.CreateMetaData(@"C:\dir\filePath.ext");
+   IMetaData metaData2 = metaDataFactory.CreateMetaData(new FileInfo(@"C:\dir\filePath.ext"));
+
+   // Get the metadata for files in a directory:
+   IEnumerable<IMetaData> metaDatasB = metaDataFactory.CreateMetaDatas(@"C:\dirPath");
+   IEnumerable<IMetaData> metaDatasA = metaDataFactory.CreateMetaDatas(new DirectoryInfo(@"C:\dirPath"));
+
+   // Create differencies-calculator factory:
+   IDirDiffCalculator diffCalculator = new DirDiffCalculator(options);
+
+   // Get file differencies between files in A and B:
+   IEnumerable<IFileDiff> differences1 = diffCalculator.GetFileDifferencies(metaDatasA, metaDatasB);
+
+   // Get file differencies between two DFP (files):
+   IDirectoryFingerprint dfpA = null;
+   IDirectoryFingerprint dfpB = null;
+   // Load/convert dfp A...
+   // Load/convert dfp B...
+
+   // Get file differencies between dfpA and dfpB:
+   IEnumerable<IFileDiff> differences2 = diffCalculator.GetFileDifferencies(dfpA, dfpB);
+
+   // Show or save differences2...
+}
 ```
----------------------------------------------------------------------------------------------------------------------
- Name                        | Modified at         | Size   | Version      | Hashsum (SHA1)
----------------------------------------------------------------------------------------------------------------------
- dfp.dll                     | 2023-05-13 18:08.55 | 51200  | 1.0.0        | 3864f1fdb50cecc06f9603f68f0523232c21ab97
- dfp.exe                     | 2023-05-13 18:08.55 | 147968 | 1.0.0        | 610584184e2d64769d2e77dcff53e5b0b8966e8e
- DirectoryFingerPrinting.dll | 2023-05-13 18:08.54 | 28160  | 1.0.0.0      | 8d8f029d9a43b2993377f8658c296d3cc32e29cf
- System.IO.Hashing.dll       | 2022-10-18 16:34.48 | 31360  | 7.0.22.51805 | 8edf3a7714ed9971396b87b8f057656f0b2c38f4
- ```
 
- First you save the fingerprint of your directory. Later you can run ***dfp.exe*** to compare the fingerprint file
- whith the content of your directory now. And so, you can check if something has changed (or not), and if what
- exactly, like this:
- ```
-- File2.txt (File removed)
-- Sub_Dir\File4.txt (File removed)
-~ Sub_Dir\File6.txt (Hashsums differs)
-+ File3.txt (File added)
-+ Sub_Dir\File5.txt (File added)
-```
-# What can you do with dfp.exe application?
-***dfp.exe*** enables you to:
-
-1. ***List*** ***filenames*** and ***Versions*** of assembly files (\*.dll, \*.exe) in a directory (also subdirectories when recursive mode is enabled)
-2. ***Calculate*** and ***save*** the fingerprint of a directory or
-3. ***Compare*** and ***show*** the ***differencies*** between:\
-   3.1 two directories or\
-   3.2 two fingerprint files or\
-   3.3 a fingerprint file against a directory, or
 
 # Manuals:
 [English](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/manual.en.md)\
