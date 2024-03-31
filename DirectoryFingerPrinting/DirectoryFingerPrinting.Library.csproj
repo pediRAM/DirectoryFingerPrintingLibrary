@@ -15,15 +15,16 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
-    <Title>DirectoryFingerPrinting library provides methods and types for calculating checksums (hash) of files in a directory and compare the content of two directories or their states for forensic or versioning tasks.</Title>
+    <Title>DirectoryFingerPrintingLibrary provides methods and types for calculating checksums (hash) of files in a directory and compare the content of two directories or their states for forensic or versioning tasks.</Title>
     
     <Description>
-      Facilitates defining classes with revertible properties.
-      Ideal for scenarios where you need to simply revert all changed values, like user-modified settings, without saving the changes to the model or file.
+      DirectoryFingerPrintingLibrary (short: DFP) is a powerful .NET Standard 2.0 library designed for creating and collecting file and directory checksums and metadatas, for forensic, version or change management tasks.
+
+      Purpose: This library offers types and methods for retrieving all or specific (configurable) differences between the files in two directories. Save the current state (meta-data of whole files) of a directory as a tiny DFP file, later you can compare the content of the directory against the DFP file and so recognize if there were any changes, and if so what has been changed in that directory.
     </Description>
     <PackageTags>directory differences directories differencies file fingerprint filehash checksum hash metadata calculate calculation comparing compare comparison forensic versioning CRC32 MD5 SHA-1 SHA-256 SHA-512 SHA1 SHA256 SHA512</PackageTags>
 
-    <PackageReleaseNotes>Release 1.1.0-alpha</PackageReleaseNotes>
+    <PackageReleaseNotes>Alpha Version 1.1.0-alpha</PackageReleaseNotes>
     
     <Authors>Pedram GANJEH-HADIDI</Authors>
     <Owners>Pedram GANJEH-HADIDI</Owners>
