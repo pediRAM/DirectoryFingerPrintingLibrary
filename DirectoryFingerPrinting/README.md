@@ -15,8 +15,9 @@ This is the english documentation. Following translations are available:
 
 
 # DirectoryFingerPrinting
-**DirectoryFingerPrinting** (short: **DFP**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic or versioning tasks.
+**DirectoryFingerPrinting** (short: **DFP**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic, version or change management tasks.
 
+**Purpose:** This library offers types and methods for retrieving all or specific (configurable) differences between the files in two directories.
 Save the current state (meta-data of whole files) of a directory as a tiny **DFP** file, later you can compare the content of the directory against the **DFP** file and so recognize if there were any changes, and if so what has been changed in that directory.
 
 The **DFP** library offers a comprehensive set of features, including:

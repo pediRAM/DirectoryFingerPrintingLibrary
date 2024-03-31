@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting
+namespace DirectoryFingerPrinting.Library
 {
     #region Usings
-    using DirectoryFingerPrinting.Interfaces;
-    using DirectoryFingerPrinting.Cryptography;
-    using DirectoryFingerPrinting.Models;
+    using DirectoryFingerPrinting.Library.Interfaces;
+    using DirectoryFingerPrinting.Library.Cryptography;
+    using DirectoryFingerPrinting.Library.Models;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;

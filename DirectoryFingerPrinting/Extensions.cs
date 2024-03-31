@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.IO;
 
-namespace DirectoryFingerPrinting
+namespace DirectoryFingerPrinting.Library
 {
     /// <summary>
     /// Provides extension-methods which construct relative-path for a given full-path etc.

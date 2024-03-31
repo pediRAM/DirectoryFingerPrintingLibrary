@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 
-namespace DirectoryFingerPrinting.Interfaces
+namespace DirectoryFingerPrinting.Library.Interfaces
 {
     /// <summary>
     /// Provides data about characteristics of a file.

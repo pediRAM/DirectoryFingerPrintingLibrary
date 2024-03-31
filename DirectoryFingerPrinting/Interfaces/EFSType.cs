@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Text.Json.Serialization;
 
-namespace DirectoryFingerPrinting.Interfaces
+namespace DirectoryFingerPrinting.Library.Interfaces
 {
     /// <summary>
     /// Types of directory content (File System Types).

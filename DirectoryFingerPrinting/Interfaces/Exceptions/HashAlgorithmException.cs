@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 
-namespace DirectoryFingerPrinting.Interfaces.Exceptions
+namespace DirectoryFingerPrinting.Library.Interfaces.Exceptions
 {
     public class HashAlgorithmException : Exception
     {

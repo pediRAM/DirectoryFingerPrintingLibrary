@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting
+namespace DirectoryFingerPrinting.Library
 {
     #region Usings
     using System.Diagnostics;

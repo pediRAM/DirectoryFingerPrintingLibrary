@@ -30,7 +30,7 @@ checksums for each file in that directory, like this (simplified):
 # What can you do with dfp.exe application?
 ***dfp.exe*** enables you to:
 
-1. ***List*** ***filenames*** and ***Versions*** of assembly files (*.dll/*.exe) in a directory (also recursive)
+1. ***List*** ***filenames*** and ***Versions*** of assembly files (\*.dll, \*.exe) in a directory (also subdirectories when recursive mode is enabled)
 2. ***Calculate*** and ***save*** the fingerprint of a directory or
 3. ***Compare*** and ***show*** the ***differencies*** between:\
    3.1 two directories or\

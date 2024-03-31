@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Collections.Generic;
 
-namespace DirectoryFingerPrinting.Interfaces
+namespace DirectoryFingerPrinting.Library.Interfaces
 {
     /// <summary>
     /// Defines methods to calculate differencies between two files or two directories.

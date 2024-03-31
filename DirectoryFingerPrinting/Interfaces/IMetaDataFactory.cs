@@ -20,11 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.Models;
+using DirectoryFingerPrinting.Library.Models;
 using System.Collections.Generic;
 using System.IO;
 
-namespace DirectoryFingerPrinting.Interfaces
+namespace DirectoryFingerPrinting.Library.Interfaces
 {
     /// <summary>
     /// Defines methods for creating <see cref="IMetaData"/> for given file by filepath or files by given directorypath or <see cref="DirectoryInfo"/>.

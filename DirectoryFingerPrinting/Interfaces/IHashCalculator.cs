@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.IO;
 
-namespace DirectoryFingerPrinting.Interfaces
+namespace DirectoryFingerPrinting.Library.Interfaces
 {
     /// <summary>
     /// Defines methods for calculating checksums of files.

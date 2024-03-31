@@ -20,9 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.Cryptography
+namespace DirectoryFingerPrinting.Library.Cryptography
 {
-    using DirectoryFingerPrinting.Interfaces;
+    using DirectoryFingerPrinting.Library.Interfaces;
     using System;
 
     /// <summary>

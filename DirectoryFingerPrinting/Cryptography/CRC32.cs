@@ -20,10 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.Interfaces;
+using DirectoryFingerPrinting.Library.Interfaces;
 using System.IO;
 
-namespace DirectoryFingerPrinting.Cryptography
+namespace DirectoryFingerPrinting.Library.Cryptography
 {
     internal class CRC32 : IHashCalculator
     {

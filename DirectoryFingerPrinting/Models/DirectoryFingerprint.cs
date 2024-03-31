@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.Interfaces;
+using DirectoryFingerPrinting.Library.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace DirectoryFingerPrinting.Models
+namespace DirectoryFingerPrinting.Library.Models
 {
     [XmlRoot]
     public class DirectoryFingerprint : IDirectoryFingerprint

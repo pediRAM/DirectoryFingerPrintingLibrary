@@ -20,10 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-namespace DirectoryFingerPrinting.Models
+namespace DirectoryFingerPrinting.Library.Models
 {
     #region Usings
-    using DirectoryFingerPrinting.Interfaces;
+    using DirectoryFingerPrinting.Library.Interfaces;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml;

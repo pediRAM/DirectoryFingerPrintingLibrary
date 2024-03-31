@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.Interfaces;
+using DirectoryFingerPrinting.Library.Interfaces;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace DirectoryFingerPrinting.Cryptography
+namespace DirectoryFingerPrinting.Library.Cryptography
 {
     internal class HashCalculator : IHashCalculator
     {

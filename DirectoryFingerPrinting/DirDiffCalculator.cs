@@ -20,14 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-using DirectoryFingerPrinting.Interfaces;
-using DirectoryFingerPrinting.Interfaces.Exceptions;
-using DirectoryFingerPrinting.Models;
+using DirectoryFingerPrinting.Library.Interfaces;
+using DirectoryFingerPrinting.Library.Interfaces.Exceptions;
+using DirectoryFingerPrinting.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DirectoryFingerPrinting
+namespace DirectoryFingerPrinting.Library
 {
     /// <summary>
     /// Provides methods to compare <see cref="IMetaData"/> of two files or two directories.
@@ -57,10 +57,12 @@ namespace DirectoryFingerPrinting
 
             foreach (var a in metaDatasA)
             {
-                var fd = new FileDiff();
-                fd.Path = a.RelativePath;
+                var fd = new FileDiff
+                {
+                    Path = a.RelativePath
+                };
 
-                var b = metaDatasB.SingleOrDefault(x => x.RelativePath.Equals(a.RelativePath, Options.IsCaseSensitive? StringComparison.InvariantCulture : StringComparison.InvariantCultureIgnoreCase));
+                IMetaData b = metaDatasB.SingleOrDefault(x => x.RelativePath.Equals(a.RelativePath, Options.IsCaseSensitive? StringComparison.InvariantCulture : StringComparison.InvariantCultureIgnoreCase));
                 if (b == null)
                 {
                     fd.Differences.Add(new Difference
