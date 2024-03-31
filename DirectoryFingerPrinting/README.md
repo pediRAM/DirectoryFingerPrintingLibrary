@@ -33,7 +33,7 @@ The **DFP** library offers a comprehensive set of features, including:
 - **Selectable hashing algorithms**: CRC32, MD5, SHA1, SHA256, SHA512
 
 ## UML class diagramm
-![UML class diagram](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/UML_Class_Diagram.png)
+![UML class diagram](UML_Class_Diagram.png)
 
 ## Demonstration code
 ```cs
