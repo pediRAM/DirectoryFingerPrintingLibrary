@@ -1,9 +1,9 @@
 ﻿/*
-DirectoryFingerPrinting (DFP) is a free and open source library and 
-terminal app for creating checksums of directory content, used to compare, 
+DirectoryFingerPrinting.Library (DFP Lib) is a free and open source library
+for creating checksums of directory content, used to compare, 
 diff-building, security monitoring and more.
 
-Copyright (C) 2023 Pedram GANJEH HADIDI
+Copyright (C) 2024 Pedram GANJEH HADIDI
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

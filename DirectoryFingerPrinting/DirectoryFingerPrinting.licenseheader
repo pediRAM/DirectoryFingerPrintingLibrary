@@ -1,4 +1,6 @@
-﻿/*
+﻿extensions: designer.cs generated.cs
+extensions: .cs
+/*
 DirectoryFingerPrinting.Library (DFP Lib) is a free and open source library
 for creating checksums of directory content, used to compare, 
 diff-building, security monitoring and more.
@@ -19,32 +21,3 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-namespace DirectoryFingerPrinting.Library.Interfaces
-{
-    /// <summary>
-    /// Defines properties and methods for a metadata containing file differencies.
-    /// </summary>
-    public interface IDifference
-    {
-        /// <summary>
-        /// Type of difference.
-        /// </summary>
-        EDiffType DiffType { get; set; }
-
-        /// <summary>
-        /// Name of file characteristic/property.
-        /// </summary>
-        string Matter { get; set; }
-
-        /// <summary>
-        /// The value of the paradigm.
-        /// </summary>
-        string ParadigmValue { get; set; }
-
-        /// <summary>
-        /// The value of the testee.
-        /// </summary>
-        string TestValue { get; set; }
-    }
-}
