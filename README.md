@@ -5,13 +5,13 @@
 [![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
 
 This is the english documentation. Following translations are available:
-- [普通话 (Mandarin) :cn:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Mandarin.md)
-- [Español :es:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Spanish.md)
-- [Pусский :ru:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Russian.md)
-- [Deutsch :de: :austria: :switzerland:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/German.md)
-- [हिंदी :india:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Hindi.md)
-- [Türkçe :tr:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Turkish.md)
-- [فارسی :iran: :afghanistan: :tajikistan:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Farsi.md)
+- [普通话 (Mandarin) :cn:](Documentation/Mandarin.md)
+- [Español :es:](Documentation/Spanish.md)
+- [Pусский :ru:](Documentation/Russian.md)
+- [Deutsch :de: :austria: :switzerland:](Documentation/German.md)
+- [हिंदी :india:](Documentation/Hindi.md)
+- [Türkçe :tr:](Documentation/Turkish.md)
+- [فارسی :iran: :afghanistan: :tajikistan:](Documentation/Farsi.md)
 
 
 # DirectoryFingerPrinting
