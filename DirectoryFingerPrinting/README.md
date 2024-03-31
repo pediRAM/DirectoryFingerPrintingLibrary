@@ -1,20 +1,20 @@
-﻿![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrinting/main/Documentation/icon.png)
+﻿![logo](https://raw.githubusercontent.com/pediRAM/DirectoryFingerPrintingLibrary/main/Documentation/icon.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrinting.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrinting/releases)
-[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrinting)](https://www.nuget.org/packages/DirectoryFingerPrinting)
+[![Release](https://img.shields.io/github/release/pediRAM/DirectoryFingerPrintingLibrary.svg?sort=semver)](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/releases)
+[![NuGet](https://img.shields.io/nuget/v/DirectoryFingerPrintingLibrary)](https://www.nuget.org/packages/DirectoryFingerPrintingLibrary)
 
 This is the english documentation. Following translations are available:
-- [普通话 (Mandarin) :cn:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Mandarin.md)
-- [Español :es:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Spanish.md)
-- [Pусский :ru:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Russian.md)
-- [Deutsch :de: :austria: :switzerland:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/German.md)
-- [हिंदी :india:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Hindi.md)
-- [Türkçe :tr:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Turkish.md)
-- [فارسی :iran: :afghanistan: :tajikistan:](https://github.com/pediRAM/DirectoryFingerPrinting/blob/main/Documentation/Farsi.md)
+- [普通话 (Mandarin) :cn:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Mandarin.md)
+- [Español :es:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Spanish.md)
+- [Pусский :ru:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Russian.md)
+- [Deutsch :de: :austria: :switzerland:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/German.md)
+- [हिंदी :india:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Hindi.md)
+- [Türkçe :tr:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Turkish.md)
+- [فارسی :iran: :afghanistan: :tajikistan:](https://github.com/pediRAM/DirectoryFingerPrintingLibrary/blob/main/Documentation/Farsi.md)
 
 
-# DirectoryFingerPrinting
+# DirectoryFingerPrintingLibrary
 **DirectoryFingerPrinting** (short: **DFP**) is a powerful .NET/C# library designed for creating and collecting file and directory checksums and metadatas, for forensic, version or change management tasks.
 
 **Purpose:** This library offers types and methods for retrieving all or specific (configurable) differences between the files in two directories.
