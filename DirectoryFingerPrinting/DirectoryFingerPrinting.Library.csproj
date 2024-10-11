@@ -5,12 +5,12 @@
     <LangVersion>10</LangVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
-    <AssemblyVersion>1.1.1</AssemblyVersion>
-    <FileVersion>1.1.1</FileVersion>
+    <AssemblyVersion>1.1.2</AssemblyVersion>
+    <FileVersion>1.1.2</FileVersion>
 
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <VersionSuffix></VersionSuffix>
-    <PackageVersion>1.1.1</PackageVersion>
+    <PackageVersion>1.1.2</PackageVersion>
     
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -24,7 +24,7 @@
     </Description>
     <PackageTags>directory differences directories differencies file fingerprint filehash checksum hash metadata calculate calculation comparing compare comparison forensic versioning CRC32 MD5 SHA-1 SHA-256 SHA-512 SHA1 SHA256 SHA512</PackageTags>
 
-    <PackageReleaseNotes>Version 1.1.1 Fixed Denial of Service Vulnerability CVE-2024-30105</PackageReleaseNotes>
+    <PackageReleaseNotes>Version 1.1.2 Fixed Denial of Service Vulnerability CVE-2024-43485</PackageReleaseNotes>
     
     <Authors>Pedram GANJEH-HADIDI</Authors>
     <Owners>Pedram GANJEH-HADIDI</Owners>
