@@ -1,4 +1,4 @@
-![](2-no-48-no-more-islamic-republic.png)
+![](favicon.svg)
 ## **IRAN IS BLEEDING --- AND THE WORLD IS SILENT**
 BEGIN OF UPDATE: 2026-01-18
 LAST UPDATEL: 2026-02-18
